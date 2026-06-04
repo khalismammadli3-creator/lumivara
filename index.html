@@ -29,13 +29,14 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 4rem;
-    background: rgba(245,250,249,0.96);
+    padding: 1rem 4rem;
+    background: #ffffff;
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(0,214,178,0.15);
+    border-bottom: 1px solid rgba(0,214,178,0.2);
+    box-shadow: 0 2px 12px rgba(0,134,110,0.07);
   }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo img { height: 48px; width: auto; }
+  .nav-logo img { height: 52px; width: auto; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { color: var(--text); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.65; transition: opacity 0.3s, color 0.3s; }
   .nav-links a:hover { opacity: 1; color: var(--teal-dark); }
@@ -50,6 +51,7 @@
       linear-gradient(135deg, rgba(0,51,42,0.72) 0%, rgba(0,51,42,0.35) 55%, rgba(0,214,178,0.08) 100%),
       url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80') center/cover no-repeat;
   }
+  .hero-logo { height: 110px; width: auto; margin-bottom: 2rem; display: block; filter: brightness(0) invert(1); }
   .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.5rem; }
   .hero-headline { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6rem); font-weight: 300; line-height: 1.05; max-width: 700px; margin-bottom: 2rem; color: #fff; }
   .hero-headline em { font-style: italic; color: var(--teal); }
@@ -175,6 +177,7 @@
 </nav>
 
 <section id="hero">
+  <img src="L_Large (3).png" alt="Lumivara Travel" class="hero-logo">
   <p class="hero-eyebrow">Curated luxury travel since 2008</p>
   <h1 class="hero-headline">Journey beyond<br><em>the ordinary</em></h1>
   <p class="hero-sub">Private itineraries, handpicked estates, and seamless experiences crafted for the discerning traveller. Every detail, perfected.</p>
@@ -356,7 +359,7 @@
         <div class="form-group"><label>Destination</label><input type="text" placeholder="Where do you wish to go?"></div>
         <div class="form-group"><label>Travel dates</label><input type="text" placeholder="Approximate dates"></div>
       </div>
-      <div class="form-group"><label>Your message</label><textarea placeholder="Tell us about your dream journey, any special requirements, or questions about visa services…"></textarea></div>
+      <div class="form-group"><label>Your message</label><textarea placeholder="Tell us about your dream journey, any special requirements, or questions about visa services…khalislovesramila"></textarea></div>
       <button class="btn-primary" style="align-self:flex-start;margin-top:0.5rem;">Send Enquiry</button>
     </div>
   </div>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hindistan e-Vizası — Azərbaycanlılar üçün | Lumivara Travel</title>
+<meta name="description" content="Azərbaycanlı vətəndaşlar üçün Hindistan e-turist vizası tələbləri, online müraciət prosesi, haqlar (30 gün $25, 1 il $40, 5 il $80) və vacib məlumatlar.">
+<link rel="stylesheet" href="nav.css">
+<style>
+  body{background:var(--bg);}
+  .page-banner{width:100%;height:320px;position:relative;overflow:hidden;}
+  .page-banner img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5);}
+  .page-banner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 4rem;background:linear-gradient(to top,rgba(0,30,20,0.85) 0%,transparent 60%);}
+  .page-banner-overlay .breadcrumb{font-size:0.65rem;color:rgba(255,255,255,0.5);letter-spacing:0.08em;margin-bottom:0.75rem;}
+  .page-banner-overlay .breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
+  .page-banner-overlay h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.8rem);font-weight:300;color:#fff;line-height:1.1;}
+  .page-banner-overlay h1 em{font-style:italic;color:var(--teal);}
+  .page-banner-overlay .flag{font-size:2.5rem;margin-bottom:0.5rem;}
+  .stats-bar{background:var(--teal-deep);display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat-cell{padding:1.25rem 1.5rem;text-align:center;border-right:1px solid rgba(0,214,178,0.12);}
+  .stat-cell:last-child{border-right:none;}
+  .stat-cell-key{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(242,250,248,0.45);margin-bottom:0.35rem;}
+  .stat-cell-val{font-family:var(--font-display);font-size:1.5rem;font-weight:300;color:var(--teal);line-height:1;}
+  .stat-cell-sub{font-size:0.6rem;color:rgba(242,250,248,0.45);margin-top:0.2rem;}
+  .content-wrap{max-width:1100px;margin:0 auto;padding:4rem;display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:start;}
+  .req-table{background:#fff;border:1px solid rgba(0,134,110,0.12);}
+  .req-table-header{padding:1.25rem 1.5rem;background:var(--bg-alt);border-bottom:1px solid rgba(0,134,110,0.12);}
+  .req-table-header h2{font-family:var(--font-display);font-size:1.5rem;font-weight:300;}
+  .req-row{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid rgba(0,134,110,0.08);}
+  .req-row:last-child{border-bottom:none;}
+  .req-icon{font-size:1.1rem;flex-shrink:0;width:28px;text-align:center;margin-top:1px;}
+  .req-label{font-size:0.82rem;font-weight:500;color:var(--text);line-height:1.3;}
+  .req-value{font-size:0.75rem;color:var(--text-muted);line-height:1.7;margin-top:3px;}
+  .sidebar{display:flex;flex-direction:column;gap:1.5rem;}
+  .info-box{background:#fff;border:1px solid rgba(0,134,110,0.12);padding:1.5rem;}
+  .info-box h3{font-family:var(--font-display);font-size:1.1rem;font-weight:300;margin-bottom:1rem;color:var(--text);border-bottom:1px solid rgba(0,214,178,0.2);padding-bottom:0.75rem;}
+  .info-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+  .info-list li{font-size:0.75rem;color:var(--text-muted);line-height:1.7;padding-left:1rem;position:relative;}
+  .info-list li::before{content:'›';position:absolute;left:0;color:var(--teal-dark);}
+  .note-box{background:rgba(0,134,110,0.06);border-left:3px solid var(--teal-dark);padding:1rem 1.25rem;}
+  .note-box p{font-size:0.75rem;color:var(--text-muted);line-height:1.8;}
+  .note-box strong{color:var(--teal-dark);}
+  .price-table{width:100%;border-collapse:collapse;margin-top:1rem;background:#fff;border:1px solid rgba(0,134,110,0.12);}
+  .price-table th{background:var(--bg-alt);padding:0.65rem 1rem;font-size:0.7rem;font-weight:600;text-align:left;border-bottom:1px solid rgba(0,134,110,0.12);}
+  .price-table td{padding:0.65rem 1rem;font-size:0.75rem;color:var(--text-muted);border-bottom:1px solid rgba(0,134,110,0.06);}
+  .price-table tr:last-child td{border-bottom:none;}
+  .faq-section{background:var(--bg-alt);padding:4rem;border-top:1px solid rgba(0,214,178,0.12);}
+  .faq-wrap{max-width:780px;margin:0 auto;}
+  .faq-item{background:#fff;border:1px solid rgba(0,134,110,0.1);margin-bottom:0.75rem;}
+  .faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;background:none;border:none;cursor:pointer;text-align:left;gap:1rem;}
+  .faq-q{font-size:0.85rem;color:var(--text);font-weight:400;}
+  .faq-ico{font-size:1.2rem;color:var(--teal-dark);flex-shrink:0;transition:transform 0.3s;}
+  .faq-ico.open{transform:rotate(45deg);}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.35s ease;}
+  .faq-answer.open{max-height:300px;}
+  .faq-answer p{font-size:0.78rem;color:var(--text-muted);line-height:1.9;padding:0 1.4rem 1.25rem;}
+  .cta-bar{padding:3.5rem 4rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border-top:1px solid rgba(0,214,178,0.12);}
+  .cta-bar h2{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;color:var(--text);}
+  .cta-bar h2 em{font-style:italic;color:var(--teal-dark);}
+  .cta-bar p{font-size:0.78rem;color:var(--text-muted);margin-top:0.3rem;}
+  @media(max-width:900px){.page-banner{height:240px;}.page-banner-overlay{padding:1.5rem;}.stats-bar{grid-template-columns:repeat(2,1fr);}.stat-cell{border-bottom:1px solid rgba(0,214,178,0.12);}.content-wrap{grid-template-columns:1fr;padding:2rem 1.5rem;gap:2rem;}.faq-section{padding:3rem 1.5rem;}.cta-bar{padding:3rem 1.5rem;flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="L_Large (3).png" alt="Lumivara Travel"></a>
+  <ul class="nav-links">
+    <li class="nav-home"><a href="index.html" title="Ana səhifə">⌂</a></li><li class="nav-divider"></li>
+    <li><a href="about.html">Biz kimik</a></li><li><a href="tours.html">Turlar</a></li>
+    <li><a href="corporate.html">Korporativ xidmətlər</a></li>
+    <li><a href="visa.html" class="active">Viza</a></li>
+    <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
+  </ul>
+</nav>
+
+<div class="page-banner">
+  <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1600&q=80" alt="Hindistan e-Vizası">
+  <div class="page-banner-overlay">
+    <div class="breadcrumb"><a href="index.html">Ana Səhifə</a> › <a href="visa.html">Viza</a> › Hindistan</div>
+    <div class="flag">🇮🇳</div>
+    <h1>Hindistan <em>e-Vizası</em></h1>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-cell"><div class="stat-cell-key">Müraciət Üsulu</div><div class="stat-cell-val">Online</div><div class="stat-cell-sub">evisa.india.gov.in</div></div>
+  <div class="stat-cell"><div class="stat-cell-key">Emal Müddəti</div><div class="stat-cell-val">3–5</div><div class="stat-cell-sub">iş günü</div></div>
+  <div class="stat-cell"><div class="stat-cell-key">Başlanğıc Haqqı</div><div class="stat-cell-val">$25</div><div class="stat-cell-sub">30 günlük e-Viza</div></div>
+  <div class="stat-cell"><div class="stat-cell-key">Barmaq İzi</div><div class="stat-cell-val">Yoxdur</div><div class="stat-cell-sub">e-Viza üçün tələb olunmur</div></div>
+</div>
+
+<div class="content-wrap">
+  <div>
+    <!-- Pricing -->
+    <p class="section-label" style="margin-bottom:0.5rem;">e-Viza Növləri</p>
+    <h2 class="section-title" style="font-size:1.6rem; margin-bottom:0.5rem;">Hansı <em>müddəti seçmək lazımdır?</em></h2>
+    <table class="price-table">
+      <thead><tr><th>Viza Növü</th><th>Etibarlılıq</th><th>Qalma Müddəti</th><th>Giriş</th><th>Haqqı</th></tr></thead>
+      <tbody>
+        <tr><td>e-Tourist Viza (30 gün)</td><td>30 gün</td><td>30 gün</td><td>2 dəfə giriş</td><td><strong>$25</strong></td></tr>
+        <tr><td>e-Tourist Viza (1 il)</td><td>1 il</td><td>Hər girişdə 90 gün</td><td>Çoxsaylı</td><td><strong>$40</strong></td></tr>
+        <tr><td>e-Tourist Viza (5 il)</td><td>5 il</td><td>Hər girişdə 90 gün</td><td>Çoxsaylı</td><td><strong>$80</strong></td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:2rem;">
+      <div class="req-table">
+        <div class="req-table-header"><p class="section-label">Sənəd Tələbləri</p><h2>Online müraciət üçün lazım olanlar</h2></div>
+        <div class="req-row"><span class="req-icon">🛂</span><div><div class="req-label">Pasport</div><div class="req-value">Ən az 6 ay etibarlı. Minimum 2 boş vizit səhifəsi. Pasportun məlumat səhifəsinin rəqəmsal skanı (JPEG, maksimum 300 KB).</div></div></div>
+        <div class="req-row"><span class="req-icon">📸</span><div><div class="req-label">Rəqəmsal Foto</div><div class="req-value">Ağ fon, JPEG formatı, 10 KB – 1 MB arasında. Üz tam görünməlidir, eynək qadağandır. Foto son 6 ay ərzində çəkilmiş olmalıdır.</div></div></div>
+        <div class="req-row"><span class="req-icon">✉️</span><div><div class="req-label">Email Ünvanı</div><div class="req-value">Fəal email ünvanı tələb olunur — e-Viza bu ünvana göndərilir. Müraciət zamanı daxil edilən emaili diqqətlə yazın.</div></div></div>
+        <div class="req-row"><span class="req-icon">💳</span><div><div class="req-label">Kredit / Debet Kartı</div><div class="req-value">Haqqın ödənilməsi üçün Visa, Mastercard, American Express qəbul olunur. Azərbaycanlı kartlar adətən işləyir.</div></div></div>
+        <div class="req-row"><span class="req-icon">🏨</span><div><div class="req-label">Otel Rezervasiyası</div><div class="req-value">Müraciət formasında qalacağınız ünvanı qeyd etmək tələb olunur. Rezervasiya sənədi yüklemə tələb olunmur, lakin hazır olmalıdır.</div></div></div>
+        <div class="req-row"><span class="req-icon">✈️</span><div><div class="req-label">Uçuş Məlumatları</div><div class="req-value">Müraciət formasında giriş hava limanını qeyd etmək tələb olunur. e-Viza yalnız müəyyən hava limanlarından giriş üçün etibarlıdır.</div></div></div>
+        <div class="req-row"><span class="req-icon">🛡️</span><div><div class="req-label">Səyahət Sığortası</div><div class="req-value">Rəsmi tələb deyil, lakin tövsiyə olunur. Tibbi yardım xərcləri Hindistanda yüksək ola bilər.</div></div></div>
+        <div class="req-row"><span class="req-icon">👆</span><div><div class="req-label">Barmaq İzi</div><div class="req-value">e-Viza üçün tələb olunmur. Standart viza (sticker viza) üçün isə Hindistan Səfirliyinə şəxsən müraciət etmək lazımdır.</div></div></div>
+      </div>
+    </div>
+
+    <div class="note-box" style="margin-top:1.5rem;">
+      <p><strong>Giriş hava limanları:</strong> e-Viza yalnız 28 müəyyən hava limanından istifadə etmək üçün etibarlıdır. Əsas hava limanları: Delhi (IGI), Mumbai (CSIA), Bangalore, Chennai, Kolkata, Hyderabad, Kochi, Goa daxildir. Müraciət formasında seçdiyiniz giriş nöqtəsinə uyğun uçuş biletini alın.</p>
+    </div>
+
+    <div style="margin-top:2.5rem;">
+      <p class="section-label">Online Müraciət Prosesi</p>
+      <h2 class="section-title" style="font-size:1.6rem;">Addım <em>addım</em></h2>
+      <div class="divider" style="margin:1rem 0;"></div>
+      <div style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(0,134,110,0.12);margin-top:1rem;background:#fff;">
+        <div style="display:flex;gap:1rem;padding:1.1rem 1.4rem;border-bottom:1px solid rgba(0,134,110,0.08);"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--teal);opacity:0.4;flex-shrink:0;line-height:1;width:32px;">1</div><div><div style="font-size:0.82rem;font-weight:500;color:var(--text);">Sayta daxil olun</div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">evisa.india.gov.in saytına daxil olun. Yalnız bu rəsmi saytdan müraciət edin — saxta saytlardan çəkinin.</div></div></div>
+        <div style="display:flex;gap:1rem;padding:1.1rem 1.4rem;border-bottom:1px solid rgba(0,134,110,0.08);"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--teal);opacity:0.4;flex-shrink:0;line-height:1;width:32px;">2</div><div><div style="font-size:0.82rem;font-weight:500;color:var(--text);">Formanı doldurun</div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">Şəxsi məlumatlar, pasport məlumatları, giriş nöqtəsi, qalacağınız ünvan daxil edin. Diqqətli olun — düzəliş imkanı məhduddur.</div></div></div>
+        <div style="display:flex;gap:1rem;padding:1.1rem 1.4rem;border-bottom:1px solid rgba(0,134,110,0.08);"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--teal);opacity:0.4;flex-shrink:0;line-height:1;width:32px;">3</div><div><div style="font-size:0.82rem;font-weight:500;color:var(--text);">Foto və pasport skanı yükləyin</div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">Foto: ağ fon, JPEG, 10KB–1MB. Pasport: məlumat səhifəsi, JPEG, maks. 300KB.</div></div></div>
+        <div style="display:flex;gap:1rem;padding:1.1rem 1.4rem;border-bottom:1px solid rgba(0,134,110,0.08);"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--teal);opacity:0.4;flex-shrink:0;line-height:1;width:32px;">4</div><div><div style="font-size:0.82rem;font-weight:500;color:var(--text);">Ödəniş edin</div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">Kredit/debet kartı ilə ödəyin. Ödəniş tamamlandıqdan sonra müraciət nömrənizi qeyd edin.</div></div></div>
+        <div style="display:flex;gap:1rem;padding:1.1rem 1.4rem;"><div style="font-family:var(--font-display);font-size:1.5rem;color:var(--teal);opacity:0.4;flex-shrink:0;line-height:1;width:32px;">5</div><div><div style="font-size:0.82rem;font-weight:500;color:var(--text);">3–5 gün sonra e-Vizanı alın</div><div style="font-size:0.75rem;color:var(--text-muted);margin-top:3px;">e-Viza emailinizə göndərilir. Çap edin və səyahət boyunca yanınızda saxlayın.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="info-box">
+      <h3>Ümumi Məlumatlar</h3>
+      <ul class="info-list">
+        <li>Müraciət: evisa.india.gov.in</li>
+        <li>Barmaq izi: Tələb olunmur</li>
+        <li>Səfirliyə getmə: Lazım deyil</li>
+        <li>Nəticə: Email ilə göndərilir</li>
+        <li>Çap edin: Hava limanında göstərin</li>
+        <li>Müraciət vaxtı: 4 gün öncəyə qədər</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h3>Foto Tələbləri</h3>
+      <ul class="info-list">
+        <li>Format: JPEG</li>
+        <li>Ölçü: 10 KB – 1 MB</li>
+        <li>Fon: Ağ</li>
+        <li>Üz: tam görünməlidir</li>
+        <li>Eynək: Qadağandır</li>
+        <li>Müddət: Son 6 ay ərzində çəkilmiş</li>
+      </ul>
+    </div>
+    <div class="info-box">
+      <h3>Diqqət: Saxta Saytlar</h3>
+      <ul class="info-list">
+        <li>Yalnız: evisa.india.gov.in istifadə edin</li>
+        <li>Üçüncü tərəf saytları daha yüksək qiymət alır</li>
+        <li>Saxta saytlarda müraciət etmək risk yaradır</li>
+        <li>Rəsmi sayt pulsuz müraciət imkanı verir (yalnız dövlət haqqı ödənilir)</li>
+      </ul>
+    </div>
+    <div class="note-box">
+      <p><strong>Tövsiyə:</strong> Müraciəti səyahətdən ən azı 4–7 gün öncə edin. Son dəqiqə müraciətlər (1–2 gün öncə) risklidir — bəzən emal gecikə bilir.</p>
+    </div>
+  </div>
+</div>
+
+<section class="faq-section">
+  <div class="faq-wrap">
+    <p class="section-label">Tez-Tez Soruşulan Suallar</p>
+    <h2 class="section-title">Hindistan e-vizası <em>haqqında</em></h2>
+    <div class="divider"></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">e-Viza rədd edilsə yenidən müraciət etmək olarmı?</span><span class="faq-ico">+</span></button><div class="faq-answer"><p>Bəli, rədd edilən müraciətdən sonra yenidən müraciət etmək mümkündür. Lakin rədd səbəbini anlamaq vacibdir. Ən çox rədd səbəbləri: yanlış foto formatı, pasport məlumatlarındakı xəta, uyğunsuz giriş nöqtəsi. Yenidən müraciətdə bu xətaları düzəldin.</p></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">e-Vizanı çap etmək mütləqdir?</span><span class="faq-ico">+</span></button><div class="faq-answer"><p>Bəli, tövsiyə olunur. Hindistan hava limanlarında e-Vizanın çap nüsxəsini tələb edirlər. Telefonda göstərmək bəzi hallarda qəbul olunsa da, çap üstün seçimdir. Pasportunuzla birlikdə saxlayın.</p></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">Hindistanda ikən viza müddətini uzatmaq mümkündürmü?</span><span class="faq-ico">+</span></button><div class="faq-answer"><p>e-Vizanın müddətini Hindistanda ikən uzatmaq mümkün deyil. Daha uzun qalma planlaşdırırsınızsa 1 illik və ya 5 illik e-Viza seçin. 30 günlük e-Viza ilə 2 dəfə giriş hüququnuz var.</p></div></div>
+    <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)"><span class="faq-q">1 illik e-Viza ilə ardıcıl 90 gündən artıq qalmaq olarmı?</span><span class="faq-ico">+</span></button><div class="faq-answer"><p>Xeyr. 1 illik və 5 illik e-Viza çoxsaylı giriş imkanı verir, lakin hər giriş zamanı maksimum 90 gün qalmaq olar. 90 gün dolduqda çıxıb yenidən girə bilərsiniz (visa run).</p></div></div>
+  </div>
+</section>
+
+<div class="cta-bar">
+  <div><h2>Hindistan e-vizası üçün <em>köməklik lazımdır?</em></h2><p>Forma doldurulması, foto tələbləri və ya digər suallar üçün bizimlə əlaqə saxlayın.</p></div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+    <a href="contact.html" class="btn-primary">Əlaqə saxla</a>
+    <a href="visa.html" class="btn-ghost">← Viza səhifəsinə qayıt</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="D_Icon.png" alt="Lumivara Travel"></div>
+  <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
+  <div class="footer-links"><a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="#">Instagram</a></div>
+</footer>
+<script>function toggleFaq(btn){const answer=btn.nextElementSibling;const icon=btn.querySelector('.faq-ico');const isOpen=answer.classList.contains('open');document.querySelectorAll('.faq-answer').forEach(a=>a.classList.remove('open'));document.querySelectorAll('.faq-ico').forEach(i=>{i.classList.remove('open');i.textContent='+';});if(!isOpen){answer.classList.add('open');icon.classList.add('open');icon.textContent='×';}}</script>
+</body>
+</html>

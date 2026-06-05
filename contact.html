@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Əlaqə — Lumivara Travel</title>
+<link rel="stylesheet" href="nav.css">
+<style>
+  body { background: var(--bg-dark); color: var(--ivory); }
+  .page-hero { padding: 7rem 4rem 4rem; background: var(--teal-deep); border-bottom: 1px solid rgba(0,214,178,0.15); }
+  .page-hero .section-label { color: var(--teal); }
+  .page-hero .section-title { color: var(--ivory); }
+  .page-hero .section-title em { color: var(--teal); }
+  .contact-section { padding: 5rem 4rem; }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; margin-top: 3rem; }
+  .contact-info p { font-size: 0.8rem; color: rgba(242,250,248,0.65); line-height: 2; margin-bottom: 2.5rem; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+  .contact-detail-icon { width: 36px; height: 36px; border: 1px solid rgba(0,214,178,0.3); display: flex; align-items: center; justify-content: center; color: var(--teal); font-size: 0.9rem; flex-shrink: 0; }
+  .contact-detail-text label { display: block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); opacity: 0.8; margin-bottom: 0.25rem; }
+  .contact-detail-text span { font-size: 0.8rem; color: rgba(242,250,248,0.85); }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); opacity: 0.8; }
+  .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(0,214,178,0.2); color: var(--ivory); font-family: var(--font-body); font-size: 0.8rem; font-weight: 300; padding: 0.85rem 1rem; outline: none; transition: border-color 0.3s; width: 100%; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
+  .form-group select option { background: var(--teal-deep); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(242,250,248,0.35); }
+  @media (max-width: 900px) {
+    .page-hero { padding: 6rem 1.5rem 3rem; }
+    .contact-section { padding: 3rem 1.5rem; }
+    .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav style="background:#fff;">
+  <a class="nav-logo" href="index.html">
+    <img src="L_Large (3).png" alt="Lumivara Travel">
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">Biz kimik</a></li>
+    <li><a href="tours.html">Turlar</a></li>
+    <li><a href="corporate.html">Korporativ xidmətlər</a></li>
+    <li><a href="visa.html">Viza</a></li>
+    <li class="nav-cta"><a href="contact.html" class="active">Əlaqə</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="section-label">Başlayaq</p>
+  <h1 class="section-title">Bizimlə <em>əlaqə</em></h1>
+  <div class="divider"></div>
+</div>
+
+<div class="contact-section">
+  <div class="contact-layout">
+    <div>
+      <p class="contact-info">Mütəxəssislərimiz ideal marşrutunuzu hazırlamaq və ya viza suallarınızı cavablandırmaq üçün hazırdır. Hər sorğu tam məxfilik və fərdi diqqətlə həll olunur.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✦</div>
+        <div class="contact-detail-text"><label>Telefon & WhatsApp</label><span>+994 12 555 0100</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">✉</div>
+        <div class="contact-detail-text"><label>E-poçt</label><span>hello@lumivaratravel.az</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">◈</div>
+        <div class="contact-detail-text"><label>Ofis — Bakı</label><span>28 Mall, Neftçilər pr., Bakı AZ1000</span></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">◷</div>
+        <div class="contact-detail-text"><label>İş saatları</label><span>B.e. – Şənbə 09:00–19:00</span></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group"><label>Ad Soyad</label><input type="text" placeholder="Adınız"></div>
+        <div class="form-group"><label>E-poçt</label><input type="email" placeholder="email@example.com"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+994 ..."></div>
+        <div class="form-group">
+          <label>Xidmət növü</label>
+          <select>
+            <option value="">Seçin</option>
+            <option>Lüks paket</option>
+            <option>Fərdi marşrut</option>
+            <option>Viza xidməti</option>
+            <option>Korporativ səyahət</option>
+            <option>Bal ayı planlaması</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>İstiqamət</label><input type="text" placeholder="Hara getmək istəyirsiniz?"></div>
+        <div class="form-group"><label>Tarixlər</label><input type="text" placeholder="Təxmini tarixlər"></div>
+      </div>
+      <div class="form-group"><label>Mesajınız</label><textarea placeholder="Səyahət arzularınız, xüsusi tələbləriniz və ya viza suallarınız haqqında bizə yazın…"></textarea></div>
+      <button class="btn-primary" style="align-self:flex-start;margin-top:0.5rem;">Sorğu göndər</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="L_Large (3).png" alt="Lumivara Travel"></div>
+  <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
+  <nav class="footer-links">
+    <a href="#">Məxfilik</a>
+    <a href="#">Şərtlər</a>
+    <a href="#">Instagram</a>
+  </nav>
+</footer>
+
+</body>
+</html>

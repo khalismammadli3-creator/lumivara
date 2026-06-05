@@ -61,7 +61,7 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 9999;
   height: var(--nav-height);
-  background: linear-gradient(to bottom, #00664f, #00332a);
+  background: linear-gradient(to bottom, #00996e, #00664f);
   border-bottom: 1px solid rgba(0,214,178,0.15);
   box-shadow: 0 1px 8px rgba(0,51,42,0.08);
   display: flex;

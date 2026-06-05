@@ -447,6 +447,10 @@
       <li><span class="city-dot"></span>Venesiya</li>
       <li><span class="city-dot"></span>Santorini</li>
       <li><span class="city-dot"></span>London</li>
+      <li><span class="city-dot"></span>Pekin</li>
+      <li><span class="city-dot"></span>Kampala</li>
+      <li><span class="city-dot"></span>Abuja</li>
+      <li><span class="city-dot"></span>Sharm-el-Şeyx</li>
     </ul>
   </div>
   <div class="globe-container" id="globeContainer"></div>
@@ -456,14 +460,18 @@
 <script>
 (function(){
   const destinations = [
-    { name: 'Dubai',     lat: 25.2048, lng: 55.2708 },
-    { name: 'Paris',     lat: 48.8566, lng: 2.3522  },
-    { name: 'Tokio',     lat: 35.6762, lng: 139.6503},
-    { name: 'Nyu-York',  lat: 40.7128, lng: -74.0060},
-    { name: 'Maldiv',    lat: 3.2028,  lng: 73.2207 },
-    { name: 'Venesiya',  lat: 45.4408, lng: 12.3155 },
-    { name: 'Santorini', lat: 36.3932, lng: 25.4615 },
-    { name: 'London',    lat: 51.5074, lng: -0.1278 },
+    { name: 'Dubai',          lat: 25.2048, lng: 55.2708  },
+    { name: 'Paris',          lat: 48.8566, lng: 2.3522   },
+    { name: 'Tokio',          lat: 35.6762, lng: 139.6503 },
+    { name: 'Nyu-York',       lat: 40.7128, lng: -74.0060 },
+    { name: 'Maldiv',         lat: 3.2028,  lng: 73.2207  },
+    { name: 'Venesiya',       lat: 45.4408, lng: 12.3155  },
+    { name: 'Santorini',      lat: 36.3932, lng: 25.4615  },
+    { name: 'London',         lat: 51.5074, lng: -0.1278  },
+    { name: 'Pekin',          lat: 39.9042, lng: 116.4074 },
+    { name: 'Kampala',        lat: 0.3476,  lng: 32.5825  },
+    { name: 'Abuja',          lat: 9.0765,  lng: 7.3986   },
+    { name: 'Sharm el-Sheikh',lat: 27.9158, lng: 34.3300  },
   ];
   const baku = { lat: 40.4093, lng: 49.8671 };
 
@@ -474,7 +482,7 @@
   }));
 
   const points = [
-    { lat: baku.lat, lng: baku.lng, name: 'Bakı', size: 0.6, color: '#00d6b2' },
+    { lat: baku.lat, lng: baku.lng, name: 'Baku', size: 0.6, color: '#00d6b2' },
     ...destinations.map(d => ({ lat: d.lat, lng: d.lng, name: d.name, size: 0.35, color: '#00d6b2' }))
   ];
 

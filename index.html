@@ -471,6 +471,8 @@
   ];
   const baku = { lat: 40.4093, lng: 49.8671, tz: 'Asia/Baku' };
 
+  const container = document.getElementById('globeContainer');
+
   // Tooltip
   const tooltip = document.createElement('div');
   tooltip.style.cssText = `
@@ -496,8 +498,6 @@
     endLat: d.lat,      endLng: d.lng,
     label: d.name,
   }));
-
-  const container = document.getElementById('globeContainer');
   const allPoints = [
     { lat: baku.lat, lng: baku.lng, name: 'Baku', tz: baku.tz, size: 0.6, color: '#00d6b2' },
     ...destinations.map(d => ({ lat: d.lat, lng: d.lng, name: d.name, tz: d.tz, size: 0.35, color: '#00d6b2' }))

@@ -112,6 +112,60 @@
     margin-top: 0.25rem;
   }
 
+  /* ── GLOBE ── */
+  .globe-section {
+    background: #020f0c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 3rem 4rem 3rem 4rem;
+    overflow: hidden;
+  }
+  .globe-text {
+    flex: 0 0 320px;
+    z-index: 2;
+  }
+  .globe-text .section-label { color: var(--teal); }
+  .globe-text .section-title { color: #fff; }
+  .globe-desc {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+  .globe-cities {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+  }
+  .globe-cities li {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .city-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 6px var(--teal);
+    flex-shrink: 0;
+  }
+  .globe-container {
+    flex: 1;
+    height: 520px;
+    min-width: 0;
+  }
+  @media (max-width: 900px) {
+    .globe-section { flex-direction: column; padding: 3rem 1.5rem 0; }
+    .globe-text { flex: none; }
+    .globe-container { width: 100%; height: 360px; }
+  }
+
   /* ── SERVICES ── */
   .services {
     display: grid;
@@ -377,6 +431,96 @@
     </div>
   </div>
 </div>
+
+<!-- GLOBE -->
+<div class="globe-section">
+  <div class="globe-text">
+    <p class="section-label">Qlobal şəbəkə</p>
+    <h2 class="section-title">Bakıdan <em>dünyaya</em></h2>
+    <p class="globe-desc">Bakıdan çıxış nöqtəsi ilə dünyanın ən məşhur turizm mərkəzlərinə birbaşa marşrutlar təşkil edirik.</p>
+    <ul class="globe-cities">
+      <li><span class="city-dot"></span>Dubai</li>
+      <li><span class="city-dot"></span>Paris</li>
+      <li><span class="city-dot"></span>Tokio</li>
+      <li><span class="city-dot"></span>Nyu-York</li>
+      <li><span class="city-dot"></span>Maldiv</li>
+      <li><span class="city-dot"></span>Venesiya</li>
+      <li><span class="city-dot"></span>Santorini</li>
+      <li><span class="city-dot"></span>London</li>
+    </ul>
+  </div>
+  <div class="globe-container" id="globeContainer"></div>
+</div>
+
+<script src="https://unpkg.com/globe.gl@2.30.0/dist/globe.gl.min.js"></script>
+<script>
+(function(){
+  const destinations = [
+    { name: 'Dubai',     lat: 25.2048, lng: 55.2708 },
+    { name: 'Paris',     lat: 48.8566, lng: 2.3522  },
+    { name: 'Tokio',     lat: 35.6762, lng: 139.6503},
+    { name: 'Nyu-York',  lat: 40.7128, lng: -74.0060},
+    { name: 'Maldiv',    lat: 3.2028,  lng: 73.2207 },
+    { name: 'Venesiya',  lat: 45.4408, lng: 12.3155 },
+    { name: 'Santorini', lat: 36.3932, lng: 25.4615 },
+    { name: 'London',    lat: 51.5074, lng: -0.1278 },
+  ];
+  const baku = { lat: 40.4093, lng: 49.8671 };
+
+  const arcs = destinations.map(d => ({
+    startLat: baku.lat, startLng: baku.lng,
+    endLat: d.lat,      endLng: d.lng,
+    label: d.name,
+  }));
+
+  const points = [
+    { lat: baku.lat, lng: baku.lng, name: 'Bakı', size: 0.6, color: '#00d6b2' },
+    ...destinations.map(d => ({ lat: d.lat, lng: d.lng, name: d.name, size: 0.35, color: '#00d6b2' }))
+  ];
+
+  const container = document.getElementById('globeContainer');
+  const globe = Globe()(container)
+    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-dark.jpg')
+    .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+    .arcStartLat(d => d.startLat)
+    .arcStartLng(d => d.startLng)
+    .arcEndLat(d => d.endLat)
+    .arcEndLng(d => d.endLng)
+    .arcColor(() => ['rgba(0,214,178,0)', 'rgba(0,214,178,0.9)', 'rgba(0,214,178,0)'])
+    .arcAltitudeAutoScale(0.35)
+    .arcStroke(0.5)
+    .arcDashLength(0.4)
+    .arcDashGap(0.15)
+    .arcDashAnimateTime(2200)
+    .arcsData(arcs)
+    .pointsData(points)
+    .pointLat(d => d.lat)
+    .pointLng(d => d.lng)
+    .pointColor(d => d.color)
+    .pointAltitude(0.01)
+    .pointRadius(d => d.size)
+    .pointsMerge(false)
+    .labelsData(points)
+    .labelLat(d => d.lat)
+    .labelLng(d => d.lng)
+    .labelText(d => d.name)
+    .labelSize(1.4)
+    .labelColor(() => 'rgba(255,255,255,0.85)')
+    .labelDotRadius(0.3)
+    .labelAltitude(0.015)
+    .width(container.offsetWidth)
+    .height(container.offsetHeight);
+
+  globe.pointOfView({ lat: 30, lng: 30, altitude: 1.8 });
+  globe.controls().autoRotate = true;
+  globe.controls().autoRotateSpeed = 0.6;
+  globe.controls().enableZoom = false;
+
+  window.addEventListener('resize', () => {
+    globe.width(container.offsetWidth).height(container.offsetHeight);
+  });
+})();
+</script>
 
 <!-- SERVICES -->
 <div class="services">

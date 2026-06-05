@@ -73,16 +73,17 @@ nav {
 .nav-logo {
   display: flex; align-items: center;
   text-decoration: none; flex-shrink: 0;
+  overflow: visible;
 }
 .nav-logo img {
   height: 38px; width: auto; display: block;
-  transition: transform 0.3s ease, opacity 0.25s;
+  transition: transform 0.3s ease;
+  transform-origin: left center;
   visibility: visible;
   opacity: 1;
 }
 .nav-logo:hover img {
-  transform: scale(1.15);
-  opacity: 1;
+  transform: scale(1.2);
 }
 
 .nav-links {

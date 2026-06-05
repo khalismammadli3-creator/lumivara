@@ -499,8 +499,8 @@
     label: d.name,
   }));
   const allPoints = [
-    { lat: baku.lat, lng: baku.lng, name: 'Baku', tz: baku.tz, size: 0.6, color: '#00d6b2' },
-    ...destinations.map(d => ({ lat: d.lat, lng: d.lng, name: d.name, tz: d.tz, size: 0.35, color: '#00d6b2' }))
+    { lat: baku.lat, lng: baku.lng, name: 'Baku', tz: baku.tz, size: 1.2, color: '#00d6b2' },
+    ...destinations.map(d => ({ lat: d.lat, lng: d.lng, name: d.name, tz: d.tz, size: 0.9, color: '#00d6b2' }))
   ];
   const globe = Globe()(container)
     .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-day.jpg')
@@ -528,8 +528,10 @@
       if (pt) {
         tooltip.innerHTML = `<strong>${pt.name}</strong><br>🕐 ${getTime(pt.tz)}`;
         tooltip.style.display = 'block';
+        globe.controls().autoRotate = false;
       } else {
         tooltip.style.display = 'none';
+        globe.controls().autoRotate = true;
       }
     })
     .labelsData(allPoints)

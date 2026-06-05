@@ -6,32 +6,67 @@
 <title>Korporativ xidmətlər — Lumivara Travel</title>
 <link rel="stylesheet" href="nav.css">
 <style>
-  .page-hero { padding: 5rem 4rem 4rem; background: var(--bg-alt); border-bottom: 1px solid rgba(0,214,178,0.15); }
-  .corp-section { padding: 5rem 4rem; background: var(--bg); }
-  .corp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 3rem; }
-  .corp-card { padding: 2.5rem; background: #fff; border: 1px solid rgba(0,214,178,0.18); transition: box-shadow 0.3s; }
-  .corp-card:hover { box-shadow: 0 8px 32px rgba(0,134,110,0.1); }
-  .corp-card .icon { font-size: 1.6rem; color: var(--teal); margin-bottom: 1.25rem; }
+  .page-banner { width: 100%; height: 280px; position: relative; overflow: hidden; }
+  .page-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+  .page-banner-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 2rem 4rem;
+    background: linear-gradient(to right, rgba(0,51,42,0.7) 0%, transparent 100%);
+  }
+  .page-banner-overlay h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: #fff; }
+  .page-banner-overlay h1 em { font-style: italic; color: var(--teal); }
+
+  .section { padding: 4rem; background: var(--bg); }
+  .section-alt { padding: 4rem; background: var(--bg-alt); }
+
+  .corp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .corp-card {
+    padding: 2.5rem; background: #fff;
+    border: 1px solid rgba(0,214,178,0.18);
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+  .corp-card:hover { box-shadow: 0 8px 32px rgba(0,134,110,0.1); border-color: rgba(0,214,178,0.4); }
+  .corp-icon { font-size: 1.6rem; color: var(--teal); margin-bottom: 1.25rem; }
   .corp-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; margin-bottom: 0.75rem; }
   .corp-card p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.9; }
-  .cta-banner { padding: 4rem; background: var(--teal-deep); color: var(--ivory); text-align: center; }
-  .cta-banner h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; margin-bottom: 1rem; }
-  .cta-banner h2 em { font-style: italic; color: var(--teal); }
-  .cta-banner p { font-size: 0.8rem; opacity: 0.7; margin-bottom: 2rem; }
+
+  .cta-section {
+    padding: 4rem; background: var(--teal-deep); color: var(--ivory);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .cta-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; }
+  .cta-section h2 em { font-style: italic; color: var(--teal); }
+  .cta-section p { font-size: 0.8rem; opacity: 0.7; margin-top: 0.5rem; }
+
+  footer { padding: 2.5rem 4rem; border-top: 1px solid rgba(0,214,178,0.15); display: flex; justify-content: space-between; align-items: center; background: #001a15; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo img { height: 32px; width: auto; }
+  .footer-copy { font-size: 0.65rem; color: rgba(242,250,248,0.35); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,250,248,0.4); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--teal); }
+
   @media (max-width: 900px) {
-    .page-hero { padding: 5rem 1.5rem 3rem; }
-    .corp-section { padding: 3rem 1.5rem; }
+    .page-banner { height: 220px; }
+    .page-banner-overlay { padding: 2rem 1.5rem; }
+    .section, .section-alt { padding: 3rem 1.5rem; }
     .corp-grid { grid-template-columns: 1fr; }
-    .cta-banner { padding: 3rem 1.5rem; }
+    .cta-section { padding: 3rem 1.5rem; flex-direction: column; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="index.html">
-    <img src="L_Large (3).png" alt="Lumivara Travel">
-  </a>
+  <a class="nav-logo" href="index.html"><img src="L_Large (3).png" alt="Lumivara Travel"></a>
   <ul class="nav-links">
     <li class="nav-home"><a href="index.html" title="Ana səhifə">⌂</a></li>
     <li class="nav-divider"></li>
@@ -41,45 +76,49 @@
     <li><a href="visa.html">Viza</a></li>
     <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
   </ul>
+</nav>
+
+<div class="page-banner">
+  <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80" alt="Korporativ">
+  <div class="page-banner-overlay">
+    <p class="section-label">Biznes səyahəti</p>
+    <h1>Korporativ <em>xidmətlər</em></h1>
+  </div>
 </div>
 
-<div class="page-hero">
-  <p class="section-label">Biznes səyahəti</p>
-  <h1 class="section-title">Korporativ <em>xidmətlər</em></h1>
-  <div class="divider"></div>
-</div>
-
-<div class="corp-section">
+<div class="section">
   <p class="section-label">Nə təklif edirik</p>
   <h2 class="section-title">Şirkətiniz üçün <em>tam həll</em></h2>
   <div class="divider"></div>
   <div class="corp-grid">
     <div class="corp-card">
-      <div class="icon">✈</div>
+      <div class="corp-icon">✈</div>
       <h3>Biznes səyahəti</h3>
       <p>İş görüşmələri, danışıqlar və tədbirlər üçün tam təşkilat xidməti. Uçuş biletlərindən otel rezervasiyasına qədər hər şey.</p>
     </div>
     <div class="corp-card">
-      <div class="icon">◈</div>
+      <div class="corp-icon">◈</div>
       <h3>Konfrans & Tədbirlər</h3>
       <p>Beynəlxalq konfranslar, seminarlar və korporativ tədbirlər üçün yer seçimi, köçürmə və logistika xidmətləri.</p>
     </div>
     <div class="corp-card">
-      <div class="icon">✦</div>
+      <div class="corp-icon">✦</div>
       <h3>Team Building turları</h3>
       <p>Komanda ruhunu gücləndirmək üçün xüsusi dizayn edilmiş qrup turları və fəaliyyətlər. Yadda qalan təcrübələr.</p>
     </div>
     <div class="corp-card">
-      <div class="icon">◉</div>
+      <div class="corp-icon">◉</div>
       <h3>VIP xidmət</h3>
       <p>C-level rəhbərlər üçün tam gizlilik, özəl transfer, seçilmiş otellər və şəxsi konsyerji dəstəyi.</p>
     </div>
   </div>
 </div>
 
-<div class="cta-banner">
-  <h2>Korporativ <em>təklifinizi</em> alın</h2>
-  <p>Şirkətinizin ehtiyaclarına uyğun fərdi paket hazırlayaq.</p>
+<div class="cta-section">
+  <div>
+    <h2>Korporativ <em>təklifinizi</em> alın</h2>
+    <p>Şirkətinizin ehtiyaclarına uyğun fərdi paket hazırlayaq.</p>
+  </div>
   <a href="contact.html" class="btn-primary">Bizimlə əlaqə</a>
 </div>
 
@@ -87,9 +126,7 @@
   <div class="footer-logo"><img src="L_Large (3).png" alt="Lumivara Travel"></div>
   <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
   <div class="footer-links">
-    <a href="#">Məxfilik</a>
-    <a href="#">Şərtlər</a>
-    <a href="#">Instagram</a>
+    <a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="#">Instagram</a>
   </div>
 </footer>
 

@@ -6,84 +6,153 @@
 <title>Əlaqə — Lumivara Travel</title>
 <link rel="stylesheet" href="nav.css">
 <style>
-  body { background: var(--bg-dark); color: var(--ivory); }
-  .page-hero { padding: 5rem 4rem 4rem; background: var(--teal-deep); border-bottom: 1px solid rgba(0,214,178,0.15); }
-  .page-hero .section-label { color: var(--teal); }
-  .page-hero .section-title { color: var(--ivory); }
-  .page-hero .section-title em { color: var(--teal); }
-  .contact-section { padding: 5rem 4rem; }
-  .contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; margin-top: 3rem; }
-  .contact-info p { font-size: 0.8rem; color: rgba(242,250,248,0.65); line-height: 2; margin-bottom: 2.5rem; }
-  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
-  .contact-detail-icon { width: 36px; height: 36px; border: 1px solid rgba(0,214,178,0.3); display: flex; align-items: center; justify-content: center; color: var(--teal); font-size: 0.9rem; flex-shrink: 0; }
-  .contact-detail-text label { display: block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); opacity: 0.8; margin-bottom: 0.25rem; }
-  .contact-detail-text span { font-size: 0.8rem; color: rgba(242,250,248,0.85); }
+  .page-banner { width: 100%; height: 280px; position: relative; overflow: hidden; }
+  .page-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+  .page-banner-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: flex-start;
+    padding: 2rem 4rem;
+    background: linear-gradient(to right, rgba(0,51,42,0.7) 0%, transparent 100%);
+  }
+  .page-banner-overlay h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: #fff; }
+  .page-banner-overlay h1 em { font-style: italic; color: var(--teal); }
+
+  .contact-section { padding: 4rem; background: var(--bg); }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    margin-top: 2rem;
+  }
+
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; }
+  .contact-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border: 1px solid rgba(0,214,178,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--teal); font-size: 1rem;
+  }
+  .contact-detail-text label {
+    display: block; font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--teal-dark); margin-bottom: 0.25rem;
+  }
+  .contact-detail-text span { font-size: 0.85rem; color: var(--text); }
+
   .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-  .form-group label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); opacity: 0.8; }
-  .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(0,214,178,0.2); color: var(--ivory); font-family: var(--font-body); font-size: 0.8rem; font-weight: 300; padding: 0.85rem 1rem; outline: none; transition: border-color 0.3s; width: 100%; }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--teal); }
-  .form-group select option { background: var(--teal-deep); }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-dark); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: #fff;
+    border: 1px solid rgba(0,134,110,0.2);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.82rem; font-weight: 300;
+    padding: 0.85rem 1rem; outline: none;
+    transition: border-color 0.3s; width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--teal); }
   .form-group textarea { resize: vertical; min-height: 120px; }
-  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(242,250,248,0.35); }
+
+  footer { padding: 2.5rem 4rem; border-top: 1px solid rgba(0,214,178,0.15); display: flex; justify-content: space-between; align-items: center; background: #001a15; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo img { height: 32px; width: auto; }
+  .footer-copy { font-size: 0.65rem; color: rgba(242,250,248,0.35); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(242,250,248,0.4); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--teal); }
+
   @media (max-width: 900px) {
-    .page-hero { padding: 5rem 1.5rem 3rem; }
+    .page-banner { height: 220px; }
+    .page-banner-overlay { padding: 2rem 1.5rem; }
     .contact-section { padding: 3rem 1.5rem; }
     .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
     .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   }
 </style>
 </head>
 <body>
 
-<nav style="background:#fff;">
-  <a class="nav-logo" href="index.html">
-    <img src="L_Large (3).png" alt="Lumivara Travel">
-  </a>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="L_Large (3).png" alt="Lumivara Travel"></a>
   <ul class="nav-links">
+    <li class="nav-home"><a href="index.html" title="Ana səhifə">⌂</a></li>
+    <li class="nav-divider"></li>
     <li><a href="about.html">Biz kimik</a></li>
     <li><a href="tours.html">Turlar</a></li>
     <li><a href="corporate.html">Korporativ xidmətlər</a></li>
     <li><a href="visa.html">Viza</a></li>
     <li class="nav-cta"><a href="contact.html" class="active">Əlaqə</a></li>
   </ul>
-</div>
+</nav>
 
-<div class="page-hero">
-  <p class="section-label">Başlayaq</p>
-  <h1 class="section-title">Bizimlə <em>əlaqə</em></h1>
-  <div class="divider"></div>
+<div class="page-banner">
+  <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80" alt="Əlaqə">
+  <div class="page-banner-overlay">
+    <p class="section-label">Başlayaq</p>
+    <h1>Bizimlə <em>əlaqə</em></h1>
+  </div>
 </div>
 
 <div class="contact-section">
+  <p class="section-label">Sorğu göndərin</p>
+  <h2 class="section-title">Sizə <em>kömək edək</em></h2>
+  <div class="divider"></div>
   <div class="contact-layout">
-    <div>
-      <p class="contact-info">Mütəxəssislərimiz ideal marşrutunuzu hazırlamaq və ya viza suallarınızı cavablandırmaq üçün hazırdır. Hər sorğu tam məxfilik və fərdi diqqətlə həll olunur.</p>
+    <div class="contact-details">
       <div class="contact-detail">
-        <div class="contact-detail-icon">✦</div>
-        <div class="contact-detail-text"><label>Telefon & WhatsApp</label><span>+994 12 555 0100</span></div>
+        <div class="contact-icon">✦</div>
+        <div class="contact-detail-text">
+          <label>Telefon & WhatsApp</label>
+          <span>+994 12 555 0100</span>
+        </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-detail-icon">✉</div>
-        <div class="contact-detail-text"><label>E-poçt</label><span>hello@lumivaratravel.az</span></div>
+        <div class="contact-icon">✉</div>
+        <div class="contact-detail-text">
+          <label>E-poçt</label>
+          <span>hello@lumivaratravel.az</span>
+        </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-detail-icon">◈</div>
-        <div class="contact-detail-text"><label>Ofis — Bakı</label><span>28 Mall, Neftçilər pr., Bakı AZ1000</span></div>
+        <div class="contact-icon">◈</div>
+        <div class="contact-detail-text">
+          <label>Ofis — Bakı</label>
+          <span>28 Mall, Neftçilər pr., Bakı AZ1000</span>
+        </div>
       </div>
       <div class="contact-detail">
-        <div class="contact-detail-icon">◷</div>
-        <div class="contact-detail-text"><label>İş saatları</label><span>B.e. – Şənbə 09:00–19:00</span></div>
+        <div class="contact-icon">◷</div>
+        <div class="contact-detail-text">
+          <label>İş saatları</label>
+          <span>B.e. – Şənbə 09:00–19:00</span>
+        </div>
       </div>
     </div>
+
     <div class="contact-form">
       <div class="form-row">
-        <div class="form-group"><label>Ad Soyad</label><input type="text" placeholder="Adınız"></div>
-        <div class="form-group"><label>E-poçt</label><input type="email" placeholder="email@example.com"></div>
+        <div class="form-group">
+          <label>Ad Soyad</label>
+          <input type="text" placeholder="Adınız">
+        </div>
+        <div class="form-group">
+          <label>E-poçt</label>
+          <input type="email" placeholder="email@example.com">
+        </div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+994 ..."></div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+994 ...">
+        </div>
         <div class="form-group">
           <label>Xidmət növü</label>
           <select>
@@ -97,11 +166,20 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>İstiqamət</label><input type="text" placeholder="Hara getmək istəyirsiniz?"></div>
-        <div class="form-group"><label>Tarixlər</label><input type="text" placeholder="Təxmini tarixlər"></div>
+        <div class="form-group">
+          <label>İstiqamət</label>
+          <input type="text" placeholder="Hara getmək istəyirsiniz?">
+        </div>
+        <div class="form-group">
+          <label>Tarixlər</label>
+          <input type="text" placeholder="Təxmini tarixlər">
+        </div>
       </div>
-      <div class="form-group"><label>Mesajınız</label><textarea placeholder="Səyahət arzularınız, xüsusi tələbləriniz və ya viza suallarınız haqqında bizə yazın…"></textarea></div>
-      <button class="btn-primary" style="align-self:flex-start;margin-top:0.5rem;">Sorğu göndər</button>
+      <div class="form-group">
+        <label>Mesajınız</label>
+        <textarea placeholder="Səyahət arzularınız, xüsusi tələbləriniz və ya viza suallarınız haqqında yazın…"></textarea>
+      </div>
+      <button class="btn-primary" style="align-self:flex-start; margin-top:0.5rem;">Sorğu göndər</button>
     </div>
   </div>
 </div>
@@ -110,9 +188,7 @@
   <div class="footer-logo"><img src="L_Large (3).png" alt="Lumivara Travel"></div>
   <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
   <div class="footer-links">
-    <a href="#">Məxfilik</a>
-    <a href="#">Şərtlər</a>
-    <a href="#">Instagram</a>
+    <a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="#">Instagram</a>
   </div>
 </footer>
 

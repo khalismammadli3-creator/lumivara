@@ -6,49 +6,265 @@
 <title>Lumivara Travel</title>
 <link rel="stylesheet" href="nav.css">
 <style>
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
-    padding: 5rem 4rem 4rem;
-    background:
-      linear-gradient(135deg, rgba(0,51,42,0.72) 0%, rgba(0,51,42,0.35) 55%, rgba(0,214,178,0.08) 100%),
-      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80') center/cover no-repeat;
+
+  /* ── BANNER ── */
+  .banner {
+    width: 100%;
+    height: 520px;
+    position: relative;
+    overflow: hidden;
   }
-  .hero-logo { height: 120px; width: auto; margin-bottom: 2.5rem; display: block; filter: brightness(0) invert(1); }
-  .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.5rem; }
-  .hero-headline { font-family: var(--font-display); font-size: clamp(3rem, 7vw, 6rem); font-weight: 300; line-height: 1.05; max-width: 700px; margin-bottom: 2rem; color: #fff; }
-  .hero-headline em { font-style: italic; color: var(--teal); }
-  .hero-sub { font-size: 0.8rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); max-width: 420px; margin-bottom: 3rem; line-height: 2; }
-  .hero-ctas { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .banner img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+  }
+  .banner-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, rgba(0,51,42,0.3) 0%, rgba(0,51,42,0.6) 100%);
+  }
+  .banner-overlay h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .banner-overlay h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .banner-overlay p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.08em;
+    max-width: 500px;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+  .banner-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
-  /* DESTINATIONS STRIP */
-  .dest-strip { padding: 5rem 4rem; background: var(--bg); }
-  .dest-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 260px 260px; gap: 12px; margin-top: 3rem; }
-  .dest-card { position: relative; overflow: hidden; cursor: pointer; background: #ccc; }
-  .dest-card:first-child { grid-row: 1 / 3; }
-  .dest-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.82); }
-  .dest-card:hover img { transform: scale(1.05); filter: brightness(0.95); }
-  .dest-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(to top, rgba(0,30,25,0.85) 0%, transparent 100%); }
-  .dest-overlay h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 300; margin-bottom: 0.25rem; color: #fff; }
-  .dest-card:first-child .dest-overlay h3 { font-size: 2rem; }
-  .dest-overlay p { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
-  .dest-card-tag { position: absolute; top: 1rem; right: 1rem; background: var(--teal); color: var(--teal-deep); font-size: 0.55rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 0.7rem; }
+  /* ── INTRO STRIP ── */
+  .intro-strip {
+    background: var(--teal-deep);
+    color: var(--ivory);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .intro-strip p {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    opacity: 0.8;
+    max-width: 600px;
+    line-height: 1.8;
+  }
+  .intro-strip .stat-group {
+    display: flex; gap: 3rem; flex-shrink: 0;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-top: 0.25rem;
+  }
 
-  /* QUICK LINKS */
-  .quick-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(0,214,178,0.15); border-top: 1px solid rgba(0,214,178,0.15); }
-  .quick-link-card { padding: 2.5rem 2rem; background: #fff; text-decoration: none; color: var(--text); transition: background 0.3s; display: flex; flex-direction: column; gap: 0.75rem; }
-  .quick-link-card:hover { background: var(--bg-alt); }
-  .quick-link-card .ql-icon { font-size: 1.5rem; color: var(--teal); }
-  .quick-link-card h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; }
-  .quick-link-card p { font-size: 0.72rem; color: var(--text-muted); line-height: 1.7; }
-  .quick-link-card .ql-arrow { font-size: 0.7rem; color: var(--teal-dark); letter-spacing: 0.1em; margin-top: auto; }
+  /* ── SERVICES ── */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(0,214,178,0.15);
+    border-bottom: 1px solid rgba(0,214,178,0.15);
+  }
+  .service-card {
+    padding: 3rem 2rem;
+    background: #fff;
+    border-right: 1px solid rgba(0,214,178,0.12);
+    text-decoration: none;
+    color: var(--text);
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:last-child { border-right: none; }
+  .service-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 100%;
+    height: 2px; background: var(--teal);
+    transition: right 0.4s ease;
+  }
+  .service-card:hover { background: var(--bg-alt); }
+  .service-card:hover::after { right: 0; }
+  .service-icon { font-size: 1.6rem; color: var(--teal); }
+  .service-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--text);
+  }
+  .service-card p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    flex: 1;
+  }
+  .service-card .arrow {
+    font-size: 0.7rem;
+    color: var(--teal-dark);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── DESTINATIONS ── */
+  .section { padding: 4rem; background: var(--bg); }
+  .section-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 2.5rem;
+  }
+  .section-header a {
+    font-size: 0.68rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--teal-dark);
+    text-decoration: none; border-bottom: 1px solid rgba(0,134,110,0.3);
+    padding-bottom: 2px; transition: border-color 0.3s;
+  }
+  .section-header a:hover { border-color: var(--teal-dark); }
+
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 220px 220px;
+    gap: 12px;
+  }
+  .dest-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    background: #ccc;
+  }
+  .dest-card.large { grid-column: 1; grid-row: 1 / 3; }
+  .dest-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease; filter: brightness(0.78);
+  }
+  .dest-card:hover img { transform: scale(1.05); filter: brightness(0.92); }
+  .dest-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 1.25rem;
+    background: linear-gradient(to top, rgba(0,30,25,0.88) 0%, transparent 100%);
+  }
+  .dest-overlay h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem; font-weight: 300;
+    color: #fff; margin-bottom: 0.2rem;
+  }
+  .dest-card.large .dest-overlay h3 { font-size: 1.9rem; }
+  .dest-overlay p { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
+  .dest-tag {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--teal); color: var(--teal-deep);
+    font-size: 0.55rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 0.25rem 0.65rem;
+  }
+
+  /* ── WHY US ── */
+  .why-section {
+    padding: 4rem;
+    background: var(--teal-deep);
+    color: var(--ivory);
+  }
+  .why-section .section-title { color: var(--ivory); }
+  .why-section .section-label { color: var(--teal); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  .why-card {
+    padding: 2rem;
+    border: 1px solid rgba(0,214,178,0.15);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .why-card:hover {
+    border-color: rgba(0,214,178,0.4);
+    background: rgba(0,214,178,0.05);
+  }
+  .why-num {
+    font-family: var(--font-display);
+    font-size: 3rem; font-weight: 300;
+    color: var(--teal); opacity: 0.25;
+    line-height: 1; margin-bottom: 1rem;
+  }
+  .why-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem; font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--ivory);
+  }
+  .why-card p { font-size: 0.75rem; color: rgba(242,250,248,0.6); line-height: 1.9; }
+
+  /* ── CTA BANNER ── */
+  .cta-section {
+    padding: 4rem;
+    background: var(--bg-alt);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(0,214,178,0.15);
+    border-bottom: 1px solid rgba(0,214,178,0.15);
+  }
+  .cta-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 300; color: var(--text);
+  }
+  .cta-section h2 em { font-style: italic; color: var(--teal-dark); }
+  .cta-section p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
+  .cta-btns { display: flex; gap: 1rem; flex-shrink: 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2.5rem 4rem;
+    border-top: 1px solid rgba(0,214,178,0.15);
+    display: flex; justify-content: space-between; align-items: center;
+    background: #001a15; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo img { height: 32px; width: auto; }
+  .footer-copy { font-size: 0.65rem; color: rgba(242,250,248,0.35); letter-spacing: 0.1em; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(242,250,248,0.4); text-decoration: none; transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--teal); }
 
   @media (max-width: 900px) {
-    #hero { padding: 5rem 1.5rem 3rem; }
-    .dest-strip { padding: 3rem 1.5rem; }
+    .banner { height: 380px; }
+    .intro-strip { padding: 2rem 1.5rem; flex-direction: column; }
+    .services { grid-template-columns: 1fr 1fr; }
+    .section { padding: 3rem 1.5rem; }
     .dest-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .dest-card:first-child { grid-row: auto; }
-    .quick-links { grid-template-columns: 1fr 1fr; }
+    .dest-card.large { grid-column: auto; grid-row: auto; }
+    .why-section { padding: 3rem 1.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 3rem 1.5rem; flex-direction: column; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
   }
 </style>
 </head>
@@ -67,59 +283,90 @@
     <li><a href="visa.html">Viza</a></li>
     <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
   </ul>
-</div>
+</nav>
 
-<section id="hero">
-  <img src="L_Large (3).png" alt="Lumivara Travel" class="hero-logo">
-  <p class="hero-eyebrow">Fərdi lüks səyahət — 2008-dən</p>
-  <h1 class="hero-headline">Adi həyatın<br><em>hüdudlarından kənara</em></h1>
-  <p class="hero-sub">Seçilmiş marşrutlar, məxsusi otellər və hər detalı mükəmməl hazırlanmış səyahət təcrübələri.</p>
-  <div class="hero-ctas">
-    <a href="tours.html" class="btn-primary">Turlara bax</a>
-    <a href="contact.html" class="btn-ghost-light">Bizimlə əlaqə</a>
+<!-- BANNER -->
+<div class="banner">
+  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80" alt="Lumivara Travel">
+  <div class="banner-overlay">
+    <h1>Lüks səyahətin<br><em>yeni ünvanı</em></h1>
+    <p>Seçilmiş marşrutlar, məxsusi otellər və hər detalı mükəmməl hazırlanmış səyahət təcrübələri.</p>
+    <div class="banner-ctas">
+      <a href="tours.html" class="btn-primary">Turlara bax</a>
+      <a href="contact.html" class="btn-ghost-light">Bizimlə əlaqə</a>
+    </div>
   </div>
-</section>
+</div>
 
-<div class="quick-links">
-  <a class="quick-link-card" href="about.html">
-    <span class="ql-icon">✦</span>
-    <h3>Biz kimik</h3>
-    <p>Lumivara Travel haqqında, missiyamız və komandamız.</p>
-    <span class="ql-arrow">Daha çox →</span>
-  </a>
-  <a class="quick-link-card" href="tours.html">
-    <span class="ql-icon">✈</span>
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <p>2008-ci ildən bəri Azərbaycanda və dünyada lüks səyahətlər təşkil edirik. Hər müştəriyə fərdi yanaşma, hər detalda mükəmməllik.</p>
+  <div class="stat-group">
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">İl təcrübə</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">80+</div>
+      <div class="stat-label">Ölkə</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5K+</div>
+      <div class="stat-label">Məmnun müştəri</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="services">
+  <a class="service-card" href="tours.html">
+    <span class="service-icon">✈</span>
     <h3>Turlar</h3>
-    <p>Fərdi və qrup turları, lüks paketlər, xüsusi marşrutlar.</p>
-    <span class="ql-arrow">Daha çox →</span>
+    <p>Fərdi və qrup turları, lüks paketlər, xüsusi marşrutlar üzrə tam xidmət.</p>
+    <span class="arrow">Ətraflı →</span>
   </a>
-  <a class="quick-link-card" href="corporate.html">
-    <span class="ql-icon">◈</span>
+  <a class="service-card" href="corporate.html">
+    <span class="service-icon">◈</span>
     <h3>Korporativ xidmətlər</h3>
-    <p>Biznes səyahətləri, konfrans turları, korporativ paketlər.</p>
-    <span class="ql-arrow">Daha çox →</span>
+    <p>Biznes səyahətləri, konfrans turları və korporativ paketlər.</p>
+    <span class="arrow">Ətraflı →</span>
   </a>
-  <a class="quick-link-card" href="visa.html">
-    <span class="ql-icon">◉</span>
+  <a class="service-card" href="visa.html">
+    <span class="service-icon">◉</span>
     <h3>Viza xidməti</h3>
-    <p>80+ ölkə üçün viza müraciəti, sənəd hazırlanması.</p>
-    <span class="ql-arrow">Daha çox →</span>
+    <p>80+ ölkə üçün viza müraciəti, sənəd hazırlanması və izlənməsi.</p>
+    <span class="arrow">Ətraflı →</span>
+  </a>
+  <a class="service-card" href="about.html">
+    <span class="service-icon">✦</span>
+    <h3>Biz kimik</h3>
+    <p>15 illik təcrübə, peşəkar komanda və fərdi yanaşma ilə fərqlənən agentlik.</p>
+    <span class="arrow">Ətraflı →</span>
   </a>
 </div>
 
-<div class="dest-strip">
-  <p class="section-label">Seçilmiş istiqamətlər</p>
-  <h2 class="section-title">Dünya <em>sizi gözləyir</em></h2>
-  <div class="divider"></div>
+<!-- DESTINATIONS -->
+<div class="section">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Seçilmiş istiqamətlər</p>
+      <h2 class="section-title">Dünya <em>sizi gözləyir</em></h2>
+    </div>
+    <a href="tours.html">Hamısına bax</a>
+  </div>
   <div class="dest-grid">
-    <div class="dest-card">
+    <div class="dest-card large">
       <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80" alt="Maldiv">
       <div class="dest-overlay"><h3>Maldiv</h3><p>Özəl su üstü villalar · Hind Okeanı</p></div>
-      <span class="dest-card-tag">Ən populyar</span>
+      <span class="dest-tag">Ən populyar</span>
     </div>
     <div class="dest-card">
       <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80" alt="Venesiya">
       <div class="dest-overlay"><h3>Venesiya</h3><p>Tarixi saraylar · İtaliya</p></div>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai">
+      <div class="dest-overlay"><h3>Dubai</h3><p>Ultra-lüks qüllələr · BAƏ</p></div>
     </div>
     <div class="dest-card">
       <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&q=80" alt="Kioto">
@@ -129,13 +376,46 @@
       <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80" alt="Paris">
       <div class="dest-overlay"><h3>Paris</h3><p>Grand otellər · Fransa</p></div>
     </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai">
-      <div class="dest-overlay"><h3>Dubai</h3><p>Ultra-lüks qüllələr · BAƏ</p></div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="why-section">
+  <p class="section-label">Niyə biz?</p>
+  <h2 class="section-title">Lumivara <em>fərqi</em></h2>
+  <div class="divider"></div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3>Fərdi yanaşma</h3>
+      <p>Hər müştəriyə unikal marşrut. Standart tur yox, sizə xas səyahət təcrübəsi.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3>15 il təcrübə</h3>
+      <p>2008-dən bəri minlərlə məmnun müştəri, şəffaf qiymət siyasəti və etibarlı xidmət.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3>Tam dəstək</h3>
+      <p>Vizadan tutmuş otellərə qədər hər mərhələdə yanınızdayıq. 24/7 əlaqə.</p>
     </div>
   </div>
 </div>
 
+<!-- CTA -->
+<div class="cta-section">
+  <div>
+    <h2>Səyahətinizi <em>planlaşdıraq</em></h2>
+    <p>Mütəxəssislərimizlə əlaqə saxlayın, sizə uyğun paket hazırlayaq.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-primary">Bizimlə əlaqə</a>
+    <a href="tours.html" class="btn-ghost">Turlara bax</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo"><img src="L_Large (3).png" alt="Lumivara Travel"></div>
   <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>

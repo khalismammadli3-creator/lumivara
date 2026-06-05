@@ -61,7 +61,7 @@ nav {
   top: 0; left: 0; right: 0;
   z-index: 9999;
   height: var(--nav-height);
-  background: linear-gradient(to bottom, #00996e, #00664f);
+  background: linear-gradient(to bottom, #f2fbf8, #c2e8df);
   border-bottom: 1px solid rgba(0,214,178,0.15);
   box-shadow: 0 1px 8px rgba(0,51,42,0.08);
   display: flex;
@@ -92,7 +92,7 @@ nav {
 }
 
 .nav-links a {
-  color: var(--ivory);
+  color: var(--teal-deep);
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 0.68rem;
@@ -120,7 +120,7 @@ nav {
 }
 .nav-links a:hover {
   opacity: 1;
-  color: var(--teal);
+  color: var(--teal-dark);
 }
 .nav-links a:hover::after {
   left: 1rem; right: 1rem;

@@ -43,7 +43,7 @@
   --nav-height: 56px;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 18px; }
 body {
   background: var(--bg);
   color: var(--text);

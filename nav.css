@@ -181,7 +181,7 @@ footer {
   padding: 2.5rem 4rem;
   border-top: 1px solid rgba(0,214,178,0.15);
   display: flex; justify-content: space-between; align-items: center;
-  background: #001a15; flex-wrap: wrap; gap: 1rem;
+  background: #00332a; flex-wrap: wrap; gap: 1rem;
 }
 .footer-logo img { height: 32px; width: auto; }
 .footer-copy { font-size: 0.65rem; color: rgba(242,250,248,0.35); letter-spacing: 0.1em; }

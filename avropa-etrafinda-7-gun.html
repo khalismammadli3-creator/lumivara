@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avropa Ətrafında 7 Gün — Avtobus Turu | Lumivara Travel</title>
+<meta name="description" content="Budapeştdən başlayan 7 günlük Avropa avtobus turu: Bratislava, Vyana, Münhen, Sürix, Milan, Venesiya. Lumivara Travel ilə unudulmaz Avropa səyahəti.">
+<link rel="icon" href="L_Icon.png" type="image/png">
+<link rel="stylesheet" href="nav.css">
+<style>
+  body { background: var(--bg); }
+
+  .page-banner { width:100%; height:380px; position:relative; overflow:hidden; }
+  .page-banner img { width:100%; height:100%; object-fit:cover; filter:brightness(0.45); }
+  .page-banner-overlay {
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    justify-content:flex-end; padding:3rem 4rem;
+    background:linear-gradient(to top, rgba(0,20,15,0.9) 0%, transparent 60%);
+  }
+  .page-banner-overlay .breadcrumb { font-size:0.65rem; color:rgba(255,255,255,0.45); letter-spacing:0.08em; margin-bottom:0.75rem; }
+  .page-banner-overlay .breadcrumb a { color:rgba(255,255,255,0.45); text-decoration:none; }
+  .page-banner-overlay .tour-type { font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:0.5rem; }
+  .page-banner-overlay h1 { font-family:var(--font-display); font-size:clamp(2rem,5vw,3.6rem); font-weight:300; color:#fff; line-height:1.1; }
+  .page-banner-overlay h1 em { font-style:italic; color:var(--teal); }
+  .page-banner-overlay .banner-meta { font-size:0.75rem; color:rgba(255,255,255,0.55); margin-top:0.75rem; display:flex; gap:2rem; flex-wrap:wrap; }
+
+  .stats-bar { background:var(--teal-deep); display:grid; grid-template-columns:repeat(5,1fr); }
+  .stat-cell { padding:1.25rem 1rem; text-align:center; border-right:1px solid rgba(0,214,178,0.12); }
+  .stat-cell:last-child { border-right:none; }
+  .stat-cell-key { font-size:0.52rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(242,250,248,0.4); margin-bottom:0.3rem; }
+  .stat-cell-val { font-family:var(--font-display); font-size:1.35rem; font-weight:300; color:var(--teal); line-height:1; }
+  .stat-cell-sub { font-size:0.58rem; color:rgba(242,250,248,0.4); margin-top:0.2rem; }
+
+  .main-wrap { max-width:1200px; margin:0 auto; padding:4rem; display:grid; grid-template-columns:1fr 340px; gap:3rem; align-items:start; }
+
+  /* ── ITINERARY ── */
+  .section-block { margin-bottom:3rem; }
+  .section-block h2 { font-family:var(--font-display); font-size:1.6rem; font-weight:300; color:var(--text); margin-bottom:1.5rem; }
+  .section-block h2 em { font-style:italic; color:var(--teal-dark); }
+
+  .day-card { background:#fff; border:1px solid rgba(0,134,110,0.1); margin-bottom:1.25rem; }
+  .day-header { display:flex; align-items:center; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid rgba(0,134,110,0.08); cursor:pointer; }
+  .day-num { font-family:var(--font-display); font-size:2.2rem; font-weight:300; color:var(--teal); opacity:0.6; flex-shrink:0; width:44px; line-height:1; }
+  .day-title-wrap { flex:1; }
+  .day-label { font-size:0.58rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-muted); margin-bottom:0.2rem; }
+  .day-title { font-size:1rem; font-weight:500; color:var(--text); }
+  .day-arrow { font-size:1.1rem; color:var(--teal-dark); flex-shrink:0; transition:transform 0.3s; }
+  .day-arrow.open { transform:rotate(90deg); }
+
+  .day-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+  .day-body.open { max-height:600px; }
+
+  .day-schedule { padding:1.25rem 1.5rem; border-bottom:1px solid rgba(0,134,110,0.06); }
+  .schedule-row { display:flex; align-items:flex-start; gap:1.25rem; padding:0.55rem 0; border-bottom:1px solid rgba(0,134,110,0.05); }
+  .schedule-row:last-child { border-bottom:none; }
+  .schedule-time { font-size:0.72rem; font-weight:600; color:var(--teal-dark); flex-shrink:0; width:42px; padding-top:2px; }
+  .schedule-text { font-size:0.78rem; color:var(--text-muted); line-height:1.65; }
+  .schedule-text strong { color:var(--text); }
+  .schedule-note { font-size:0.68rem; color:rgba(0,100,80,0.55); margin-top:0.25rem; font-style:italic; }
+
+  .day-impression { padding:1.25rem 1.5rem; background:rgba(0,214,178,0.04); }
+  .day-impression-label { font-size:0.55rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal-dark); margin-bottom:0.4rem; }
+  .day-impression p { font-size:0.76rem; color:var(--text-muted); line-height:1.85; }
+
+  /* ── OPTIONAL EXCURSIONS ── */
+  .excursion-card { background:#fff; border:1px solid rgba(0,134,110,0.1); padding:1.5rem; margin-bottom:1rem; display:grid; grid-template-columns:1fr auto; gap:1rem; align-items:start; }
+  .excursion-card h4 { font-family:var(--font-display); font-size:1.05rem; font-weight:300; color:var(--text); margin-bottom:0.4rem; }
+  .excursion-card p { font-size:0.75rem; color:var(--text-muted); line-height:1.8; }
+  .excursion-badge { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal-deep); background:rgba(0,214,178,0.15); padding:0.25rem 0.65rem; white-space:nowrap; align-self:flex-start; }
+
+  /* ── NOT INCLUDED TABLE ── */
+  .extras-table { width:100%; border-collapse:collapse; background:#fff; border:1px solid rgba(0,134,110,0.1); }
+  .extras-table th { background:var(--bg-alt); padding:0.65rem 1rem; font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); text-align:left; border-bottom:1px solid rgba(0,134,110,0.1); }
+  .extras-table td { padding:0.65rem 1rem; font-size:0.76rem; color:var(--text-muted); border-bottom:1px solid rgba(0,134,110,0.06); }
+  .extras-table tr:last-child td { border-bottom:none; }
+  .extras-table .price-col { color:var(--text); font-weight:600; text-align:right; white-space:nowrap; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display:flex; flex-direction:column; gap:1.5rem; }
+  .info-box { background:#fff; border:1px solid rgba(0,134,110,0.12); padding:1.5rem; }
+  .info-box h3 { font-family:var(--font-display); font-size:1.05rem; font-weight:300; margin-bottom:1rem; color:var(--text); border-bottom:1px solid rgba(0,214,178,0.2); padding-bottom:0.75rem; }
+  .info-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+  .info-list li { font-size:0.75rem; color:var(--text-muted); line-height:1.65; padding-left:1rem; position:relative; }
+  .info-list li::before { content:'›'; position:absolute; left:0; color:var(--teal-dark); }
+  .note-box { background:rgba(0,134,110,0.06); border-left:3px solid var(--teal-dark); padding:1rem 1.25rem; }
+  .note-box p { font-size:0.74rem; color:var(--text-muted); line-height:1.8; }
+  .note-box strong { color:var(--teal-dark); }
+
+  .route-map { background:#fff; border:1px solid rgba(0,134,110,0.12); padding:1.5rem; }
+  .route-map h3 { font-family:var(--font-display); font-size:1.05rem; font-weight:300; margin-bottom:1rem; color:var(--text); border-bottom:1px solid rgba(0,214,178,0.2); padding-bottom:0.75rem; }
+  .route-stops { display:flex; flex-direction:column; gap:0; }
+  .route-stop { display:flex; align-items:flex-start; gap:0.75rem; padding:0.5rem 0; position:relative; }
+  .route-stop::before { content:''; position:absolute; left:7px; top:24px; bottom:-8px; width:1px; background:rgba(0,214,178,0.25); }
+  .route-stop:last-child::before { display:none; }
+  .stop-dot { width:15px; height:15px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:2px; }
+  .stop-dot.transit { background:rgba(0,214,178,0.3); border:1px solid var(--teal); }
+  .stop-name { font-size:0.78rem; color:var(--text); font-weight:500; }
+  .stop-country { font-size:0.65rem; color:var(--text-muted); }
+
+  /* ── CTA ── */
+  .cta-bar { padding:3.5rem 4rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; border-top:1px solid rgba(0,214,178,0.12); }
+  .cta-bar h2 { font-family:var(--font-display); font-size:clamp(1.4rem,3vw,2.2rem); font-weight:300; color:var(--text); }
+  .cta-bar h2 em { font-style:italic; color:var(--teal-dark); }
+  .cta-bar p { font-size:0.78rem; color:var(--text-muted); margin-top:0.3rem; }
+
+  @media(max-width:1000px) {
+    .main-wrap { grid-template-columns:1fr; padding:2rem 1.5rem; }
+    .stats-bar { grid-template-columns:repeat(3,1fr); }
+    .stat-cell { border-bottom:1px solid rgba(0,214,178,0.12); }
+    .page-banner { height:260px; }
+    .page-banner-overlay { padding:1.5rem; }
+    .cta-bar { padding:3rem 1.5rem; flex-direction:column; }
+  }
+  @media(max-width:600px) {
+    .stats-bar { grid-template-columns:repeat(2,1fr); }
+    .excursion-card { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html"><img src="L_Large (3).png" alt="Lumivara Travel"></a>
+  <ul class="nav-links">
+    <li class="nav-home"><a href="index.html" title="Ana səhifə">⌂</a></li><li class="nav-divider"></li>
+    <li><a href="about.html">Biz kimik</a></li>
+    <li><a href="tours.html" class="active">Turlar</a></li>
+    <li><a href="corporate.html">Korporativ xidmətlər</a></li>
+    <li><a href="visa.html">Viza</a></li>
+    <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
+  </ul>
+</nav>
+
+<div class="page-banner">
+  <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1600&q=80" alt="Avropa Ətrafında 7 Gün">
+  <div class="page-banner-overlay">
+    <div class="breadcrumb"><a href="index.html">Ana Səhifə</a> › <a href="tours.html">Turlar</a> › Avropa Ətrafında 7 Gün</div>
+    <div class="tour-type">Avtobus Turu · Qrup Turu</div>
+    <h1>Avropa Ətrafında <em>7 Gün</em></h1>
+    <div class="banner-meta">
+      <span>🗺 Macarıstan · Slovakiya · Avstriya · Almaniya · İsveçrə · İtaliya</span>
+      <span>🛫 Başlanğıc: Budapeşt</span>
+      <span>🛬 Son nöqtə: Budapeşt</span>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-cell"><div class="stat-cell-key">Müddət</div><div class="stat-cell-val">7</div><div class="stat-cell-sub">gün</div></div>
+  <div class="stat-cell"><div class="stat-cell-key">Ölkə sayı</div><div class="stat-cell-val">6</div><div class="stat-cell-sub">ölkə</div></div>
+  <div class="stat-cell"><div class="stat-cell-key">Şəhər sayı</div><div class="stat-cell-val">6+</div><div class="stat-cell-sub">şəhər</div></div>
+  <div class="stat-cell"><div class="stat-cell-key">Nəqliyyat</div><div class="stat-cell-val">Avtobus</div><div class="stat-cell-sub">qrup turu</div></div>
+  <div class="stat-cell"><div class="stat-cell-key">Rəhbər</div><div class="stat-cell-val">Var</div><div class="stat-cell-sub">rus dilli</div></div>
+</div>
+
+<div class="main-wrap">
+  <div>
+
+    <!-- DAY BY DAY -->
+    <div class="section-block">
+      <p class="section-label">Gündəlik Proqram</p>
+      <h2>7 Günlük <em>Marşrut</em></h2>
+      <div class="divider" style="margin-bottom:1.5rem;"></div>
+
+      <!-- DAY 1 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-num">1</div>
+          <div class="day-title-wrap">
+            <div class="day-label">Gün</div>
+            <div class="day-title">Budapeşt → Bratislava</div>
+          </div>
+          <span class="day-arrow">›</span>
+        </div>
+        <div class="day-body">
+          <div class="day-schedule">
+            <div class="schedule-row">
+              <div class="schedule-time">07:00</div>
+              <div class="schedule-text">
+                <strong>Budapeştdə qrupla görüş</strong> (Frans Liszt adına Hava limanı)
+                <div class="schedule-note">Vaxt təxminidir. Bakı–Budapeşt reysi üzrə diqqətlə izləyirik; təyyarə endikdən 30 dəqiqə sonra terminalın içərisindəki çıxışda sizi qarşılayacağıq.</div>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="schedule-time">08:00</div>
+              <div class="schedule-text"><strong>Budapeştdə avtobus ekskursiyası</strong></div>
+            </div>
+            <div class="schedule-row">
+              <div class="schedule-time">11:30</div>
+              <div class="schedule-text"><strong>Bratislavaya avtobus ilə yol</strong> (Slovakiya, ~220 km)</div>
+            </div>
+            <div class="schedule-row">
+              <div class="schedule-time">15:00</div>
+              <div class="schedule-text"><strong>Bratislavada otelə yerləşmə</strong></div>
+            </div>
+            <div class="schedule-row">
+              <div class="schedule-time">17:30</div>
+              <div class="schedule-text"><strong>Bratislava mərkəzində piyada gəzinti</strong></div>
+            </div>
+          </div>
+          <div class="day-impression">
+            <div class="day-impression-label">Günün Təəssüratı</div>
+            <p>Ekskursiya — şəhəri həqiqi mənada kəşf etməyə hazırlıqdır. Balıqçı Bastionunun, Andrashi prospektinin, Bogomater (Müqəddəs Matyaş) Katedralinin görünüşünü, Buda Qalasının və Qəhrəmanlar Meydanının harada olduğunu, Vaydahunyad Qalası ilə Anonim heykəlinin nə olduğunu bildikdən sonra könlünüzə yatan əyləncəni seçəcəksiniz: Gellert dağına qalxmaq, dünya dinlərinin nümayəndələrinə həsr olunmuş abidələri görmək, şirin bişmiş Csusza makaron sınamaq, ya da Dunay sahilləri boyunca gəmi gəzintisi etmək.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 2 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-num">2</div>
+          <div class="day-title-wrap">
+            <div class="day-label">Gün</div>
+            <div class="day-title">Vyana</div>
+          </div>
+          <span class="day-arrow">›</span>
+        </div>
+        <div class="day-body">
+          <div class="day-schedule">
+            <div class="schedule-row"><div class="schedule-time">08:00</div><div class="schedule-text"><strong>Oteldə səhər yeməyi</strong></div></div>
+            <div class="schedule-row"><div class="schedule-time">09:00</div><div class="schedule-text"><strong>Vyanaya avtobus ilə yol</strong> (Avstriya, ~70 km)</div></div>
+            <div class="schedule-row"><div class="schedule-time">11:00</div><div class="schedule-text"><strong>Vyanada piyada ekskursiya</strong> və sərbəst vaxt</div></div>
+            <div class="schedule-row"><div class="schedule-time">17:00</div><div class="schedule-text"><strong>Tranzit otelə avtobus ilə yol</strong> (Passau, ~300 km)</div></div>
+            <div class="schedule-row">
+              <div class="schedule-time">22:00</div>
+              <div class="schedule-text"><strong>Tranzit otelə yerləşmə</strong> və sərbəst vaxt
+                <div class="schedule-note">Ekskursiya başlama vaxtı yol şəraitindən asılı olaraq dəyişə bilər.</div>
+              </div>
+            </div>
+          </div>
+          <div class="day-impression">
+            <div class="day-impression-label">Günün Təəssüratı</div>
+            <p>Köhnə Vyanada piyada ekskursiya bitdikdən sonra məşhur şnisel yeməyə tələsməyin! Mərkəzdən cəmi 8 dəqiqəlik piyada yolda «qızıl kələm» ilə taclanmış möhtəşəm bir bina var — bu, məşhur Qustav Klimtın rəhbərlik etdiyi mütərəqqi bədii birliyin üzvləri üçün tikilmiş Sezession binadır. Məşhur «Öpüş»ün yaradıcısının hansı məkanda yaratdığını öyrəndikdən sonra yeməyə gedə bilərsiniz — mərkəzdən uzaqda Vyana mətbəxi bir az daha sərfəli olacaq.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 3 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-num">3</div>
+          <div class="day-title-wrap">
+            <div class="day-label">Gün</div>
+            <div class="day-title">Münhen</div>
+          </div>
+          <span class="day-arrow">›</span>
+        </div>
+        <div class="day-body">
+          <div class="day-schedule">
+            <div class="schedule-row"><div class="schedule-time">08:00</div><div class="schedule-text"><strong>Oteldə səhər yeməyi</strong></div></div>
+            <div class="schedule-row"><div class="schedule-time">09:00</div><div class="schedule-text"><strong>Münhenə avtobus ilə yol</strong> (Almaniya, ~150 km)</div></div>
+            <div class="schedule-row"><div class="schedule-time">12:00</div><div class="schedule-text"><strong>Münhendə piyada ekskursiya</strong> və sərbəst vaxt</div></div>
+            <div class="schedule-row"><div class="schedule-time">20:00</div><div class="schedule-text"><strong>Tranzit otelə avtobus ilə yol</strong> (Almaniya, ~100 km)</div></div>
+            <div class="schedule-row"><div class="schedule-time">22:00</div><div class="schedule-text"><strong>Otelə yerləşmə</strong></div></div>
+          </div>
+          <div class="day-impression">
+            <div class="day-impression-label">Günün Təəssüratı</div>
+            <p>Münhen — qədim küçələrin və kilsələrin tarixi. Münhen — şüşə və metaldan tikilmiş biznes binalarının müasirliyi. Münhen — əzəmətli gözəl parklardır. Münhen — sadəcə Münhendir. Bu şəhəri sözlə ifadə etmək mümkün deyil, onu görüb hiss etmək lazımdır. Əzəmətinə və gözəlliyinə görə onu Berlinlə müqayisə etsələr də, paytaxtdan fərqli olaraq çox daha mehriban, insanları isə daha qonaqpərvərdir.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 4 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-num">4</div>
+          <div class="day-title-wrap">
+            <div class="day-label">Gün</div>
+            <div class="day-title">Sürix · + Ren Şəlaləsi (ixtiyari)</div>
+          </div>
+          <span class="day-arrow">›</span>
+        </div>
+        <div class="day-body">
+          <div class="day-schedule">
+            <div class="schedule-row"><div class="schedule-time">07:00</div><div class="schedule-text"><strong>Səhər yeməyi</strong></div></div>
+            <div class="schedule-row">
+              <div class="schedule-time">08:00</div>
+              <div class="schedule-text"><strong>Sürixə avtobus ilə yol</strong> (İsveçrə, ~320 km)
+                <div class="schedule-note">+ İxtiyari: Ren Şəlalələrinə baş çəkmə</div>
+              </div>
+            </div>
+            <div class="schedule-row"><div class="schedule-time">15:00</div><div class="schedule-text"><strong>Sürixdə piyada ekskursiya</strong> və sərbəst vaxt</div></div>
+            <div class="schedule-row"><div class="schedule-time">18:00</div><div class="schedule-text"><strong>Tranzit otelə avtobus ilə yol</strong> (İtaliya, ~320 km)</div></div>
+            <div class="schedule-row"><div class="schedule-time">23:00</div><div class="schedule-text"><strong>Otelə yerləşmə</strong></div></div>
+          </div>
+          <div class="day-impression">
+            <div class="day-impression-label">Günün Təəssüratı</div>
+            <p>Sürixin zənginliyi sakinlərini vaxta hörmət etməyə məcbur etdimi, yoxsa vaxtın dəyəri Sürixə Avropanın ən işgüzar şəhəri imicini mi qazandırdı? Bu suala özünüz burada olduqda cavab tapacaqsınız. Mükəmməl yollar, mükəmməl evlər, mükəmməl göl — hətta yerli ördəklər belə peşəkar stilistin əli dəymişə bənzəyir! Gündüzlər işgüzar atmosfer hökm sürür, gecələr isə yerli burjualar və turist qonaqlar klubların açıq havada şənliklərini yaşayır.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 5 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-num">5</div>
+          <div class="day-title-wrap">
+            <div class="day-label">Gün</div>
+            <div class="day-title">Milan · + Komo gölü (ixtiyari)</div>
+          </div>
+          <span class="day-arrow">›</span>
+        </div>
+        <div class="day-body">
+          <div class="day-schedule">
+            <div class="schedule-row"><div class="schedule-time">07:00</div><div class="schedule-text"><strong>Oteldə səhər yeməyi</strong></div></div>
+            <div class="schedule-row"><div class="schedule-time">08:00</div><div class="schedule-text"><strong>Milanın mərkəzinə avtobus ilə keçid</strong></div></div>
+            <div class="schedule-row">
+              <div class="schedule-time">09:00</div>
+              <div class="schedule-text"><strong>Milanda piyada ekskursiya</strong> və sərbəst vaxt
+                <div class="schedule-note">+ İxtiyari: Komo gölünə ekskursiya</div>
+              </div>
+            </div>
+            <div class="schedule-row"><div class="schedule-time">20:00</div><div class="schedule-text"><strong>Tranzit otelə yol</strong> (İtaliya, Mestre, ~280 km)</div></div>
+            <div class="schedule-row"><div class="schedule-time">22:00</div><div class="schedule-text"><strong>Otelə yerləşmə</strong></div></div>
+          </div>
+          <div class="day-impression">
+            <div class="day-impression-label">Günün Təəssüratı</div>
+            <p>Əzəmətli Duomo katedralini seyr etdikdən, çoxsaylı bazilika, pinakotek və qüllələrin yanından keçdikdən, Milan kanallarını gördükdən və Santa Maria delle Grazie monastırının yeməkxanasında saxlanan Da Vinçinin məşhur «Son Şam Yeməyi»ni ən azından kənardan müşahidə etdikdən sonra, milanliların sevimli fast-food yeməyi olan pancerotti sınamağı unutmayın. Bunu məhz bu ardıcıllıqla etsəniz, bu şəhərdə qalmaq istəyəcəksiniz… ya da azı bir neçə dəfə buraya qayıtmaq!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 6 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-num">6</div>
+          <div class="day-title-wrap">
+            <div class="day-label">Gün</div>
+            <div class="day-title">Venesiya · + Qran Kanal (ixtiyari)</div>
+          </div>
+          <span class="day-arrow">›</span>
+        </div>
+        <div class="day-body">
+          <div class="day-schedule">
+            <div class="schedule-row"><div class="schedule-time">08:00</div><div class="schedule-text"><strong>Oteldə səhər yeməyi</strong></div></div>
+            <div class="schedule-row"><div class="schedule-time">09:00</div><div class="schedule-text"><strong>Avtobus və katerlə Venesiyaya</strong> (İtaliya, ~10 km)</div></div>
+            <div class="schedule-row">
+              <div class="schedule-time">11:00</div>
+              <div class="schedule-text"><strong>Venesiyada piyada ekskursiya</strong> və sərbəst vaxt
+                <div class="schedule-note">+ İxtiyari: Qran Kanal boyunca kater gəzintisi</div>
+              </div>
+            </div>
+            <div class="schedule-row"><div class="schedule-time">17:00</div><div class="schedule-text"><strong>Tranzit otelə avtobus ilə yol</strong> (Maribor, ~380 km)</div></div>
+            <div class="schedule-row"><div class="schedule-time">23:00</div><div class="schedule-text"><strong>Otelə yerləşmə</strong></div></div>
+          </div>
+          <div class="day-impression">
+            <div class="day-impression-label">Günün Təəssüratı</div>
+            <p>Ve-ne-si-ya. Bu sözün özü belə unudulmaz təəssüratlar vəd edir. Küləklə birlikdə dünyanın dörd bucağına yayılan şəhərin şöhrəti haqqında nə demək olar ki! Venesiyaya baş çəkdikdən sonra üç «P» abbreviaturasını əbədi yadda saxlayacaqsınız: Pompöz, Pozulmuş, Pərilər diyarı kimi gözəl. Şəhərin əsas görməli yerlərini isə piyada ekskursiyamız zamanı mütləq göstərəcəyik.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAY 7 -->
+      <div class="day-card">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-num">7</div>
+          <div class="day-title-wrap">
+            <div class="day-label">Gün</div>
+            <div class="day-title">Budapeşt → Bakı</div>
+          </div>
+          <span class="day-arrow">›</span>
+        </div>
+        <div class="day-body">
+          <div class="day-schedule">
+            <div class="schedule-row"><div class="schedule-time">08:00</div><div class="schedule-text"><strong>Oteldə səhər yeməyi</strong></div></div>
+            <div class="schedule-row"><div class="schedule-time">09:00</div><div class="schedule-text"><strong>Budapeştə avtobus ilə yol</strong> (Macarıstan, ~360 km)</div></div>
+            <div class="schedule-row"><div class="schedule-time">15:00</div><div class="schedule-text"><strong>Budapeştdə sərbəst vaxt</strong></div></div>
+            <div class="schedule-row"><div class="schedule-time">19:00</div><div class="schedule-text"><strong>Hava limanına transfer</strong></div></div>
+            <div class="schedule-row"><div class="schedule-time">20:00</div><div class="schedule-text"><strong>Wizzair Budapeşt–Bakı reysinə qeydiyyat</strong></div></div>
+          </div>
+          <div class="day-impression">
+            <div class="day-impression-label">Günün Təəssüratı</div>
+            <p>Səyahət başa çatdı, amma kədərlənməyin: doyumsuz proqramdan dincəldikdən sonra siz də Fileas Fogg kimi yola çıxacaq, Avropanın və bütün dünyanın digər paytaxtlarını fəth etməyə gedəcəksiniz!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OPTIONAL EXCURSIONS -->
+    <div class="section-block">
+      <p class="section-label">Əlavə İmkanlar</p>
+      <h2>İxtiyari <em>Ekskursiyalar</em></h2>
+      <div class="divider" style="margin-bottom:1.5rem;"></div>
+
+      <div class="excursion-card">
+        <div>
+          <h4>Ren Şəlalələri</h4>
+          <p>Avropanın ən böyük şəlaləsinə — İsveçrədə yerləşən Ren Şəlalələrinə heyranlıq yolu. Güclü su axınlarının möhtəşəm mənzərəsi, kaskadların uğultusu və təzə meh sizi gözləyir. Panoram meydançalardan baxış, birbaşa şəlaləyə kater gəzintisi (əlavə ödənişli) və orta əsr Laufen qalasını görmək mümkündür.</p>
+        </div>
+        <span class="excursion-badge">4-cü Gün</span>
+      </div>
+
+      <div class="excursion-card">
+        <div>
+          <h4>Komo Gölü</h4>
+          <p>Komo gölünə səyahət iki tip insana uyğundur: Alp dağlarının ətəyindəki gölün əzəmətli təbiətini, unikal mikroiqlimini və çoxsaylı botanika bağlarının ətrini duymaq istəyənlərə; həm də Milandan sonra alış-veriş həzzini davam etdirmək, dünyaca məşhur brendlərin şedevrlərinin yanında xüsusi ailə butiqlərinin unikal mallarını da aparmaq istəyənlərə. Viллalarda çəkilmiş filmlərdən, üzmə üçün ən yaxşı yerlərdən, yerli ipək istehsalçılarından və panoramik Punto Panoramico funikilyorunun başlanğıc nöqtəsindən mütləq bəhs edəcəyik!</p>
+        </div>
+        <span class="excursion-badge">5-ci Gün</span>
+      </div>
+
+      <div class="excursion-card">
+        <div>
+          <h4>Qran Kanal Boyunca Kater Gəzintisi</h4>
+          <p>Qran Kanal Venesiyasının əsas su arteriyasıdır. Görünüşcə sadə bir kanal kimi görünsə də, şəhərin ən möhtəşəm yeri buradadır! Çünki məhz bu kanal boyunca Venesiyasının ən məşhur və nüfuzlu binaları sıralanır: Qədim saraylar, kilsələr, qalereyalar, meydanlar; Venesiya karnavalının keçirildiyi yer, festivallar, Kazanovanın evi, lüks saraylar, «Turist» filminin çəkildiyi yerlər — hamısı Qran Kanaldadır!</p>
+        </div>
+        <span class="excursion-badge">6-cı Gün</span>
+      </div>
+    </div>
+
+    <!-- NOT INCLUDED -->
+    <div class="section-block">
+      <p class="section-label">Maliyyə</p>
+      <h2>Tura <em>Daxil Olmayan</em> Xərclər</h2>
+      <div class="divider" style="margin-bottom:1.5rem;"></div>
+      <table class="extras-table">
+        <thead>
+          <tr><th>Xidmət</th><th style="text-align:right;">Böyük (EUR)</th><th style="text-align:right;">Uşaq (EUR)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Checkpoint (keçid)</td><td class="price-col">35</td><td class="price-col">30</td></tr>
+          <tr><td>Venesiyaya kater</td><td class="price-col">26</td><td class="price-col">26</td></tr>
+          <tr><td>City Tax (Şəhər vergisi)</td><td class="price-col">30</td><td class="price-col">0</td></tr>
+          <tr><td>Ren Şəlaləsinə baş çəkmə</td><td class="price-col">18</td><td class="price-col">13</td></tr>
+          <tr><td>Komo gölünə səyahət</td><td class="price-col">30</td><td class="price-col">15</td></tr>
+          <tr><td>Qran Kanal boyunca kater gəzintisi (Venesiya)</td><td class="price-col">36</td><td class="price-col">26</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div><!-- /main-col -->
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="info-box" style="background:var(--teal-deep); border-color:transparent;">
+      <h3 style="color:var(--teal); border-color:rgba(0,214,178,0.2);">Rezervasiya üçün əlaqə</h3>
+      <p style="font-size:0.78rem; color:rgba(242,250,248,0.7); line-height:1.8; margin-bottom:1.25rem;">Tur tarixi, qiymət və ətraflı məlumat üçün bizimlə əlaqə saxlayın.</p>
+      <a href="contact.html" class="btn-primary" style="display:block; text-align:center;">Əlaqə saxla</a>
+    </div>
+
+    <div class="route-map">
+      <h3>Marşrut</h3>
+      <div class="route-stops">
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Budapeşt</div><div class="stop-country">Macarıstan · 1-ci gün</div></div></div>
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Bratislava</div><div class="stop-country">Slovakiya · 1-ci gün</div></div></div>
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Vyana</div><div class="stop-country">Avstriya · 2-ci gün</div></div></div>
+        <div class="route-stop"><div class="stop-dot transit"></div><div><div class="stop-name">Passau</div><div class="stop-country">Almaniya · tranzit</div></div></div>
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Münhen</div><div class="stop-country">Almaniya · 3-cü gün</div></div></div>
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Sürix</div><div class="stop-country">İsveçrə · 4-cü gün</div></div></div>
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Milan</div><div class="stop-country">İtaliya · 5-ci gün</div></div></div>
+        <div class="route-stop"><div class="stop-dot transit"></div><div><div class="stop-name">Mestre</div><div class="stop-country">İtaliya · tranzit</div></div></div>
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Venesiya</div><div class="stop-country">İtaliya · 6-cı gün</div></div></div>
+        <div class="route-stop"><div class="stop-dot transit"></div><div><div class="stop-name">Maribor</div><div class="stop-country">Sloveniya · tranzit</div></div></div>
+        <div class="route-stop"><div class="stop-dot"></div><div><div class="stop-name">Budapeşt → Bakı</div><div class="stop-country">Macarıstan · 7-ci gün</div></div></div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h3>Tura Daxildir</h3>
+      <ul class="info-list">
+        <li>Qrup avtobus nəqliyyatı</li>
+        <li>Bütün şəhərlərdə piyada ekskursiya</li>
+        <li>Rus dilli rəhbər</li>
+        <li>Otellərdə yerləşmə (6 gecə)</li>
+        <li>Oteldə səhər yeməyi</li>
+        <li>Venesiyaya kater keçidi (əsas)</li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <h3>Tura Daxil Deyil</h3>
+      <ul class="info-list">
+        <li>Bakı–Budapeşt–Bakı aviabilet</li>
+        <li>Checkpoint ödənişi (35/30 EUR)</li>
+        <li>City Tax şəhər vergisi (30 EUR)</li>
+        <li>İxtiyari ekskursiyalar</li>
+        <li>Şəxsi xərclər və yeməklər</li>
+        <li>Səyahət sığortası</li>
+      </ul>
+    </div>
+
+    <div class="note-box">
+      <p><strong>Qeyd:</strong> Ekskursiya başlama vaxtları yol şəraitindən asılı olaraq dəyişə bilər. Bütün transfer vaxtları təxminidir.</p>
+    </div>
+  </div>
+
+</div><!-- /main-wrap -->
+
+<div class="cta-bar">
+  <div>
+    <h2>Bu tura qoşulmaq <em>istəyirsiniz?</em></h2>
+    <p>Tur tarixi, qiymət və ətraflı məlumat üçün bizimlə əlaqə saxlayın — sizin üçün uyğun paket hazırlayaq.</p>
+  </div>
+  <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+    <a href="contact.html" class="btn-primary">Rezervasiya üçün əlaqə</a>
+    <a href="tours.html" class="btn-ghost">← Turlara qayıt</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><img src="D_Icon.png" alt="Lumivara Travel"></div>
+  <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
+  <div class="footer-links"><a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="https://www.instagram.com/lumivaratravel/" target="_blank" rel="noopener">Instagram</a></div>
+</footer>
+
+<script>
+  function toggleDay(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.day-arrow');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    arrow.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>

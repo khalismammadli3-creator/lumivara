@@ -162,25 +162,25 @@
       </div>
     </div>
 
-    <div class="contact-form">
+    <form class="contact-form" id="contactForm" onsubmit="return sendToWhatsApp(event)">
       <div class="form-row">
         <div class="form-group">
           <label>Ad Soyad</label>
-          <input type="text" placeholder="Adınız">
+          <input type="text" id="f-name" placeholder="Adınız" required>
         </div>
         <div class="form-group">
           <label>E-poçt</label>
-          <input type="email" placeholder="email@example.com">
+          <input type="email" id="f-email" placeholder="email@example.com">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>Telefon</label>
-          <input type="tel" placeholder="+994 ...">
+          <input type="tel" id="f-phone" placeholder="+994 ..." required>
         </div>
         <div class="form-group">
           <label>Xidmət növü</label>
-          <select>
+          <select id="f-service">
             <option value="">Seçin</option>
             <option>Lüks paket</option>
             <option>Fərdi marşrut</option>
@@ -193,19 +193,19 @@
       <div class="form-row">
         <div class="form-group">
           <label>İstiqamət</label>
-          <input type="text" placeholder="Hara getmək istəyirsiniz?">
+          <input type="text" id="f-destination" placeholder="Hara getmək istəyirsiniz?">
         </div>
         <div class="form-group">
           <label>Tarixlər</label>
-          <input type="text" placeholder="Təxmini tarixlər">
+          <input type="text" id="f-dates" placeholder="Təxmini tarixlər">
         </div>
       </div>
       <div class="form-group">
         <label>Mesajınız</label>
-        <textarea placeholder="Səyahət arzularınız, xüsusi tələbləriniz və ya viza suallarınız haqqında yazın…"></textarea>
+        <textarea id="f-message" placeholder="Səyahət arzularınız, xüsusi tələbləriniz və ya viza suallarınız haqqında yazın…"></textarea>
       </div>
-      <button class="btn-primary submit-btn">Sorğu göndər</button>
-    </div>
+      <button type="submit" class="btn-primary submit-btn">Sorğu göndər</button>
+    </form>
   </div>
 </div>
 
@@ -216,6 +216,42 @@
     <a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="https://www.instagram.com/lumivaratravel/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </footer>
+
+<script>
+  // Lumivara WhatsApp Business number (international format, no + or spaces)
+  const WHATSAPP_NUMBER = "994102372121";
+
+  function sendToWhatsApp(event) {
+    event.preventDefault();
+
+    const val = id => (document.getElementById(id).value || "").trim();
+
+    const name        = val("f-name");
+    const email       = val("f-email");
+    const phone       = val("f-phone");
+    const service     = val("f-service");
+    const destination = val("f-destination");
+    const dates       = val("f-dates");
+    const message     = val("f-message");
+
+    // Build a readable WhatsApp message in Azerbaijani
+    let lines = ["🌍 *Yeni Sorğu — Lumivara Travel*", ""];
+    lines.push("👤 *Ad Soyad:* " + (name || "—"));
+    if (email)       lines.push("✉️ *E-poçt:* " + email);
+    lines.push("📞 *Telefon:* " + (phone || "—"));
+    if (service)     lines.push("🧳 *Xidmət növü:* " + service);
+    if (destination) lines.push("📍 *İstiqamət:* " + destination);
+    if (dates)       lines.push("🗓 *Tarixlər:* " + dates);
+    if (message)     lines.push("💬 *Mesaj:* " + message);
+
+    const text = encodeURIComponent(lines.join("\n"));
+    const url  = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + text;
+
+    // Open WhatsApp (new tab on desktop, app on mobile)
+    window.open(url, "_blank");
+    return false;
+  }
+</script>
 
 </body>
 </html>

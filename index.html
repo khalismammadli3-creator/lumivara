@@ -1,670 +1,268 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lumivara Travel</title>
-<link rel="icon" href="L_Icon.png" type="image/png">
-<link rel="stylesheet" href="nav.css">
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumivara Travel — Tezliklə</title>
+  <link rel="icon" href="D_Icon.png" type="image/png">
+  <style>
+    @font-face {
+      font-family: 'Host Grotesk';
+      src: url('HostGrotesk-Light.ttf') format('truetype');
+      font-weight: 300; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Host Grotesk';
+      src: url('HostGrotesk-Regular.ttf') format('truetype');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Host Grotesk';
+      src: url('HostGrotesk-Medium.ttf') format('truetype');
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Host Grotesk';
+      src: url('HostGrotesk-SemiBold.ttf') format('truetype');
+      font-weight: 600; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: 'Host Grotesk';
+      src: url('HostGrotesk-Bold.ttf') format('truetype');
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
 
-  /* ── BANNER / CAROUSEL ── */
-  .banner {
-    width: 100%;
-    height: 520px;
-    position: relative;
-    overflow: hidden;
-  }
-  .banner-track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
-  }
-  .banner-slide {
-    min-width: 100%; height: 100%; flex-shrink: 0;
-  }
-  .banner-slide img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: brightness(0.82);
-    display: block;
-  }
-  .banner-overlay {
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(to bottom, rgba(0,51,42,0.3) 0%, rgba(0,51,42,0.6) 100%);
-    pointer-events: none;
-  }
-  .banner-overlay p {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.75);
-    letter-spacing: 0.08em;
-    max-width: 500px;
-    line-height: 1.9;
-    margin-bottom: 2rem;
-  }
-  .banner-ctas { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; pointer-events: all; }
-  .banner-btn {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.25);
-    color: #fff; font-size: 1.1rem;
-    width: 44px; height: 44px;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: background 0.3s; z-index: 10;
-  }
-  .banner-btn:hover { background: rgba(0,214,178,0.4); }
-  .banner-btn.prev { left: 1.5rem; }
-  .banner-btn.next { right: 1.5rem; }
-  .banner-dots {
-    position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%);
-    display: flex; gap: 0.5rem; z-index: 10;
-  }
-  .banner-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: rgba(255,255,255,0.4); border: none; padding: 0;
-    cursor: pointer; transition: background 0.3s, transform 0.3s;
-  }
-  .banner-dot.active { background: var(--teal); transform: scale(1.3); }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* ── INTRO STRIP ── */
-  .intro-logo {
-    height: 99px;
-    width: auto;
-    flex-shrink: 0;
-  }
-  .intro-strip {
-    background: linear-gradient(to bottom, #00664f, #00332a);
-    color: var(--ivory);
-    padding: 2rem 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .intro-strip p {
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    opacity: 0.8;
-    max-width: 600px;
-    line-height: 1.8;
-  }
-  .intro-strip .stat-group {
-    display: flex; gap: 3rem; flex-shrink: 0;
-  }
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    font-weight: 300;
-    color: var(--teal);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    opacity: 0.6;
-    margin-top: 0.25rem;
-  }
+    :root {
+      --primary:  #0D3D35;
+      --accent:   #00C9A7;
+      --light:    #E8F5F2;
+      --dark:     #061F1A;
+      --muted:    #4A7B72;
+    }
 
-  /* ── GLOBE ── */
-  .globe-section {
-    background: #eaf6f3;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    padding: 3rem 4rem 3rem 4rem;
-    overflow: hidden;
-  }
-  .globe-text {
-    flex: 0 0 320px;
-    z-index: 2;
-  }
-  .globe-text .section-label { color: var(--teal-dark); }
-  .globe-text .section-title { color: var(--text); }
-  .globe-desc {
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    line-height: 1.9;
-    margin-bottom: 2rem;
-  }
-  .globe-cities {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem 1.5rem;
-  }
-  .globe-cities li {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .city-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--teal);
-    box-shadow: 0 0 6px var(--teal);
-    flex-shrink: 0;
-  }
-  .globe-container {
-    flex: 1;
-    height: 660px;
-    min-width: 0;
-  }
-  @media (max-width: 900px) {
-    .globe-section { display: none; }
-  }
+    html, body {
+      height: 100%;
+      font-family: 'Host Grotesk', sans-serif;
+      background-color: var(--primary);
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
 
-  /* ── SERVICES ── */
-  .services {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid rgba(0,214,178,0.15);
-    border-bottom: 1px solid rgba(0,214,178,0.15);
-  }
-  .service-card {
-    padding: 3rem 2rem;
-    background: #fff;
-    border-right: 1px solid rgba(0,214,178,0.12);
-    text-decoration: none;
-    color: var(--text);
-    display: flex; flex-direction: column; gap: 1rem;
-    transition: background 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .service-card:last-child { border-right: none; }
-  .service-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 100%;
-    height: 2px; background: var(--teal);
-    transition: right 0.4s ease;
-  }
-  .service-card:hover { background: var(--bg-alt); }
-  .service-card:hover::after { right: 0; }
-  .service-icon { font-size: 1.6rem; color: var(--teal); }
-  .service-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem; font-weight: 400;
-    color: var(--text);
-  }
-  .service-card p {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    flex: 1;
-  }
-  .service-card .arrow {
-    font-size: 0.7rem;
-    color: var(--teal-dark);
-    letter-spacing: 0.1em;
-  }
+    /* ── BACKGROUND TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, rgba(0,201,167,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(0,201,167,0.07) 0%, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-  /* ── DESTINATIONS ── */
-  .section { padding: 4rem; background: var(--bg); }
-  .section-header {
-    display: flex; justify-content: space-between;
-    align-items: flex-end; margin-bottom: 2.5rem;
-  }
-  .section-header a {
-    font-size: 0.68rem; letter-spacing: 0.15em;
-    text-transform: uppercase; color: var(--teal-dark);
-    text-decoration: none; border-bottom: 1px solid rgba(0,134,110,0.3);
-    padding-bottom: 2px; transition: border-color 0.3s;
-  }
-  .section-header a:hover { border-color: var(--teal-dark); }
+    /* ── LAYOUT ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
 
-  .dest-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 220px 220px;
-    gap: 12px;
-  }
-  .dest-card {
-    position: relative; overflow: hidden; cursor: pointer;
-    background: #ccc;
-  }
-  .dest-card.large { grid-column: 1; grid-row: 1 / 3; }
-  .dest-card img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform 0.6s ease; filter: brightness(0.78);
-  }
-  .dest-card:hover img { transform: scale(1.05); filter: brightness(0.92); }
-  .dest-overlay {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    padding: 1.25rem;
-    background: linear-gradient(to top, rgba(0,30,25,0.88) 0%, transparent 100%);
-  }
-  .dest-overlay h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem; font-weight: 300;
-    color: #fff; margin-bottom: 0.2rem;
-  }
-  .dest-card.large .dest-overlay h3 { font-size: 1.9rem; }
-  .dest-overlay p { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); }
-  .dest-tag {
-    position: absolute; top: 1rem; right: 1rem;
-    background: var(--teal); color: var(--teal-deep);
-    font-size: 0.55rem; font-weight: 600; letter-spacing: 0.15em;
-    text-transform: uppercase; padding: 0.25rem 0.65rem;
-  }
+    /* ── LOGO ── */
+    .logo {
+      margin-bottom: 3rem;
+    }
+    .logo img {
+      height: 52px;
+      width: auto;
+    }
 
-  /* ── WHY US ── */
-  .why-section {
-    padding: 4rem;
-    background: var(--teal-deep);
-    color: var(--ivory);
-  }
-  .why-section .section-title { color: var(--ivory); }
-  .why-section .section-label { color: var(--teal); }
-  .why-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  .why-card {
-    padding: 2rem;
-    border: 1px solid rgba(0,214,178,0.15);
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .why-card:hover {
-    border-color: rgba(0,214,178,0.4);
-    background: rgba(0,214,178,0.05);
-  }
-  .why-num {
-    font-family: var(--font-display);
-    font-size: 3rem; font-weight: 300;
-    color: var(--teal); opacity: 0.25;
-    line-height: 1; margin-bottom: 1rem;
-  }
-  .why-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.2rem; font-weight: 400;
-    margin-bottom: 0.75rem;
-    color: var(--ivory);
-  }
-  .why-card p { font-size: 0.75rem; color: rgba(242,250,248,0.6); line-height: 1.9; }
+    /* ── BADGE ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,201,167,0.12);
+      border: 1px solid rgba(0,201,167,0.35);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+    }
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.75); }
+    }
 
-  /* ── CTA BANNER ── */
-  .cta-section {
-    padding: 4rem;
-    background: var(--bg-alt);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    flex-wrap: wrap;
-    border-top: 1px solid rgba(0,214,178,0.15);
-    border-bottom: 1px solid rgba(0,214,178,0.15);
-  }
-  .cta-section h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 300; color: var(--text);
-  }
-  .cta-section h2 em { font-style: italic; color: var(--teal-dark); }
-  .cta-section p { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem; }
-  .cta-btns { display: flex; gap: 1rem; flex-shrink: 0; }
+    /* ── HEADLINE ── */
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    h1 span {
+      color: var(--accent);
+    }
 
-  /* ── FOOTER ── */
-  footer {
-    padding: 2.5rem 4rem;
-    border-top: 1px solid rgba(0,214,178,0.15);
-    display: flex; justify-content: space-between; align-items: center;
-    background: #001a15; flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-logo img { height: 32px; width: auto; }
-  .footer-copy { font-size: 0.65rem; color: rgba(242,250,248,0.35); letter-spacing: 0.1em; }
-  .footer-links { display: flex; gap: 2rem; }
-  .footer-links a {
-    font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: rgba(242,250,248,0.4); text-decoration: none; transition: color 0.3s;
-  }
-  .footer-links a:hover { color: var(--teal); }
+    /* ── SUBTEXT ── */
+    .sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
 
-  @media (max-width: 900px) {
-    .banner { height: 380px; }
-    .intro-strip { padding: 2rem 1.5rem; flex-direction: column; }
-    .services { grid-template-columns: 1fr 1fr; }
-    .section { padding: 3rem 1.5rem; }
-    .dest-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-    .dest-card.large { grid-column: auto; grid-row: auto; }
-    .why-section { padding: 3rem 1.5rem; }
-    .why-grid { grid-template-columns: 1fr; }
-    .cta-section { padding: 3rem 1.5rem; flex-direction: column; }
-    footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
-  }
-</style>
+    /* ── DIVIDER ── */
+    .divider {
+      width: 56px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 0 auto 3rem;
+      opacity: 0.7;
+    }
+
+    /* ── EMAIL LINK ── */
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(0,201,167,0.12);
+      border: 1px solid rgba(0,201,167,0.35);
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.85rem 1.75rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      margin-bottom: 1rem;
+    }
+    .email-link:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    /* ── CONTACT ROW ── */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      justify-content: center;
+      margin-top: 3.5rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item:hover { color: var(--accent); }
+    .contact-item svg { color: var(--accent); flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    .foot {
+      position: absolute;
+      bottom: 1.75rem;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 480px) {
+      .form-row { flex-direction: column; }
+      .form-row button { border-radius: 999px; }
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
 
-<nav>
-  <a class="nav-logo" href="index.html">
-    <img src="L_Large (3).png" alt="Lumivara Travel">
-  </a>
-  <ul class="nav-links">
-    <li class="nav-home"><a href="index.html" title="Ana səhifə">⌂</a></li>
-    <li class="nav-divider"></li>
-    <li><a href="about.html">Biz kimik</a></li>
-    <li><a href="tours.html">Turlar</a></li>
-    <li><a href="corporate.html">Korporativ xidmətlər</a></li>
-    <li><a href="visa.html">Viza</a></li>
-    <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
-  </ul>
-</nav>
+    <!-- Logo -->
+    <div class="logo">
+      <img src="L_Large (3).png" alt="Lumivara Travel">
+    </div>
 
-<!-- BANNER CAROUSEL - v2 -->
-<div class="banner">
-  <div class="banner-track" id="bannerTrack">
-    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1600&q=80" alt="Santorini"></div>
-    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80" alt="Dubai"></div>
-    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1600&q=80" alt="Paris"></div>
-    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=1600&q=80" alt="Maldiv"></div>
-    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1600&q=80" alt="Venesiya"></div>
-    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?w=1600&q=80" alt="Tokio"></div>
-    <div class="banner-slide"><img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=1600&q=80" alt="Nyu-York"></div>
+    <!-- Badge -->
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Tezliklə
+    </div>
+
+    <!-- Headline -->
+    <h1>Yeni səyahət<br>təcrübəsi <span>gəlir</span></h1>
+
+    <!-- Sub -->
+    <p class="sub">
+      Azərbaycan və dünya üzrə premium tur paketlərimiz hazırlanır.
+      Açılışdan xəbərdar olmaq üçün e-poçtunuzu buraxın.
+    </p>
+
+    <div class="divider"></div>
+
+    <!-- Email link -->
+    <a href="mailto:info@lumivaratravel.az" class="email-link">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+      </svg>
+      info@lumivaratravel.az
+    </a>
+
+    <!-- Contact links -->
+    <div class="contact-row">
+      <a href="https://wa.me/994501234567" target="_blank" class="contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        WhatsApp
+      </a>
+      <a href="mailto:info@lumivaratravel.az" class="contact-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        info@lumivaratravel.az
+      </a>
+      <a href="https://instagram.com/lumivaratravel" target="_blank" class="contact-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <p class="foot">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
   </div>
-  <div class="banner-overlay">
-    <p>Seçilmiş marşrutlar, məxsusi otellər və hər detalı mükəmməl hazırlanmış səyahət təcrübələri.</p>
-    <div class="banner-ctas">
-      <a href="tours.html" class="btn-primary">Turlara bax</a>
-      <a href="contact.html" class="btn-ghost-light">Bizimlə əlaqə</a>
-    </div>
-  </div>
-  <button class="banner-btn prev" onclick="bannerMove(-1)">&#8592;</button>
-  <button class="banner-btn next" onclick="bannerMove(1)">&#8594;</button>
-  <div class="banner-dots" id="bannerDots"></div>
-</div>
-
-<script>
-  (function(){
-    const track = document.getElementById('bannerTrack');
-    const dotsEl = document.getElementById('bannerDots');
-    const count = track.children.length;
-    let cur = 0, timer;
-    for(let i=0;i<count;i++){
-      const d = document.createElement('button');
-      d.className='banner-dot'+(i===0?' active':'');
-      d.onclick=()=>goTo(i);
-      dotsEl.appendChild(d);
-    }
-    function goTo(n){
-      cur=(n+count)%count;
-      track.style.transform=`translateX(-${cur*100}%)`;
-      document.querySelectorAll('.banner-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
-      reset();
-    }
-    window.bannerMove=n=>goTo(cur+n);
-    function reset(){ clearInterval(timer); timer=setInterval(()=>goTo(cur+1),4500); }
-    reset();
-  })();
-</script>
-
-<!-- INTRO STRIP -->
-<div class="intro-strip">
-  <img src="D_Large.png" alt="Lumivara Travel" class="intro-logo">
-  <p>2025-ci ildən bəri Azərbaycanda və dünyada lüks səyahətlər təşkil edirik. Hər müştəriyə fərdi yanaşma, hər detalda mükəmməllik.</p>
-  <div class="stat-group">
-    <div class="stat">
-      <div class="stat-num">15+</div>
-      <div class="stat-label">İl təcrübə</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">80+</div>
-      <div class="stat-label">Ölkə</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">5K+</div>
-      <div class="stat-label">Məmnun müştəri</div>
-    </div>
-  </div>
-</div>
-
-<!-- GLOBE -->
-<div class="globe-section">
-  <div class="globe-text">
-    <p class="section-label">Qlobal şəbəkə</p>
-    <h2 class="section-title">Bakıdan <em>dünyaya</em></h2>
-    <p class="globe-desc">Bakıdan çıxış nöqtəsi ilə dünyanın ən məşhur turizm mərkəzlərinə birbaşa marşrutlar təşkil edirik.</p>
-    <ul class="globe-cities">
-      <li><span class="city-dot"></span>Dubai</li>
-      <li><span class="city-dot"></span>Paris</li>
-      <li><span class="city-dot"></span>Tokio</li>
-      <li><span class="city-dot"></span>Nyu-York</li>
-      <li><span class="city-dot"></span>Maldiv</li>
-      <li><span class="city-dot"></span>Venesiya</li>
-      <li><span class="city-dot"></span>Santorini</li>
-      <li><span class="city-dot"></span>London</li>
-      <li><span class="city-dot"></span>Pekin</li>
-      <li><span class="city-dot"></span>Kampala</li>
-      <li><span class="city-dot"></span>Abuja</li>
-      <li><span class="city-dot"></span>Sharm-el-Şeyx</li>
-    </ul>
-  </div>
-  <div class="globe-container" id="globeContainer"></div>
-</div>
-
-<script src="https://unpkg.com/globe.gl@2.30.0/dist/globe.gl.min.js"></script>
-<script>
-(function(){
-  const destinations = [
-    { name: 'Dubai',          lat: 25.2048, lng: 55.2708,  tz: 'Asia/Dubai'       },
-    { name: 'Paris',          lat: 48.8566, lng: 2.3522,   tz: 'Europe/Paris'     },
-    { name: 'Tokio',          lat: 35.6762, lng: 139.6503, tz: 'Asia/Tokyo'       },
-    { name: 'Nyu-York',       lat: 40.7128, lng: -74.0060, tz: 'America/New_York' },
-    { name: 'Maldiv',         lat: 3.2028,  lng: 73.2207,  tz: 'Indian/Maldives'  },
-    { name: 'Venesiya',       lat: 45.4408, lng: 12.3155,  tz: 'Europe/Rome'      },
-    { name: 'Santorini',      lat: 36.3932, lng: 25.4615,  tz: 'Europe/Athens'    },
-    { name: 'London',         lat: 51.5074, lng: -0.1278,  tz: 'Europe/London'    },
-    { name: 'Pekin',          lat: 39.9042, lng: 116.4074, tz: 'Asia/Shanghai'    },
-    { name: 'Kampala',        lat: 0.3476,  lng: 32.5825,  tz: 'Africa/Kampala'   },
-    { name: 'Abuja',          lat: 9.0765,  lng: 7.3986,   tz: 'Africa/Lagos'     },
-    { name: 'Sharm el-Sheikh',lat: 27.9158, lng: 34.3300,  tz: 'Africa/Cairo'     },
-  ];
-  const baku = { lat: 40.4093, lng: 49.8671, tz: 'Asia/Baku' };
-
-  const container = document.getElementById('globeContainer');
-
-  // Tooltip
-  const tooltip = document.createElement('div');
-  tooltip.style.cssText = `
-    position: fixed; pointer-events: none; display: none; z-index: 9999;
-    background: rgba(0,30,25,0.92); color: #fff;
-    padding: 0.6rem 1rem; border-left: 2px solid #00d6b2;
-    font-family: var(--font-body); font-size: 0.78rem; line-height: 1.6;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3); white-space: nowrap;
-  `;
-  document.body.appendChild(tooltip);
-
-  function getTime(tz) {
-    return new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: tz, hour12: false }).format(new Date());
-  }
-
-  container.addEventListener('mousemove', e => {
-    tooltip.style.left = (e.clientX + 16) + 'px';
-    tooltip.style.top  = (e.clientY + 16) + 'px';
-  });
-
-  const arcs = destinations.map(d => ({
-    startLat: baku.lat, startLng: baku.lng,
-    endLat: d.lat,      endLng: d.lng,
-    label: d.name,
-  }));
-  const allPoints = [
-    { lat: baku.lat, lng: baku.lng, name: 'Baku', tz: baku.tz, size: 0.9, color: '#00d6b2' },
-    ...destinations.map(d => ({ lat: d.lat, lng: d.lng, name: d.name, tz: d.tz, size: 0.9, color: '#00d6b2' }))
-  ];
-  const globe = Globe()(container)
-    .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-day.jpg')
-    .backgroundImageUrl('')
-    .backgroundColor('rgba(234,246,243,1)')
-    .arcStartLat(d => d.startLat)
-    .arcStartLng(d => d.startLng)
-    .arcEndLat(d => d.endLat)
-    .arcEndLng(d => d.endLng)
-    .arcColor(() => ['rgba(0,214,178,0)', 'rgba(0,255,210,1)', 'rgba(0,214,178,0)'])
-    .arcAltitudeAutoScale(0.35)
-    .arcStroke(0.8)
-    .arcDashLength(0.4)
-    .arcDashGap(0.15)
-    .arcDashAnimateTime(2200)
-    .arcsData(arcs)
-    .pointsData(allPoints)
-    .pointLat(d => d.lat)
-    .pointLng(d => d.lng)
-    .pointColor(d => d.color)
-    .pointAltitude(d => d.name === 'Baku' ? 0.02 : 0.01)
-    .pointRadius(d => d.size)
-    .pointsMerge(false)
-    .onPointHover(pt => {
-      if (pt) {
-        tooltip.innerHTML = `<strong>${pt.name}</strong><br>🕐 ${getTime(pt.tz)}`;
-        tooltip.style.display = 'block';
-        globe.controls().autoRotate = false;
-      } else {
-        tooltip.style.display = 'none';
-        globe.controls().autoRotate = true;
-      }
-    })
-    .labelsData(allPoints)
-    .labelLat(d => d.lat)
-    .labelLng(d => d.lng)
-    .labelText(d => d.name)
-    .labelSize(1.4)
-    .labelColor(() => 'rgba(255,255,255,0.85)')
-    .labelDotRadius(0.3)
-    .labelAltitude(0.015)
-    .width(container.offsetWidth)
-    .height(container.offsetHeight);
-
-  globe.pointOfView({ lat: 30, lng: 30, altitude: 1.8 });
-  globe.controls().autoRotate = true;
-  globe.controls().autoRotateSpeed = 0.6;
-  globe.controls().enableZoom = false;
-
-  window.addEventListener('resize', () => {
-    globe.width(container.offsetWidth).height(container.offsetHeight);
-  });
-})();
-</script>
-
-<!-- SERVICES -->
-<div class="services">
-  <a class="service-card" href="tours.html">
-    <span class="service-icon">✈</span>
-    <h3>Turlar</h3>
-    <p>Fərdi və qrup turları, lüks paketlər, xüsusi marşrutlar üzrə tam xidmət.</p>
-    <span class="arrow">Ətraflı →</span>
-  </a>
-  <a class="service-card" href="corporate.html">
-    <span class="service-icon">◈</span>
-    <h3>Korporativ xidmətlər</h3>
-    <p>Biznes səyahətləri, konfrans turları və korporativ paketlər.</p>
-    <span class="arrow">Ətraflı →</span>
-  </a>
-  <a class="service-card" href="visa.html">
-    <span class="service-icon">◉</span>
-    <h3>Viza xidməti</h3>
-    <p>80+ ölkə üçün viza müraciəti, sənəd hazırlanması və izlənməsi.</p>
-    <span class="arrow">Ətraflı →</span>
-  </a>
-  <a class="service-card" href="about.html">
-    <span class="service-icon">✦</span>
-    <h3>Biz kimik</h3>
-    <p>15 illik təcrübə, peşəkar komanda və fərdi yanaşma ilə fərqlənən agentlik.</p>
-    <span class="arrow">Ətraflı →</span>
-  </a>
-</div>
-
-<!-- DESTINATIONS -->
-<div class="section">
-  <div class="section-header">
-    <div>
-      <p class="section-label">Seçilmiş istiqamətlər</p>
-      <h2 class="section-title">Dünya <em>sizi gözləyir</em></h2>
-    </div>
-    <a href="tours.html">Hamısına bax</a>
-  </div>
-  <div class="dest-grid">
-    <div class="dest-card large">
-      <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80" alt="Maldiv">
-      <div class="dest-overlay"><h3>Maldiv</h3><p>Özəl su üstü villalar · Hind Okeanı</p></div>
-      <span class="dest-tag">Ən populyar</span>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=600&q=80" alt="Venesiya">
-      <div class="dest-overlay"><h3>Venesiya</h3><p>Tarixi saraylar · İtaliya</p></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai">
-      <div class="dest-overlay"><h3>Dubai</h3><p>Ultra-lüks qüllələr · BAƏ</p></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=600&q=80" alt="Kioto">
-      <div class="dest-overlay"><h3>Kioto</h3><p>Ryokan istirahəti · Yaponiya</p></div>
-    </div>
-    <div class="dest-card">
-      <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80" alt="Paris">
-      <div class="dest-overlay"><h3>Paris</h3><p>Grand otellər · Fransa</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- WHY US -->
-<div class="why-section">
-  <p class="section-label">Niyə biz?</p>
-  <h2 class="section-title">Lumivara <em>fərqi</em></h2>
-  <div class="divider"></div>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-num">01</div>
-      <h3>Fərdi yanaşma</h3>
-      <p>Hər müştəriyə unikal marşrut. Standart tur yox, sizə xas səyahət təcrübəsi.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">02</div>
-      <h3>15 il təcrübə</h3>
-      <p>2008-dən bəri minlərlə məmnun müştəri, şəffaf qiymət siyasəti və etibarlı xidmət.</p>
-    </div>
-    <div class="why-card">
-      <div class="why-num">03</div>
-      <h3>Tam dəstək</h3>
-      <p>Vizadan tutmuş otellərə qədər hər mərhələdə yanınızdayıq. 7/24 əlaqə.</p>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-section">
-  <div>
-    <h2>Səyahətinizi <em>planlaşdıraq</em></h2>
-    <p>Mütəxəssislərimizlə əlaqə saxlayın, sizə uyğun paket hazırlayaq.</p>
-  </div>
-  <div class="cta-btns">
-    <a href="contact.html" class="btn-primary">Bizimlə əlaqə</a>
-    <a href="tours.html" class="btn-ghost">Turlara bax</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo"><img src="D_Icon.png" alt="Lumivara Travel"></div>
-  <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
-  <div class="footer-links">
-    <a href="#">Məxfilik</a>
-    <a href="#">Şərtlər</a>
-    <a href="https://www.instagram.com/lumivaratravel/" target="_blank" rel="noopener">Instagram</a>
-  </div>
-</footer>
 
 </body>
 </html>

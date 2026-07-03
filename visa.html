@@ -21,41 +21,65 @@
   .page-banner-overlay h1 em { font-style:italic; color:var(--teal); }
   .page-banner-overlay p { font-size:0.8rem; color:rgba(255,255,255,0.68); margin-top:0.75rem; max-width:480px; line-height:1.8; }
 
-  .intro-section { padding:4rem 4rem 2rem; max-width:780px; }
+  .intro-section { padding:4rem 4rem 1rem; max-width:780px; }
   .intro-section p { font-size:0.85rem; color:var(--text-muted); line-height:2; margin-top:1rem; }
 
-  /* Destination card grid */
-  .visa-hub-grid {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1.5rem;
-    padding:2rem 4rem 5rem;
+  /* Country search combobox */
+  .country-search-wrap { padding:0 4rem 5rem; }
+  .country-combobox { max-width:640px; position:relative; }
+  .country-combobox-label { display:block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-dark); margin-bottom:0.6rem; }
+  .country-combobox-input-wrap {
+    position:relative; display:flex; align-items:center;
+    background:#fff; border:1px solid rgba(0,134,110,0.25);
+    transition:border-color 0.3s, box-shadow 0.3s;
   }
-  .visa-hub-card {
-    background:#fff;
-    border:1px solid rgba(0,134,110,0.12);
-    text-decoration:none;
-    color:var(--text);
-    display:flex; flex-direction:column;
-    transition:border-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    position:relative; overflow:hidden;
-  }
-  .visa-hub-card:hover {
+  .country-combobox-input-wrap:focus-within {
     border-color:var(--teal);
-    box-shadow:0 8px 28px rgba(0,134,110,0.1);
-    transform:translateY(-3px);
+    box-shadow:0 0 0 3px rgba(0,214,178,0.15);
   }
-  .visa-hub-card-img { width:100%; height:160px; object-fit:cover; filter:brightness(0.82); display:block; transition:filter 0.4s; }
-  .visa-hub-card:hover .visa-hub-card-img { filter:brightness(0.95); }
-  .visa-hub-card-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; }
-  .visa-hub-card-flag { font-size:1.6rem; margin-bottom:0.6rem; }
-  .visa-hub-card-title { font-family:var(--font-display); font-size:1.4rem; font-weight:300; margin-bottom:0.4rem; }
-  .visa-hub-card-sub { font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-dark); margin-bottom:1rem; }
-  .visa-hub-card-stats { display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1.25rem; flex:1; }
-  .visa-stat-row { display:flex; justify-content:space-between; font-size:0.72rem; padding:0.3rem 0; border-bottom:1px solid rgba(0,134,110,0.08); }
-  .visa-stat-key { color:var(--text-muted); }
-  .visa-stat-val { color:var(--text); font-weight:500; }
-  .visa-hub-card-link { font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal-dark); margin-top:auto; }
+  .country-combobox-input {
+    flex:1; border:none; outline:none; background:transparent;
+    font-family:var(--font-body); font-size:1rem; color:var(--text);
+    padding:1.1rem 1.2rem;
+  }
+  .country-combobox-input::placeholder { color:var(--text-muted); opacity:0.6; }
+  .country-combobox-icon { padding:0 1.2rem; color:var(--teal-dark); opacity:0.55; font-size:0.95rem; flex-shrink:0; }
+  .country-combobox-clear {
+    border:none; background:none; cursor:pointer; color:var(--text-muted);
+    font-size:1.1rem; padding:0 1rem; line-height:1; display:none;
+  }
+  .country-combobox-clear.visible { display:block; }
+  .country-combobox-list {
+    list-style:none; position:absolute; top:calc(100% + 8px); left:0; right:0;
+    background:#fff; border:1px solid rgba(0,134,110,0.18);
+    max-height:340px; overflow-y:auto;
+    box-shadow:0 16px 36px rgba(0,51,42,0.14);
+    z-index:50; display:none;
+  }
+  .country-combobox-list.open { display:block; }
+  .country-combobox-list li { border-bottom:1px solid rgba(0,134,110,0.07); }
+  .country-combobox-list li:last-child { border-bottom:none; }
+  .country-combobox-list li[hidden] { display:none; }
+  .country-option-link {
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0.85rem 1.2rem; font-size:0.85rem; color:var(--text);
+    text-decoration:none; cursor:pointer;
+    transition:background 0.2s, color 0.2s;
+  }
+  .country-option-link:hover, .country-option-link:focus {
+    background:var(--bg-alt); color:var(--teal-dark); outline:none;
+  }
+  .country-option-arrow { opacity:0; font-size:0.75rem; color:var(--teal-dark); transition:opacity 0.2s; }
+  .country-option-link:hover .country-option-arrow,
+  .country-option-link:focus .country-option-arrow { opacity:1; }
+  .country-combobox-empty {
+    padding:1rem 1.2rem; font-size:0.8rem; color:var(--text-muted);
+    background:#fff; border:1px solid rgba(0,134,110,0.18);
+    position:absolute; top:calc(100% + 8px); left:0; right:0;
+    z-index:50; display:none;
+  }
+  .country-combobox-empty.open { display:block; }
+  .country-combobox-hint { font-size:0.72rem; color:var(--text-muted); margin-top:0.85rem; opacity:0.8; }
 
   /* Steps section */
   .steps-section { background:var(--bg-alt); padding:4rem; border-top:1px solid rgba(0,214,178,0.15); }
@@ -75,15 +99,17 @@
   @media(max-width:900px){
     .page-banner { height:220px; }
     .page-banner-overlay { padding:2rem 1.5rem; }
-    .intro-section { padding:3rem 1.5rem 1.5rem; }
-    .visa-hub-grid { grid-template-columns:1fr 1fr; padding:1.5rem 1.5rem 4rem; }
+    .intro-section { padding:3rem 1.5rem 0.5rem; }
+    .country-search-wrap { padding:0 1.5rem 3.5rem; }
     .steps-grid { grid-template-columns:1fr; }
     .step-item { border-right:none; border-bottom:1px solid rgba(0,214,178,0.12); }
     .steps-section { padding:3rem 1.5rem; }
     .cta-strip { padding:3rem 1.5rem; flex-direction:column; }
   }
-  @media(max-width:600px){
-    .visa-hub-grid { grid-template-columns:1fr; }
+  @media(max-width:480px){
+    .country-combobox-input { font-size:0.95rem; padding:1rem; }
+    .country-combobox-icon { padding:0 0.85rem; }
+    .country-option-link { padding:0.8rem 1rem; font-size:0.82rem; }
   }
 </style>
 </head>
@@ -113,110 +139,33 @@
 
 <section class="intro-section">
   <p class="section-label">İstiqamət seçin</p>
-  <h2 class="section-title">Hara <em>getmək istərdiniz?</em></h2>
+  <h2 class="section-title">Hara <em>getmək istəyirsiniz?</em></h2>
   <div class="divider"></div>
-  <p>Aşağıda 2026-cı il tarixli məlumatlara əsasən hazırlanmış viza bələdçilərini tapa bilərsiniz. Hər istiqamət üçün sənəd tələbləri, emal müddəti, konsulluq haqları və müraciət prosesi haqqında ətraflı məlumat verilmişdir.</p>
+  <p>Getmək istədiyiniz ölkəni aşağıdakı axtarış xanasına yazın və həmin ölkə üçün viza məlumatlarına keçid alın.</p>
 </section>
 
-<!-- DESTINATION CARDS -->
-<div class="visa-hub-grid">
-
-  <a href="schengen.html" class="visa-hub-card">
-    <img class="visa-hub-card-img" src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80" alt="Şengen Vizası">
-    <div class="visa-hub-card-body">
-      <div class="visa-hub-card-flag">🇪🇺</div>
-      <div class="visa-hub-card-title">Şengen Vizası</div>
-      <div class="visa-hub-card-sub">27 Avropa Ölkəsi</div>
-      <div class="visa-hub-card-stats">
-        <div class="visa-stat-row"><span class="visa-stat-key">Emal müddəti</span><span class="visa-stat-val">10–15 iş günü</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Konsulluq haqqı</span><span class="visa-stat-val">€80</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Qalma müddəti</span><span class="visa-stat-val">90 gün / 180 gün</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Barmaq izi</span><span class="visa-stat-val">Tələb olunur</span></div>
-      </div>
-      <span class="visa-hub-card-link">Ətraflı məlumat →</span>
+<!-- COUNTRY SEARCH COMBOBOX -->
+<div class="country-search-wrap">
+  <div class="country-combobox" id="countryCombobox">
+    <label class="country-combobox-label" for="countryInput">Hara getmək istəyirsiniz?</label>
+    <div class="country-combobox-input-wrap">
+      <span class="country-combobox-icon" aria-hidden="true">⌕</span>
+      <input
+        type="text"
+        id="countryInput"
+        class="country-combobox-input"
+        placeholder="Ölkə adını yazın..."
+        autocomplete="off"
+        role="combobox"
+        aria-expanded="false"
+        aria-controls="countryListBox"
+        aria-autocomplete="list">
+      <button type="button" class="country-combobox-clear" id="countryClearBtn" aria-label="Təmizlə">✕</button>
     </div>
-  </a>
-
-  <a href="yaponiya.html" class="visa-hub-card">
-    <img class="visa-hub-card-img" src="https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?w=600&q=80" alt="Yaponiya Vizası">
-    <div class="visa-hub-card-body">
-      <div class="visa-hub-card-flag">🇯🇵</div>
-      <div class="visa-hub-card-title">Yaponiya Vizası</div>
-      <div class="visa-hub-card-sub">Turist Vizası</div>
-      <div class="visa-hub-card-stats">
-        <div class="visa-stat-row"><span class="visa-stat-key">Emal müddəti</span><span class="visa-stat-val">5–7 iş günü</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Konsulluq haqqı</span><span class="visa-stat-val">~$25</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Qalma müddəti</span><span class="visa-stat-val">15–30 gün</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Barmaq izi</span><span class="visa-stat-val">Hava limanında</span></div>
-      </div>
-      <span class="visa-hub-card-link">Ətraflı məlumat →</span>
-    </div>
-  </a>
-
-  <a href="koreya.html" class="visa-hub-card">
-    <img class="visa-hub-card-img" src="https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=600&q=80" alt="Cənubi Koreya Vizası">
-    <div class="visa-hub-card-body">
-      <div class="visa-hub-card-flag">🇰🇷</div>
-      <div class="visa-hub-card-title">Cənubi Koreya Vizası</div>
-      <div class="visa-hub-card-sub">C-3 Turist Vizası</div>
-      <div class="visa-hub-card-stats">
-        <div class="visa-stat-row"><span class="visa-stat-key">Emal müddəti</span><span class="visa-stat-val">3–5 iş günü</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Konsulluq haqqı</span><span class="visa-stat-val">$45</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Qalma müddəti</span><span class="visa-stat-val">30–90 gün</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Barmaq izi</span><span class="visa-stat-val">Tələb olunur</span></div>
-      </div>
-      <span class="visa-hub-card-link">Ətraflı məlumat →</span>
-    </div>
-  </a>
-
-  <a href="tailand.html" class="visa-hub-card">
-    <img class="visa-hub-card-img" src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80" alt="Tailand Vizası">
-    <div class="visa-hub-card-body">
-      <div class="visa-hub-card-flag">🇹🇭</div>
-      <div class="visa-hub-card-title">Tailand Vizası</div>
-      <div class="visa-hub-card-sub">Gəlişdə Viza / e-Viza</div>
-      <div class="visa-hub-card-stats">
-        <div class="visa-stat-row"><span class="visa-stat-key">Emal müddəti</span><span class="visa-stat-val">Dərhal / 3–5 gün</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">VOA haqqı</span><span class="visa-stat-val">$35</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Qalma müddəti</span><span class="visa-stat-val">15–60 gün</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Barmaq izi</span><span class="visa-stat-val">Adətən tələb olunmur</span></div>
-      </div>
-      <span class="visa-hub-card-link">Ətraflı məlumat →</span>
-    </div>
-  </a>
-
-  <a href="hindistan.html" class="visa-hub-card">
-    <img class="visa-hub-card-img" src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80" alt="Hindistan e-Vizası">
-    <div class="visa-hub-card-body">
-      <div class="visa-hub-card-flag">🇮🇳</div>
-      <div class="visa-hub-card-title">Hindistan e-Vizası</div>
-      <div class="visa-hub-card-sub">Online e-Turist Vizası</div>
-      <div class="visa-hub-card-stats">
-        <div class="visa-stat-row"><span class="visa-stat-key">Emal müddəti</span><span class="visa-stat-val">3–5 iş günü</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">e-Viza haqqı</span><span class="visa-stat-val">$25 – $80</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Qalma müddəti</span><span class="visa-stat-val">30–90 gün</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Barmaq izi</span><span class="visa-stat-val">Tələb olunmur</span></div>
-      </div>
-      <span class="visa-hub-card-link">Ətraflı məlumat →</span>
-    </div>
-  </a>
-
-  <a href="monteneqro.html" class="visa-hub-card">
-    <img class="visa-hub-card-img" src="https://images.unsplash.com/photo-1555990793-da11153b2473?w=600&q=80" alt="Monteneqro Vizası">
-    <div class="visa-hub-card-body">
-      <div class="visa-hub-card-flag">🇲🇪</div>
-      <div class="visa-hub-card-title">Monteneqro Vizası</div>
-      <div class="visa-hub-card-sub">Qısamüddətli Turist Vizası</div>
-      <div class="visa-hub-card-stats">
-        <div class="visa-stat-row"><span class="visa-stat-key">Emal müddəti</span><span class="visa-stat-val">5–10 iş günü</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Konsulluq haqqı</span><span class="visa-stat-val">€35–60</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Qalma müddəti</span><span class="visa-stat-val">30 günə qədər</span></div>
-        <div class="visa-stat-row"><span class="visa-stat-key">Şengen viza ilə</span><span class="visa-stat-val">Vizasız giriş</span></div>
-      </div>
-      <span class="visa-hub-card-link">Ətraflı məlumat →</span>
-    </div>
-  </a>
-
+    <ul class="country-combobox-list" id="countryListBox" role="listbox"></ul>
+    <p class="country-combobox-empty" id="countryEmptyMsg">Nəticə tapılmadı. Başqa ölkə adı yoxlayın.</p>
+  </div>
+  <p class="country-combobox-hint">190-dan çox ölkə arasından axtarın — nəticəyə klikləyərək həmin ölkənin viza məlumatlarına keçid alın.</p>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -260,6 +209,142 @@
     <a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="https://www.instagram.com/lumivaratravel/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </footer>
+
+<script>
+(function(){
+  var dedicatedPages = {
+    "Yaponiya": "yaponiya.html",
+    "Cənubi Koreya": "koreya.html",
+    "Tailand": "tailand.html",
+    "Hindistan": "hindistan.html",
+    "Monteneqro": "monteneqro.html"
+  };
+
+  var countryNames = [
+    // Avropa
+    "Albaniya","Andorra","Avstriya","Belçika","Belarus","Bolqarıstan","Bosniya və Herseqovina",
+    "Böyük Britaniya","Çexiya","Danimarka","Estoniya","Finlandiya","Fransa","Almaniya","Yunanıstan",
+    "Xorvatiya","Niderland","İrlandiya","İslandiya","İspaniya","İsveç","İsveçrə","İtaliya","Kipr",
+    "Kosovo","Latviya","Lixtenşteyn","Litva","Lüksemburq","Macarıstan","Şimali Makedoniya","Malta",
+    "Moldova","Monako","Monteneqro","Norveç","Polşa","Portuqaliya","Rumıniya","Rusiya","San-Marino",
+    "Serbiya","Slovakiya","Sloveniya","Ukrayna","Vatikan",
+    // Asiya
+    "Əfqanıstan","Bəhreyn","Banqladeş","Butan","Bruney","Kamboca","Çin","Gürcüstan","Hindistan",
+    "İndoneziya","İran","İraq","İsrail","Yaponiya","İordaniya","Qazaxıstan","Küveyt","Qırğızıstan",
+    "Laos","Livan","Malayziya","Maldiv adaları","Monqolustan","Myanma","Nepal","Şimali Koreya","Oman",
+    "Pakistan","Fələstin","Filippin","Qatar","Səudiyyə Ərəbistanı","Sinqapur","Cənubi Koreya",
+    "Şri-Lanka","Suriya","Tacikistan","Tayvan","Tailand","Şərqi Timor","Türkiyə","Türkmənistan",
+    "Birləşmiş Ərəb Əmirlikləri","Özbəkistan","Vyetnam","Yəmən",
+    // Afrika
+    "Əlcəzair","Anqola","Benin","Botsvana","Burkina-Faso","Burundi","Kabo-Verde","Kamerun",
+    "Mərkəzi Afrika Respublikası","Çad","Komor adaları","Konqo Respublikası","Konqo Demokratik Respublikası",
+    "Cibuti","Misir","Ekvatorial Qvineya","Eritreya","Esvatini","Efiopiya","Qabon","Qambiya","Qana",
+    "Qvineya","Qvineya-Bisau","Kot-d'İvuar","Keniya","Lesoto","Liberiya","Liviya","Madaqaskar","Malavi",
+    "Mali","Mavritaniya","Mavriki","Mərakeş","Mozambik","Namibiya","Niger","Nigeriya","Ruanda",
+    "San-Tome və Prinsipi","Seneqal","Seyşel adaları","Syerra-Leone","Somali","Cənubi Afrika",
+    "Cənubi Sudan","Sudan","Tanzaniya","Toqo","Tunis","Uqanda","Zambiya","Zimbabve",
+    // Şimali Amerika
+    "Antiqua və Barbuda","Baham adaları","Barbados","Beliz","Kanada","Kosta-Rika","Kuba","Dominika",
+    "Dominikan Respublikası","El-Salvador","Qrenada","Qvatemala","Haiti","Honduras","Yamayka","Meksika",
+    "Nikaraqua","Panama","Sent-Kits və Nevis","Sent-Lüsiya","Sent-Vinsent və Qrenadinlər",
+    "Trinidad və Tobaqo","ABŞ",
+    // Cənubi Amerika
+    "Argentina","Boliviya","Braziliya","Çili","Kolumbiya","Ekvador","Qayana","Paraqvay","Peru",
+    "Surinam","Uruqvay","Venesuela",
+    // Okeaniya
+    "Avstraliya","Fici","Kiribati","Marşal adaları","Mikroneziya","Nauru","Yeni Zelandiya","Palau",
+    "Papua-Yeni Qvineya","Samoa","Solomon adaları","Tonqa","Tuvalu","Vanuatu"
+  ];
+
+  var countries = countryNames.map(function(name){
+    return {
+      name: name,
+      href: dedicatedPages[name] || ("tezlikle.html#" + encodeURIComponent(name))
+    };
+  }).sort(function(a,b){ return a.name.localeCompare(b.name,'az'); });
+
+  var input = document.getElementById('countryInput');
+  var list = document.getElementById('countryListBox');
+  var emptyMsg = document.getElementById('countryEmptyMsg');
+  var clearBtn = document.getElementById('countryClearBtn');
+  var combobox = document.getElementById('countryCombobox');
+
+  list.innerHTML = countries.map(function(c){
+    return '<li role="option"><a class="country-option-link" href="' + c.href + '" data-name="' +
+      c.name.toLocaleLowerCase('az') + '"><span>' + c.name + '</span><span class="country-option-arrow">→</span></a></li>';
+  }).join('');
+
+  var items = Array.prototype.slice.call(list.querySelectorAll('li'));
+
+  function openList(){
+    list.classList.add('open');
+    input.setAttribute('aria-expanded','true');
+  }
+  function closeList(){
+    list.classList.remove('open');
+    emptyMsg.classList.remove('open');
+    input.setAttribute('aria-expanded','false');
+  }
+  function filterList(){
+    var q = input.value.trim().toLocaleLowerCase('az');
+    clearBtn.classList.toggle('visible', q.length > 0);
+    var visibleCount = 0;
+    items.forEach(function(li){
+      var name = li.querySelector('a').getAttribute('data-name');
+      var match = name.indexOf(q) !== -1;
+      li.hidden = !match;
+      if (match) visibleCount++;
+    });
+    openList();
+    emptyMsg.classList.toggle('open', visibleCount === 0);
+  }
+
+  input.addEventListener('input', filterList);
+  input.addEventListener('focus', filterList);
+
+  input.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      var first = items.find(function(li){ return !li.hidden; });
+      if (first) first.querySelector('a').focus();
+    } else if (e.key === 'Escape') {
+      closeList();
+    }
+  });
+
+  list.addEventListener('keydown', function(e){
+    var target = e.target.closest('a');
+    if (!target) return;
+    var li = target.closest('li');
+    var idx = items.indexOf(li);
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      for (var i = idx + 1; i < items.length; i++) {
+        if (!items[i].hidden) { items[i].querySelector('a').focus(); break; }
+      }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      for (var j = idx - 1; j >= 0; j--) {
+        if (!items[j].hidden) { items[j].querySelector('a').focus(); break; }
+      }
+      if (idx === 0 || items.slice(0, idx).every(function(li){ return li.hidden; })) input.focus();
+    } else if (e.key === 'Escape') {
+      closeList();
+      input.focus();
+    }
+  });
+
+  clearBtn.addEventListener('click', function(){
+    input.value = '';
+    input.focus();
+    filterList();
+  });
+
+  document.addEventListener('click', function(e){
+    if (!combobox.contains(e.target)) closeList();
+  });
+})();
+</script>
 
 </body>
 </html>

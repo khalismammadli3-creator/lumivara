@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viza Məlumatları Tezliklə | Lumivara Travel</title>
+<meta name="description" content="Seçdiyiniz ölkə üçün viza məlumatları hazırlanır və tezliklə əlavə olunacaq.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="L_Icon.png" type="image/png">
+<link rel="stylesheet" href="nav.css">
+<style>
+  body{background:var(--bg);}
+  .page-banner{width:100%;height:280px;position:relative;overflow:hidden;}
+  .page-banner img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5);}
+  .page-banner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 4rem;background:linear-gradient(to top,rgba(0,30,20,0.85) 0%,transparent 60%);}
+  .page-banner-overlay .breadcrumb{font-size:0.65rem;color:rgba(255,255,255,0.5);letter-spacing:0.08em;margin-bottom:0.75rem;}
+  .page-banner-overlay .breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
+  .page-banner-overlay h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.4rem);font-weight:300;color:#fff;line-height:1.1;}
+  .page-banner-overlay h1 em{font-style:italic;color:var(--teal);}
+
+  .soon-wrap{max-width:720px;margin:0 auto;padding:5rem 4rem;text-align:center;}
+  .soon-icon{font-size:3rem;margin-bottom:1.5rem;opacity:0.85;}
+  .soon-wrap .section-label{justify-content:center;display:block;}
+  .soon-wrap h2{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;margin-bottom:1.25rem;color:var(--text);}
+  .soon-wrap h2 em{font-style:italic;color:var(--teal-dark);}
+  .soon-wrap .divider{margin-left:auto;margin-right:auto;}
+  .soon-wrap p.soon-msg{font-size:0.9rem;color:var(--text-muted);line-height:2;max-width:520px;margin:0 auto;}
+  .soon-actions{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.5rem;}
+
+  @media(max-width:900px){
+    .page-banner{height:220px;}
+    .page-banner-overlay{padding:1.5rem;}
+    .soon-wrap{padding:3.5rem 1.5rem;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html"><img src="L_Large (3).png" alt="Lumivara Travel"></a>
+  <ul class="nav-links">
+    <li class="nav-home"><a href="index.html" title="Ana səhifə">⌂</a></li><li class="nav-divider"></li>
+    <li><a href="about.html">Biz kimik</a></li><li><a href="tours.html">Turlar</a></li>
+    <li><a href="corporate.html">Korporativ xidmətlər</a></li>
+    <li><a href="visa.html" class="active">Viza</a></li>
+    <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
+  </ul>
+</nav>
+
+<div class="page-banner">
+  <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1600&q=80" alt="Viza Məlumatları">
+  <div class="page-banner-overlay">
+    <div class="breadcrumb"><a href="index.html">Ana Səhifə</a> › <a href="visa.html">Viza</a> › <span class="js-country-name-crumb">Tezliklə</span></div>
+    <h1><span class="js-country-name">Bu ölkə</span> <em>Vizası</em></h1>
+  </div>
+</div>
+
+<section class="soon-wrap">
+  <div class="soon-icon">🛂</div>
+  <p class="section-label">Tezliklə</p>
+  <h2><span class="js-country-name">Bu ölkə</span> üçün viza məlumatları <em>tezliklə əlavə olunacaq</em></h2>
+  <div class="divider"></div>
+  <p class="soon-msg">Hazırda <span class="js-country-name">bu ölkə</span> üçün viza tələbləri, sənəd siyahısı və müraciət prosesi haqqında məlumatları hazırlayırıq. Bu istiqamətə səyahət planlaşdırırsınızsa, komandamızla əlaqə saxlayın — sizə fərdi qaydada məlumat verək.</p>
+  <div class="soon-actions">
+    <a href="contact.html" class="btn-primary">Əlaqə saxla</a>
+    <a href="visa.html" class="btn-ghost">Digər istiqamətlərə bax</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><img src="D_Icon.png" alt="Lumivara Travel"></div>
+  <p class="footer-copy">© 2025 Lumivara Travel. Bütün hüquqlar qorunur.</p>
+  <div class="footer-links">
+    <a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="https://www.instagram.com/lumivaratravel/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var hashValue = window.location.hash ? window.location.hash.slice(1) : '';
+  var country = (params.get('olke') || params.get('country') || decodeURIComponent(hashValue || '') || '').trim();
+
+  if (country) {
+    document.title = country + ' Vizası — Tezliklə | Lumivara Travel';
+    document.querySelectorAll('.js-country-name').forEach(function(el){ el.textContent = country; });
+    document.querySelectorAll('.js-country-name-crumb').forEach(function(el){ el.textContent = country; });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -12,11 +12,11 @@
 <style>
   body { background: var(--bg); }
 
-  .page-banner { width:100%; height:300px; position:relative; overflow:hidden; }
-  .page-banner img { width:100%; height:100%; object-fit:cover; filter:brightness(0.48); }
+  .page-banner { width:100%; min-height:300px; position:relative; overflow:hidden; }
+  .page-banner img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(0.48); }
   .page-banner-overlay {
-    position:absolute; inset:0; display:flex; flex-direction:column;
-    justify-content:center; padding:2rem 3rem;
+    position:relative; display:flex; flex-direction:column;
+    justify-content:center; padding:2.5rem 3rem;
     background:linear-gradient(to right, rgba(0,51,42,0.82) 0%, rgba(0,51,42,0.35) 65%, transparent 100%);
   }
   .page-banner-overlay .breadcrumb { font-size:0.65rem; color:rgba(255,255,255,0.5); letter-spacing:0.08em; margin-bottom:0.6rem; }
@@ -93,7 +93,7 @@
   .cta-bar p { font-size:0.78rem; color:var(--text-muted); margin-top:0.3rem; max-width:480px; }
 
   @media(max-width:900px){
-    .page-banner { height:260px; }
+    .page-banner { min-height:260px; }
     .page-banner-overlay { padding:1.5rem; background:linear-gradient(to top, rgba(0,30,20,0.88) 10%, rgba(0,30,20,0.35) 70%); }
     .page-banner-overlay p.hero-subtitle { font-size:0.78rem; line-height:1.5; }
 
@@ -261,7 +261,7 @@
         <div class="doc-item"><span class="doc-check">✓</span><span>Səfər məqsədinə uyğun əlavə dəstəkləyici sənədlər</span></div>
       </div>
       <div class="doc-note">
-        <p>Sənədlərin tam siyahısı səfər məqsədinizə görə dəyişə bilər. Əmin olmaq üçün <a href="https://visas-de.tlscontact.com" target="_blank" rel="noopener" style="color:var(--teal-dark);">TLScontact saytını</a> yoxlayın və ya <a href="https://wa.me/994102372121" target="_blank" rel="noopener" style="color:var(--teal-dark);">bizimlə əlaqə saxlayın</a>.</p>
+        <p>Sənədlərin tam siyahısı səfər məqsədinizə görə dəyişə bilər. Əmin olmaq üçün <a href="https://visas-de.tlscontact.com/en-us/country/az/vac/azBAK2de" target="_blank" rel="noopener" style="color:var(--teal-dark);">TLScontact saytını</a> yoxlayın və ya <a href="https://wa.me/994102372121" target="_blank" rel="noopener" style="color:var(--teal-dark);">bizimlə əlaqə saxlayın</a>.</p>
       </div>
     </div>
   </div>
@@ -370,7 +370,7 @@
   </div>
 
   <div style="margin-top:1.5rem;">
-    <a href="https://visas-de.tlscontact.com" target="_blank" rel="noopener" class="btn-primary">Görüş Təyin Et</a>
+    <a href="https://visas-de.tlscontact.com/en-us/country/az/vac/azBAK2de" target="_blank" rel="noopener" class="btn-primary">Görüş Təyin Et</a>
   </div>
 </section>
 

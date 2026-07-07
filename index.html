@@ -118,29 +118,22 @@
   .home-kb-stat-num { font-family:var(--font-display); font-size:2.4rem; font-weight:300; color:var(--teal); line-height:1; }
   .home-kb-stat-label { font-size:0.72rem; color:rgba(242,250,248,0.65); letter-spacing:0.04em; max-width:150px; line-height:1.5; }
 
-  /* ── FEATURED GUIDES ── */
-  .home-guides { padding:4rem; background:var(--bg); }
-  .home-guides-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; margin-top:2rem; }
-  .home-guide-card {
-    background:#fff; border:1px solid rgba(0,134,110,0.12); padding:1.5rem;
-    text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:0.5rem;
-    transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-  }
-  .home-guide-card:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(0,100,80,0.1); border-color:rgba(0,214,178,0.4); }
-  .home-guide-flag { font-size:1.7rem; }
-  .home-guide-name { font-family:var(--font-display); font-size:1.2rem; font-weight:400; color:var(--text); }
-  .home-guide-tag { font-size:0.68rem; color:var(--text-muted); letter-spacing:0.03em; }
-  .home-guide-arrow { font-size:0.7rem; color:var(--teal-dark); margin-top:auto; letter-spacing:0.08em; text-transform:uppercase; }
-  .home-guides-more { text-align:center; margin-top:2.5rem; }
-
-  /* ── HOW WE WORK ── */
-  .home-steps { background:var(--bg-alt); padding:4rem; border-top:1px solid rgba(0,214,178,0.15); }
-  .home-steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:2.5rem; border:1px solid rgba(0,214,178,0.15); }
-  .home-step-item { padding:2rem 1.75rem; background:#fff; border-right:1px solid rgba(0,214,178,0.12); }
-  .home-step-item:last-child { border-right:none; }
-  .home-step-num { font-family:var(--font-display); font-size:2.6rem; font-weight:300; color:var(--teal); opacity:0.3; line-height:1; margin-bottom:0.85rem; }
-  .home-step-item h3 { font-family:var(--font-display); font-size:1.1rem; font-weight:400; margin-bottom:0.5rem; }
-  .home-step-item p { font-size:0.75rem; color:var(--text-muted); line-height:1.8; }
+  /* ── TOURS ── */
+  .home-tours { padding:4rem; background:var(--bg-alt); }
+  .home-tours-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:2rem; }
+  .home-tour-card { background:#fff; border:1px solid rgba(0,134,110,0.1); text-decoration:none; color:inherit; display:flex; flex-direction:column; transition:transform 0.3s, box-shadow 0.3s; overflow:hidden; }
+  .home-tour-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,100,80,0.12); }
+  .home-tour-card-img-wrap { position:relative; overflow:hidden; height:180px; }
+  .home-tour-card-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; filter:brightness(0.88); }
+  .home-tour-card:hover .home-tour-card-img-wrap img { transform:scale(1.05); filter:brightness(0.98); }
+  .home-tour-badge { position:absolute; top:0.75rem; left:0.75rem; background:var(--teal); color:var(--teal-deep); font-size:0.55rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:0.25rem 0.65rem; }
+  .home-tour-badge-alt { background:var(--teal-deep); color:var(--teal); }
+  .home-tour-card-body { padding:1.25rem; flex:1; display:flex; flex-direction:column; gap:0.4rem; }
+  .home-tour-card-label { font-size:0.6rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal-dark); }
+  .home-tour-card-title { font-family:var(--font-display); font-size:1.15rem; font-weight:400; color:var(--text); line-height:1.2; margin:0; }
+  .home-tour-card-title em { font-style:italic; color:var(--teal-dark); }
+  .home-tour-card-desc { font-size:0.72rem; color:var(--text-muted); line-height:1.8; flex:1; }
+  .home-tour-card-price { font-size:0.75rem; color:var(--teal-dark); font-weight:600; margin-top:0.75rem; }
 
   /* ── WHY CHOOSE US ── */
   .home-why { padding:4rem; background:var(--bg); }
@@ -160,10 +153,8 @@
 
   @media(max-width:1100px){
     .home-services-grid { grid-template-columns:repeat(2,1fr); }
-    .home-guides-grid { grid-template-columns:repeat(2,1fr); }
-    .home-steps-grid { grid-template-columns:repeat(2,1fr); }
+    .home-tours-grid { grid-template-columns:repeat(2,1fr); }
     .home-why-grid { grid-template-columns:repeat(2,1fr); }
-    .home-step-item:nth-child(2) { border-right:none; }
   }
   @media(max-width:900px){
     .home-hero { min-height:520px; }
@@ -172,18 +163,15 @@
     .home-hero-az { align-self:center; }
     .home-hero-az-circle { width:180px; height:180px; }
     .home-hero-az-caption { font-size:0.7rem; max-width:160px; }
-    .home-intro, .home-services, .home-kb, .home-guides, .home-steps, .home-why, .home-cta { padding:3rem 1.5rem; }
+    .home-intro, .home-services, .home-kb, .home-tours, .home-why, .home-cta { padding:3rem 1.5rem; }
     .home-intro-grid { grid-template-columns:1fr; gap:2rem; }
     .home-intro-grid img { height:260px; }
-    .home-services-grid, .home-guides-grid, .home-why-grid { grid-template-columns:1fr 1fr; }
-    .home-steps-grid { grid-template-columns:1fr; }
-    .home-step-item { border-right:none; border-bottom:1px solid rgba(0,214,178,0.12); }
-    .home-step-item:nth-child(2) { border-bottom:1px solid rgba(0,214,178,0.12); }
+    .home-services-grid, .home-tours-grid, .home-why-grid { grid-template-columns:1fr 1fr; }
     .home-cta { flex-direction:column; align-items:flex-start; }
     .home-kb-stat { display:flex; }
   }
   @media(max-width:600px){
-    .home-services-grid, .home-guides-grid, .home-why-grid { grid-template-columns:1fr; }
+    .home-services-grid, .home-tours-grid, .home-why-grid { grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -293,53 +281,75 @@
   <div class="home-kb-inner">
     <p class="section-label">Bilik Bazamız</p>
     <h2>Azərbaycan dilində ölkə-ölkə <em>viza bələdçiləri</em></h2>
-    <p>Hər bələdçidə tələb olunan sənədlərin siyahısı, müraciət addımları, rüsumlar və faydalı məsləhətlər aydın şəkildə izah olunur. Bu bazanı davamlı olaraq genişləndiririk ki, siz müraciətdən əvvəl bütün detalları öyrənə biləsiniz.</p>
-    <div class="home-kb-stat">
-      <span class="home-kb-stat-num" id="guideCount">–</span>
-      <span class="home-kb-stat-label">ölkə üçün hazır viza bələdçisi, üstəlik ümumi Şengen icmalı</span>
-    </div>
-    <div>
-      <a href="visa.html" class="btn-primary">Bütün Bələdçilərə Bax</a>
+    <p>Etibarlı məlumat, aydın izah və praktik tövsiyələr. Viza Bilik Bazamız müraciət prosesini daha rahat başa düşməyiniz üçün hazırlanıb.</p>
+    <div style="margin-top:2rem;">
+      <a href="visa.html" class="btn-primary">Viza Bələdçilərinə Bax</a>
     </div>
   </div>
 </section>
 
-<!-- FEATURED GUIDES -->
-<section class="home-guides">
-  <p class="section-label">Populyar İstiqamətlər</p>
-  <h2 class="section-title">Ən çox axtarılan <em>viza bələdçiləri</em></h2>
+<!-- TOURS -->
+<section class="home-tours">
+  <p class="section-label">Turlarımız</p>
+  <h2 class="section-title">2026 Mövsümünün <em>seçilmiş turları</em></h2>
   <div class="divider"></div>
-  <div class="home-guides-grid" id="guidesGrid"></div>
-  <div class="home-guides-more">
-    <a href="visa.html" class="btn-ghost">Bütün Ölkələr Üçün Axtar</a>
-  </div>
-</section>
+  <div class="home-tours-grid">
 
-<!-- HOW WE WORK -->
-<section class="home-steps">
-  <p class="section-label">Necə İşləyirik</p>
-  <h2 class="section-title">Sizinlə <em>necə çalışırıq</em></h2>
-  <div class="home-steps-grid">
-    <div class="home-step-item">
-      <div class="home-step-num">01</div>
-      <h3>Ehtiyacınızı Anlayırıq</h3>
-      <p>Səyahət məqsədinizi, tarixlərinizi və gözləntilərinizi dinləyir, sizə uyğun həlli birlikdə müəyyənləşdiririk.</p>
-    </div>
-    <div class="home-step-item">
-      <div class="home-step-num">02</div>
-      <h3>Planı Hazırlayırıq</h3>
-      <p>Tələb olunan sənəd siyahısını izah edir, uçuş, otel və sığorta variantlarını sizin üçün araşdırırıq.</p>
-    </div>
-    <div class="home-step-item">
-      <div class="home-step-num">03</div>
-      <h3>Müraciəti Aparırıq</h3>
-      <p>Viza müraciəti və ya rezervasiya prosesində sizinlə addım-addım irəliləyirik.</p>
-    </div>
-    <div class="home-step-item">
-      <div class="home-step-num">04</div>
-      <h3>Nəticəyə Qədər Yanınızdayıq</h3>
-      <p>Prosesi izləyir, sual yarandıqda operativ və aydın cavab veririk.</p>
-    </div>
+    <a href="tours.html" class="home-tour-card">
+      <div class="home-tour-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&q=80" alt="Barselona Avropa Turu">
+        <span class="home-tour-badge">Qrup Turu</span>
+      </div>
+      <div class="home-tour-card-body">
+        <div class="home-tour-card-label">Avropa · 8 Gün</div>
+        <h3 class="home-tour-card-title">Günəşin Kraliçası — <em>Barselona</em></h3>
+        <p class="home-tour-card-desc">Budapeştdən başlayaraq Lyublyana, Verona, Genuya, Nitsa və Barselonaya uzanan möhtəşəm Avropa turu.</p>
+        <div class="home-tour-card-price">696 EUR-dan başlayır</div>
+      </div>
+    </a>
+
+    <a href="tours.html" class="home-tour-card">
+      <div class="home-tour-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1643792412669-f7900db4e0c1?w=800&q=80" alt="Batumi Yay Tətili">
+        <span class="home-tour-badge">Yay İstirahəti</span>
+      </div>
+      <div class="home-tour-card-body">
+        <div class="home-tour-card-label">Gürcüstan · 7 Gecə</div>
+        <h3 class="home-tour-card-title">Batumi — <em>Qara Dəniz tətili</em></h3>
+        <p class="home-tour-card-desc">Qara dənizin sahilində yay istirahəti. Batuminin dəniz havası, canlı şəhər atmosferi.</p>
+        <div class="home-tour-card-price">710 USD-dan başlayır</div>
+      </div>
+    </a>
+
+    <a href="tours.html" class="home-tour-card">
+      <div class="home-tour-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80" alt="Phuket Tailand">
+        <span class="home-tour-badge home-tour-badge-alt">Tropik</span>
+      </div>
+      <div class="home-tour-card-body">
+        <div class="home-tour-card-label">Tailand · 8 Gün</div>
+        <h3 class="home-tour-card-title">Phuket — <em>tropik cənnət</em></h3>
+        <p class="home-tour-card-desc">Firuzəyi dəniz, palmalar, rahat otellər. Tailandın ən sevilən adasında unudulmaz istirahət.</p>
+        <div class="home-tour-card-price">1 450 USD-dan başlayır</div>
+      </div>
+    </a>
+
+    <a href="tours.html" class="home-tour-card">
+      <div class="home-tour-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1626950498151-68f04d1ab3d2?w=800&q=80" alt="El Alamein Misir">
+        <span class="home-tour-badge">Premium</span>
+      </div>
+      <div class="home-tour-card-body">
+        <div class="home-tour-card-label">Misir · 7 Gecə</div>
+        <h3 class="home-tour-card-title">El Alamein — <em>Misirin Maldivləri</em></h3>
+        <p class="home-tour-card-desc">Ağ qumlu sahillər, firuzəyi dəniz, Aralıq dənizinin sakit yay ab-havası.</p>
+        <div class="home-tour-card-price">1 100 USD-dan başlayır</div>
+      </div>
+    </a>
+
+  </div>
+  <div style="text-align:center; margin-top:2.5rem;">
+    <a href="tours.html" class="btn-ghost">Bütün Turlara Bax</a>
   </div>
 </section>
 
@@ -393,53 +403,6 @@
     <a href="#">Məxfilik</a><a href="#">Şərtlər</a><a href="https://www.instagram.com/lumivaratravel/" target="_blank" rel="noopener">Instagram</a>
   </div>
 </footer>
-
-<script>
-(function(){
-  // Single source of truth: every country that currently has a dedicated visa guide page.
-  var guides = [
-    { name:"Almaniya", flag:"🇩🇪", file:"almaniya.html", tag:"Şengen" },
-    { name:"Fransa", flag:"🇫🇷", file:"fransa.html", tag:"Şengen" },
-    { name:"İtaliya", flag:"🇮🇹", file:"italiya.html", tag:"Şengen" },
-    { name:"İspaniya", flag:"🇪🇸", file:"ispaniya.html", tag:"Şengen" },
-    { name:"Yaponiya", flag:"🇯🇵", file:"yaponiya.html", tag:"Turist vizası" },
-    { name:"Cənubi Koreya", flag:"🇰🇷", file:"koreya.html", tag:"Turist vizası" },
-    { name:"Tailand", flag:"🇹🇭", file:"tailand.html", tag:"Gəlişdə viza" },
-    { name:"Hindistan", flag:"🇮🇳", file:"hindistan.html", tag:"e-Viza" },
-    { name:"Monteneqro", flag:"🇲🇪", file:"monteneqro.html", tag:"Qısamüddətli viza" },
-    { name:"Hollandiya", flag:"🇳🇱", file:"hollandiya.html", tag:"Şengen" },
-    { name:"Portuqaliya", flag:"🇵🇹", file:"portuqaliya.html", tag:"Şengen" },
-    { name:"Belçika", flag:"🇧🇪", file:"belcika.html", tag:"Şengen" },
-    { name:"İsveç", flag:"🇸🇪", file:"isveç.html", tag:"Şengen" },
-    { name:"Macarıstan", flag:"🇭🇺", file:"macaristan.html", tag:"Şengen" },
-    { name:"Avstriya", flag:"🇦🇹", file:"avstriya.html", tag:"Şengen" },
-    { name:"Malta", flag:"🇲🇹", file:"malta.html", tag:"Şengen" },
-    { name:"Bolqarıstan", flag:"🇧🇬", file:"bolqaristan.html", tag:"Şengen" },
-    { name:"Xorvatiya", flag:"🇭🇷", file:"xorvatiya.html", tag:"Şengen" },
-    { name:"Çexiya", flag:"🇨🇿", file:"cexiya.html", tag:"Şengen" }
-  ];
-
-  // Live, accurate count — always reflects the guides array above, never hard-coded.
-  var countEl = document.getElementById('guideCount');
-  if (countEl) countEl.textContent = guides.length;
-
-  // Curated, representative selection for the homepage grid.
-  var featured = ["Almaniya","Fransa","İtaliya","İspaniya","Yaponiya","Cənubi Koreya","Tailand","Hindistan"];
-  var grid = document.getElementById('guidesGrid');
-  if (grid) {
-    grid.innerHTML = featured.map(function(name){
-      var g = guides.filter(function(x){ return x.name === name; })[0];
-      if (!g) return '';
-      return '<a class="home-guide-card" href="' + g.file + '">' +
-        '<span class="home-guide-flag">' + g.flag + '</span>' +
-        '<span class="home-guide-name">' + g.name + '</span>' +
-        '<span class="home-guide-tag">' + g.tag + '</span>' +
-        '<span class="home-guide-arrow">Bələdçiyə bax →</span>' +
-        '</a>';
-    }).join('');
-  }
-})();
-</script>
 
 </body>
 </html>

@@ -269,12 +269,21 @@
     const phone       = val("f-phone");
     const service     = val("f-service");
     const destination = val("f-destination");
-    const dateFrom = (document.getElementById("f-date-from").value || "").trim();
-    const dateTo   = (document.getElementById("f-date-to").value || "").trim();
-    const dates    = dateFrom && dateTo ? dateFrom + " → " + dateTo : dateFrom || dateTo || "";
+    const dateFrom    = (document.getElementById("f-date-from").value || "").trim();
+    const dateTo      = (document.getElementById("f-date-to").value || "").trim();
+    const dates       = dateFrom && dateTo ? dateFrom + " → " + dateTo : dateFrom || dateTo || "";
     const message     = val("f-message");
 
-    // Build a readable WhatsApp message in Azerbaijani
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbxHxJ71Yvl6rPMqtPW8S8UvDMe0p9wWDOllEVicfvHT90AWD01Yj51PQ0Mmd1X70E0/exec";
+
+    fetch(SHEET_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, phone, service, destination, dates, message })
+    }).catch(function(){});
+
+    const WHATSAPP_NUMBER = "994102372121";
     let lines = ["🌍 *Yeni Sorğu — Lumivara Travel*", ""];
     lines.push("👤 *Ad Soyad:* " + (name || "—"));
     if (email)       lines.push("✉️ *E-poçt:* " + email);
@@ -287,7 +296,6 @@
     const text = encodeURIComponent(lines.join("\n"));
     const url  = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + text;
 
-    // Open WhatsApp (new tab on desktop, app on mobile)
     window.open(url, "_blank");
     return false;
   }

@@ -65,8 +65,9 @@
     width:190px; height:190px; border-radius:50%; overflow:hidden; display:block;
     border:3px solid rgba(255,255,255,0.85);
     box-shadow:0 14px 36px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,214,178,0.25);
+    flex-shrink:0; position:relative; z-index:2;
   }
-  .home-hero-az-circle img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; transition:transform 0.4s; }
+  .home-hero-az-circle img { width:100%; height:100%; object-fit:cover; object-position:center center; display:block; transition:transform 0.4s; max-width:190px; max-height:190px; }
   .home-hero-az:hover .home-hero-az-circle img { transform:scale(1.05); }
   .home-hero-az-caption {
     font-family:Georgia, serif; font-size:0.78rem; color:#fff; text-align:center;

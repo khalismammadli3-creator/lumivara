@@ -59,6 +59,24 @@
   }
   .home-hero-cta { display:flex; gap:1rem; flex-wrap:wrap; }
 
+  .home-hero-row { display:flex; align-items:center; justify-content:space-between; gap:3rem; }
+  .home-hero-az { flex-shrink:0; display:flex; flex-direction:column; align-items:center; gap:0.85rem; text-decoration:none; }
+  .home-hero-az-circle {
+    width:190px; height:190px; border-radius:50%; overflow:hidden; display:block;
+    border:3px solid rgba(255,255,255,0.85);
+    box-shadow:0 14px 36px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,214,178,0.25);
+  }
+  .home-hero-az-circle img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
+  .home-hero-az:hover .home-hero-az-circle img { transform:scale(1.05); }
+  .home-hero-az-caption {
+    font-family:Georgia, serif; font-size:0.78rem; color:#fff; text-align:center;
+    display:inline-flex; align-items:center; gap:0.4rem; max-width:200px; line-height:1.4;
+    border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:2px;
+    transition:border-color 0.3s, color 0.3s;
+  }
+  .home-hero-az:hover .home-hero-az-caption { border-color:var(--teal); color:var(--teal); }
+  .home-hero-az-arrow { font-size:0.85rem; }
+
   /* ── INTRO ── */
   .home-intro { padding:4rem; background:var(--bg); }
   .home-intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin-top:2rem; }
@@ -139,16 +157,6 @@
   .home-cta p { font-size:0.8rem; color:rgba(242,250,248,0.65); margin-top:0.5rem; }
   .home-cta-buttons { display:flex; gap:1rem; flex-wrap:wrap; }
 
-  /* ── ENGLISH SECTION ── */
-  .home-intl { padding:3.5rem 4rem; background:var(--bg-alt); border-top:1px solid rgba(0,214,178,0.15); }
-  .home-intl-box {
-    max-width:900px; margin:0 auto; background:#fff; border:1px solid rgba(0,134,110,0.15);
-    padding:2.5rem 3rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;
-  }
-  .home-intl-box h2 { font-family:'Georgia', serif; font-weight:400; font-size:1.5rem; color:var(--text); margin-bottom:0.5rem; }
-  .home-intl-box p { font-family:Georgia, serif; font-size:0.85rem; color:var(--text-muted); line-height:1.7; max-width:480px; }
-  .home-intl-flag { font-size:1.4rem; margin-bottom:0.75rem; }
-
   @media(max-width:1100px){
     .home-services-grid { grid-template-columns:repeat(2,1fr); }
     .home-guides-grid { grid-template-columns:repeat(2,1fr); }
@@ -159,6 +167,10 @@
   @media(max-width:900px){
     .home-hero { min-height:520px; }
     .home-hero-overlay { padding:4.5rem 1.5rem 2.5rem; }
+    .home-hero-row { flex-direction:column; align-items:flex-start; gap:1.75rem; }
+    .home-hero-az { align-self:center; }
+    .home-hero-az-circle { width:110px; height:110px; }
+    .home-hero-az-caption { font-size:0.7rem; max-width:160px; }
     .home-intro, .home-services, .home-kb, .home-guides, .home-steps, .home-why, .home-cta { padding:3rem 1.5rem; }
     .home-intro-grid { grid-template-columns:1fr; gap:2rem; }
     .home-intro-grid img { height:260px; }
@@ -167,8 +179,6 @@
     .home-step-item { border-right:none; border-bottom:1px solid rgba(0,214,178,0.12); }
     .home-step-item:nth-child(2) { border-bottom:1px solid rgba(0,214,178,0.12); }
     .home-cta { flex-direction:column; align-items:flex-start; }
-    .home-intl { padding:2.5rem 1.5rem; }
-    .home-intl-box { padding:2rem; flex-direction:column; text-align:center; }
     .home-kb-stat { display:flex; }
   }
   @media(max-width:600px){
@@ -197,14 +207,22 @@
 <section class="home-hero">
   <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80" alt="Lumivara Travel ilə səyahət">
   <div class="home-hero-overlay">
-    <div class="home-hero-content">
-      <p class="section-label">Lumivara Travel</p>
-      <h1>Viza və səyahətdə <em>etibarlı bələdçiniz</em></h1>
-      <p class="hero-sub">Şengen və digər beynəlxalq vizalar üçün addım-addım bələdçilər, həmçinin aviabilet, otel, sığorta və tur təşkilatı — hamısı şəffaf və peşəkar yanaşma ilə, bir ünvanda.</p>
-      <div class="home-hero-cta">
-        <a href="https://wa.me/994102372121" target="_blank" rel="noopener" class="btn-primary">Bizimlə Əlaqə Saxlayın</a>
-        <a href="visa.html" class="btn-ghost-light">Viza Bələdçilərinə Bax</a>
+    <div class="home-hero-row">
+      <div class="home-hero-content">
+        <p class="section-label">Lumivara Travel</p>
+        <h1>Viza və səyahətdə <em>etibarlı bələdçiniz</em></h1>
+        <p class="hero-sub">Şengen və digər beynəlxalq vizalar üçün addım-addım bələdçilər, həmçinin aviabilet, otel, sığorta və tur təşkilatı — hamısı şəffaf və peşəkar yanaşma ilə, bir ünvanda.</p>
+        <div class="home-hero-cta">
+          <a href="https://wa.me/994102372121" target="_blank" rel="noopener" class="btn-primary">Bizimlə Əlaqə Saxlayın</a>
+          <a href="visa.html" class="btn-ghost-light">Viza Bələdçilərinə Bax</a>
+        </div>
       </div>
+      <a class="home-hero-az" href="https://incoming.lumivaratravel.az" target="_blank" rel="noopener" lang="en" aria-label="Planning to visit Azerbaijan? Explore incoming.lumivaratravel.az">
+        <span class="home-hero-az-circle">
+          <img src="baku.webp" alt="Baku, Azerbaijan">
+        </span>
+        <span class="home-hero-az-caption">Planning to visit Azerbaijan? <span class="home-hero-az-arrow">→</span></span>
+      </a>
     </div>
   </div>
 </section>
@@ -364,18 +382,6 @@
     <a href="contact.html" class="btn-ghost-light">Sorğu Göndər</a>
   </div>
 </div>
-
-<!-- ENGLISH / INTERNATIONAL SECTION -->
-<section class="home-intl" lang="en">
-  <div class="home-intl-box">
-    <div>
-      <div class="home-intl-flag">🌍</div>
-      <h2>Planning to visit Azerbaijan?</h2>
-      <p>If you're an international traveller exploring Azerbaijan, our dedicated platform can help you plan your trip.</p>
-    </div>
-    <a href="https://incoming.lumivaratravel.az" target="_blank" rel="noopener" class="btn-primary">Explore Azerbaijan →</a>
-  </div>
-</section>
 
 </main>
 

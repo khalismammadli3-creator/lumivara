@@ -62,6 +62,29 @@
   .form-group textarea:focus { border-color: var(--teal); }
   .form-group textarea { resize: vertical; min-height: 120px; }
 
+  .date-range-wrap { position:relative; display:flex; align-items:center; gap:0.5rem; }
+  .date-input { flex:1; background:#fff; border:1px solid rgba(0,134,110,0.2); color:var(--text); font-family:var(--font-body); font-size:0.82rem; font-weight:300; padding:0.85rem 1rem; outline:none; transition:border-color 0.3s; cursor:pointer; width:100%; }
+  .date-input:focus, .date-input.active { border-color:var(--teal); }
+  .date-range-sep { color:var(--teal-dark); font-size:1rem; flex-shrink:0; }
+  .calendar-popup { display:none; position:absolute; top:calc(100% + 8px); left:0; z-index:999; background:#fff; border:1px solid rgba(0,134,110,0.2); box-shadow:0 8px 32px rgba(0,0,0,0.12); padding:1rem; min-width:320px; }
+  .calendar-popup.open { display:block; }
+  .calendar-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:0.75rem; }
+  .cal-title { font-family:var(--font-display); font-size:1rem; color:var(--text); }
+  .cal-nav { background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--teal-dark); padding:0.25rem 0.5rem; transition:color 0.2s; }
+  .cal-nav:hover { color:var(--teal); }
+  .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
+  .cal-day-name { font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); text-align:center; padding:0.4rem 0; }
+  .cal-day { font-size:0.78rem; text-align:center; padding:0.5rem 0.25rem; cursor:pointer; border-radius:2px; color:var(--text); transition:background 0.2s, color 0.2s; }
+  .cal-day:hover:not(.cal-empty):not(.cal-past) { background:rgba(0,214,178,0.15); color:var(--teal-dark); }
+  .cal-day.cal-empty { cursor:default; }
+  .cal-day.cal-past { color:rgba(0,0,0,0.2); cursor:not-allowed; }
+  .cal-day.cal-selected { background:var(--teal); color:var(--teal-deep); font-weight:600; }
+  .cal-day.cal-in-range { background:rgba(0,214,178,0.12); color:var(--teal-dark); }
+  .cal-day.cal-range-end { background:var(--teal-dark); color:#fff; font-weight:600; }
+  .calendar-footer { margin-top:0.75rem; text-align:right; }
+  .cal-clear { background:none; border:none; font-size:0.7rem; color:var(--text-muted); cursor:pointer; letter-spacing:0.08em; text-transform:uppercase; font-family:var(--font-body); }
+  .cal-clear:hover { color:var(--teal-dark); }
+
   /* Submit button */
   .submit-btn {
     align-self: flex-start;
@@ -197,7 +220,22 @@
         </div>
         <div class="form-group">
           <label>Tarixlər</label>
-          <input type="text" id="f-dates" placeholder="Təxmini tarixlər">
+          <div class="date-range-wrap">
+            <input type="text" id="f-date-from" placeholder="Gedış tarixi" readonly class="date-input">
+            <span class="date-range-sep">→</span>
+            <input type="text" id="f-date-to" placeholder="Qayıdış tarixi" readonly class="date-input">
+          </div>
+          <div class="calendar-popup" id="calendarPopup">
+            <div class="calendar-header">
+              <button type="button" class="cal-nav" id="calPrev">‹</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button type="button" class="cal-nav" id="calNext">›</button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="calendar-footer">
+              <button type="button" class="cal-clear" id="calClear">Sıfırla</button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -231,7 +269,9 @@
     const phone       = val("f-phone");
     const service     = val("f-service");
     const destination = val("f-destination");
-    const dates       = val("f-dates");
+    const dateFrom = (document.getElementById("f-date-from").value || "").trim();
+    const dateTo   = (document.getElementById("f-date-to").value || "").trim();
+    const dates    = dateFrom && dateTo ? dateFrom + " → " + dateTo : dateFrom || dateTo || "";
     const message     = val("f-message");
 
     // Build a readable WhatsApp message in Azerbaijani
@@ -251,6 +291,92 @@
     window.open(url, "_blank");
     return false;
   }
+
+(function(){
+  const MS_DAY = 86400000;
+  let current = new Date();
+  current.setDate(1);
+  let selecting = "from";
+  let fromDate = null;
+  let toDate = null;
+  const DAYS = ["B","BE","Ç","CA","C","Ş","B"];
+  const MONTHS = ["Yanvar","Fevral","Mart","Aprel","May","İyun","İyul","Avqust","Sentyabr","Oktyabr","Noyabr","Dekabr"];
+
+  const popup   = document.getElementById("calendarPopup");
+  const grid    = document.getElementById("calendarGrid");
+  const title   = document.getElementById("calTitle");
+  const inFrom  = document.getElementById("f-date-from");
+  const inTo    = document.getElementById("f-date-to");
+
+  function fmt(d){ return d ? d.getDate() + " " + MONTHS[d.getMonth()] + " " + d.getFullYear() : ""; }
+  function sameDay(a,b){ return a && b && a.toDateString()===b.toDateString(); }
+  function isBetween(d,a,b){ return a && b && d>a && d<b; }
+
+  function render(){
+    title.textContent = MONTHS[current.getMonth()] + " " + current.getFullYear();
+    const first = new Date(current.getFullYear(), current.getMonth(), 1);
+    const startOffset = (first.getDay()+6)%7;
+    const daysInMonth = new Date(current.getFullYear(), current.getMonth()+1, 0).getDate();
+    const today = new Date(); today.setHours(0,0,0,0);
+
+    let html = DAYS.map(d=>`<div class="cal-day-name">${d}</div>`).join("");
+    for(let i=0;i<startOffset;i++) html+=`<div class="cal-day cal-empty"></div>`;
+    for(let d=1;d<=daysInMonth;d++){
+      const date = new Date(current.getFullYear(), current.getMonth(), d);
+      const isPast = date < today;
+      const isSel  = sameDay(date,fromDate);
+      const isEnd  = sameDay(date,toDate);
+      const inRng  = isBetween(date,fromDate,toDate);
+      let cls = "cal-day";
+      if(isPast) cls+=" cal-past";
+      if(isSel)  cls+=" cal-selected";
+      if(isEnd)  cls+=" cal-range-end";
+      if(inRng)  cls+=" cal-in-range";
+      html+=`<div class="${cls}" data-d="${date.getTime()}">${d}</div>`;
+    }
+    grid.innerHTML = html;
+
+    grid.querySelectorAll(".cal-day:not(.cal-empty):not(.cal-past)").forEach(el=>{
+      el.addEventListener("click",function(){
+        const d = new Date(parseInt(this.dataset.d));
+        if(selecting==="from"||( fromDate && d<=fromDate)){
+          fromDate=d; toDate=null; selecting="to";
+          inFrom.value=fmt(fromDate); inTo.value="";
+        } else {
+          toDate=d; selecting="from";
+          inTo.value=fmt(toDate);
+          setTimeout(()=>{ popup.classList.remove("open"); },200);
+        }
+        render();
+      });
+    });
+  }
+
+  document.getElementById("calPrev").addEventListener("click",function(){
+    current.setMonth(current.getMonth()-1); render();
+  });
+  document.getElementById("calNext").addEventListener("click",function(){
+    current.setMonth(current.getMonth()+1); render();
+  });
+  document.getElementById("calClear").addEventListener("click",function(){
+    fromDate=null; toDate=null; selecting="from";
+    inFrom.value=""; inTo.value=""; render();
+  });
+
+  [inFrom, inTo].forEach(inp=>{
+    inp.addEventListener("click",function(e){
+      e.stopPropagation();
+      popup.classList.toggle("open");
+      if(popup.classList.contains("open")) render();
+    });
+  });
+
+  document.addEventListener("click",function(e){
+    if(!popup.contains(e.target) && e.target!==inFrom && e.target!==inTo){
+      popup.classList.remove("open");
+    }
+  });
+})();
 </script>
 
 </body>

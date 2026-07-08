@@ -154,6 +154,9 @@
     <li><a href="visa.html">Viza</a></li>
     <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menyu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- BANNER -->
@@ -558,6 +561,24 @@
       card.style.display = show ? 'flex' : 'none';
     });
   }
+</script>
+
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('nav')){
+      btn.classList.remove('open');
+      links.classList.remove('open');
+    }
+  });
+})();
 </script>
 
 </body>

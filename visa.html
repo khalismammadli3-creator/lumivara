@@ -4,28 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Viza Xidmətləri | Lumivara Travel</title>
-<meta name="description" content="Azərbaycanlı vətəndaşlar üçün Şengen, Yaponiya, Cənubi Koreya, Tailand, Hindistan və Monteneqro vizaları haqqında ətraflı məlumat. Tələb olunan sənədlər, emal müddətləri, konsulluq haqları.">
+<meta name="description" content="Viza müraciəti üçün addım-addım təlimatlar, sənəd siyahıları və ən son tələblər.">
 <link rel="canonical" href="https://lumivara.pages.dev/visa.html">
 <link rel="icon" href="L_Icon.png" type="image/png">
 <link rel="stylesheet" href="nav.css">
 <style>
-  .page-banner { width:100%; height:300px; position:relative; overflow:hidden; }
+  .page-banner { width:100%; height:220px; position:relative; overflow:hidden; }
   .page-banner img { width:100%; height:100%; object-fit:cover; filter:brightness(0.52); }
   .page-banner-overlay {
     position:absolute; inset:0; display:flex; flex-direction:column;
     justify-content:center; align-items:flex-start;
-    padding:2rem 4rem;
+    padding:1.5rem 3rem;
     background:linear-gradient(to right, rgba(0,51,42,0.72) 0%, transparent 100%);
   }
   .page-banner-overlay h1 { font-family:var(--font-display); font-size:clamp(2rem,5vw,3.5rem); font-weight:300; color:#fff; }
   .page-banner-overlay h1 em { font-style:italic; color:var(--teal); }
-  .page-banner-overlay p { font-size:0.8rem; color:rgba(255,255,255,0.68); margin-top:0.75rem; max-width:480px; line-height:1.8; }
+  .page-banner-overlay p { font-size:0.8rem; color:rgba(255,255,255,0.68); margin-top:0.4rem; max-width:480px; line-height:1.8; }
 
-  .intro-section { padding:4rem 4rem 1rem; max-width:780px; }
-  .intro-section p { font-size:0.85rem; color:var(--text-muted); line-height:2; margin-top:1rem; }
+  .intro-section { padding:2.25rem 3rem 0.5rem; max-width:780px; }
+  .intro-section p { font-size:0.85rem; color:var(--text-muted); line-height:1.8; margin-top:0.6rem; }
+  .intro-section .divider { margin:0.9rem 0; }
 
   /* Country search combobox */
-  .country-search-wrap { padding:0 4rem 5rem; }
+  .country-search-wrap { padding:0 3rem 2.5rem; }
   .country-combobox { max-width:640px; position:relative; }
   .country-combobox-label { display:block; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-dark); margin-bottom:0.6rem; }
   .country-combobox-input-wrap {
@@ -40,7 +41,7 @@
   .country-combobox-input {
     flex:1; border:none; outline:none; background:transparent;
     font-family:var(--font-body); font-size:1rem; color:var(--text);
-    padding:1.1rem 1.2rem;
+    padding:0.8rem 1.2rem;
   }
   .country-combobox-input::placeholder { color:var(--text-muted); opacity:0.6; }
   .country-combobox-icon { padding:0 1.2rem; color:var(--teal-dark); opacity:0.55; font-size:0.95rem; flex-shrink:0; }
@@ -62,7 +63,7 @@
   .country-combobox-list li[hidden] { display:none; }
   .country-option-link {
     display:flex; align-items:center; justify-content:space-between;
-    padding:0.85rem 1.2rem; font-size:0.85rem; color:var(--text);
+    padding:0.6rem 1.2rem; font-size:0.85rem; color:var(--text);
     text-decoration:none; cursor:pointer;
     transition:background 0.2s, color 0.2s;
   }
@@ -73,43 +74,43 @@
   .country-option-link:hover .country-option-arrow,
   .country-option-link:focus .country-option-arrow { opacity:1; }
   .country-combobox-empty {
-    padding:1rem 1.2rem; font-size:0.8rem; color:var(--text-muted);
+    padding:0.8rem 1.2rem; font-size:0.8rem; color:var(--text-muted);
     background:#fff; border:1px solid rgba(0,134,110,0.18);
     position:absolute; top:calc(100% + 8px); left:0; right:0;
     z-index:50; display:none;
   }
   .country-combobox-empty.open { display:block; }
-  .country-combobox-hint { font-size:0.72rem; color:var(--text-muted); margin-top:0.85rem; opacity:0.8; }
+  .country-combobox-hint { font-size:0.72rem; color:var(--text-muted); margin-top:0.5rem; opacity:0.8; }
 
   /* Steps section */
-  .steps-section { background:var(--bg-alt); padding:4rem; border-top:1px solid rgba(0,214,178,0.15); }
-  .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:2.5rem; border:1px solid rgba(0,214,178,0.15); }
-  .step-item { padding:2.5rem 2rem; background:#fff; border-right:1px solid rgba(0,214,178,0.12); }
+  .steps-section { background:var(--bg-alt); padding:2.5rem 3rem; border-top:1px solid rgba(0,214,178,0.15); }
+  .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:1.5rem; border:1px solid rgba(0,214,178,0.15); }
+  .step-item { padding:1.5rem 1.5rem; background:#fff; border-right:1px solid rgba(0,214,178,0.12); }
   .step-item:last-child { border-right:none; }
-  .step-num { font-family:var(--font-display); font-size:3rem; font-weight:300; color:var(--teal); opacity:0.28; line-height:1; margin-bottom:1rem; }
-  .step-item h3 { font-family:var(--font-display); font-size:1.15rem; font-weight:400; margin-bottom:0.6rem; }
-  .step-item p { font-size:0.75rem; color:var(--text-muted); line-height:1.85; }
+  .step-num { font-family:var(--font-display); font-size:3rem; font-weight:300; color:var(--teal); opacity:0.28; line-height:1; margin-bottom:0.5rem; }
+  .step-item h3 { font-family:var(--font-display); font-size:1.15rem; font-weight:400; margin-bottom:0.4rem; }
+  .step-item p { font-size:0.75rem; color:var(--text-muted); line-height:1.7; }
 
   /* CTA strip */
-  .cta-strip { padding:3.5rem 4rem; display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; background:var(--bg); border-top:1px solid rgba(0,214,178,0.15); }
+  .cta-strip { padding:2rem 3rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; background:var(--bg); border-top:1px solid rgba(0,214,178,0.15); }
   .cta-strip h2 { font-family:var(--font-display); font-size:clamp(1.4rem,3vw,2.2rem); font-weight:300; color:var(--text); }
   .cta-strip h2 em { font-style:italic; color:var(--teal-dark); }
-  .cta-strip p { font-size:0.78rem; color:var(--text-muted); margin-top:0.4rem; }
+  .cta-strip p { font-size:0.78rem; color:var(--text-muted); margin-top:0.25rem; }
 
   @media(max-width:900px){
-    .page-banner { height:220px; }
-    .page-banner-overlay { padding:2rem 1.5rem; }
-    .intro-section { padding:3rem 1.5rem 0.5rem; }
-    .country-search-wrap { padding:0 1.5rem 3.5rem; }
+    .page-banner { height:190px; }
+    .page-banner-overlay { padding:1.25rem 1.5rem; }
+    .intro-section { padding:1.75rem 1.5rem 0.25rem; }
+    .country-search-wrap { padding:0 1.5rem 2rem; }
     .steps-grid { grid-template-columns:1fr; }
     .step-item { border-right:none; border-bottom:1px solid rgba(0,214,178,0.12); }
-    .steps-section { padding:3rem 1.5rem; }
-    .cta-strip { padding:3rem 1.5rem; flex-direction:column; }
+    .steps-section { padding:1.75rem 1.5rem; }
+    .cta-strip { padding:1.75rem 1.5rem; flex-direction:column; }
   }
   @media(max-width:480px){
-    .country-combobox-input { font-size:0.95rem; padding:1rem; }
+    .country-combobox-input { font-size:0.95rem; padding:0.7rem 1rem; }
     .country-combobox-icon { padding:0 0.85rem; }
-    .country-option-link { padding:0.8rem 1rem; font-size:0.82rem; }
+    .country-option-link { padding:0.55rem 1rem; font-size:0.82rem; }
   }
 </style>
 </head>
@@ -126,6 +127,9 @@
     <li><a href="visa.html" class="active">Viza</a></li>
     <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menyu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-banner">
@@ -213,18 +217,32 @@
 <script>
 (function(){
   var dedicatedPages = {
+    "Almaniya": "almaniya.html",
     "Yaponiya": "yaponiya.html",
     "Cənubi Koreya": "koreya.html",
     "Tailand": "tailand.html",
     "Hindistan": "hindistan.html",
-    "Monteneqro": "monteneqro.html"
+    "Monteneqro": "monteneqro.html",
+    "Fransa": "fransa.html",
+    "İspaniya": "ispaniya.html",
+    "Hollandiya": "hollandiya.html",
+    "Portuqaliya": "portuqaliya.html",
+    "Belçika": "belcika.html",
+    "İsveç": "isveç.html",
+    "Macarıstan": "macaristan.html",
+    "Avstriya": "avstriya.html",
+    "İtaliya": "italiya.html",
+    "Malta": "malta.html",
+    "Bolqarıstan": "bolqaristan.html",
+    "Xorvatiya": "xorvatiya.html",
+    "Çexiya": "cexiya.html"
   };
 
   var countryNames = [
     // Avropa
     "Albaniya","Andorra","Avstriya","Belçika","Belarus","Bolqarıstan","Bosniya və Herseqovina",
     "Böyük Britaniya","Çexiya","Danimarka","Estoniya","Finlandiya","Fransa","Almaniya","Yunanıstan",
-    "Xorvatiya","Niderland","İrlandiya","İslandiya","İspaniya","İsveç","İsveçrə","İtaliya","Kipr",
+    "Xorvatiya","Hollandiya","İrlandiya","İslandiya","İspaniya","İsveç","İsveçrə","İtaliya","Kipr",
     "Kosovo","Latviya","Lixtenşteyn","Litva","Lüksemburq","Macarıstan","Şimali Makedoniya","Malta",
     "Moldova","Monako","Monteneqro","Norveç","Polşa","Portuqaliya","Rumıniya","Rusiya","San-Marino",
     "Serbiya","Slovakiya","Sloveniya","Ukrayna","Vatikan",
@@ -342,6 +360,24 @@
 
   document.addEventListener('click', function(e){
     if (!combobox.contains(e.target)) closeList();
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('nav')){
+      btn.classList.remove('open');
+      links.classList.remove('open');
+    }
   });
 })();
 </script>

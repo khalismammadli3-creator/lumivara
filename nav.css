@@ -179,6 +179,13 @@ li.nav-divider::before {
   opacity: 1 !important;
 }
 
+/* Mobile hamburger */
+.nav-hamburger { display:none; flex-direction:column; gap:4px; background:none; border:none; cursor:pointer; padding:0.4rem; z-index:1001; margin-left:auto; }
+.nav-hamburger span { display:block; width:20px; height:2px; background:var(--teal-dark); border-radius:2px; transition:transform 0.3s, opacity 0.3s; }
+.nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity:0; }
+.nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
 /* ── FOOTER ── */
 footer {
   padding: 2.5rem 4rem;
@@ -243,6 +250,48 @@ footer {
 
 @media (max-width: 900px) {
   nav { padding: 0 1.5rem; }
-  .nav-links { display: none; }
+  .nav-hamburger { display:flex; }
+  .nav-links {
+    display:none;
+    flex-direction:column;
+    position:fixed;
+    top:56px;
+    left:0;
+    width:100vw;
+    height:auto;
+    background:#f2fbf8;
+    border-top:1px solid rgba(0,214,178,0.15);
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
+    z-index:999999;
+    padding:0.5rem 0;
+  }
+  .nav-links.open { display:flex; background:#f2fbf8 !important; }
+  .nav-links li { width:100%; border-bottom:1px solid rgba(0,214,178,0.08); }
+  .nav-links li:last-child { border-bottom:none; }
+  .nav-links li a {
+    display:block;
+    width:100%;
+    padding:0.85rem 1.5rem;
+    font-size:0.82rem;
+    color:var(--text);
+    letter-spacing:0.05em;
+    height:auto;
+    opacity:1;
+    box-sizing:border-box;
+  }
+  .nav-links li.nav-cta { margin-left:0; }
+  .nav-links li.nav-cta a {
+    color:var(--teal-dark) !important;
+    font-weight:600;
+    background:none !important;
+    height:auto !important;
+    padding:0.85rem 1.5rem !important;
+    border-radius:0 !important;
+    letter-spacing:0.1em !important;
+  }
+  .nav-links li.nav-divider { display:none !important; height:0 !important; }
+  .nav-links li.nav-home { display:none !important; height:0 !important; }
+  .nav-links li { width:100%; border-bottom:1px solid rgba(0,134,110,0.2); display:block; }
+  .nav-links li:last-child { border-bottom:none; }
   footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
 }

@@ -78,6 +78,9 @@
     <li><a href="visa.html" class="active">Viza</a></li>
     <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menyu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-banner">
@@ -207,5 +210,23 @@
 <script>
   function toggleFaq(btn){const answer=btn.nextElementSibling;const icon=btn.querySelector('.faq-ico');const isOpen=answer.classList.contains('open');document.querySelectorAll('.faq-answer').forEach(a=>a.classList.remove('open'));document.querySelectorAll('.faq-ico').forEach(i=>{i.classList.remove('open');i.textContent='+';});if(!isOpen){answer.classList.add('open');icon.classList.add('open');icon.textContent='×';}}
 </script>
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('nav')){
+      btn.classList.remove('open');
+      links.classList.remove('open');
+    }
+  });
+})();
+</script>
+
 </body>
 </html>

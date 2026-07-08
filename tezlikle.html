@@ -10,27 +10,27 @@
 <link rel="stylesheet" href="nav.css">
 <style>
   body{background:var(--bg);}
-  .page-banner{width:100%;height:280px;position:relative;overflow:hidden;}
+  .page-banner{width:100%;height:190px;position:relative;overflow:hidden;}
   .page-banner img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5);}
-  .page-banner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem 4rem;background:linear-gradient(to top,rgba(0,30,20,0.85) 0%,transparent 60%);}
-  .page-banner-overlay .breadcrumb{font-size:0.65rem;color:rgba(255,255,255,0.5);letter-spacing:0.08em;margin-bottom:0.75rem;}
+  .page-banner-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem 3rem;background:linear-gradient(to top,rgba(0,30,20,0.85) 0%,transparent 60%);}
+  .page-banner-overlay .breadcrumb{font-size:0.65rem;color:rgba(255,255,255,0.5);letter-spacing:0.08em;margin-bottom:0.4rem;}
   .page-banner-overlay .breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
   .page-banner-overlay h1{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.4rem);font-weight:300;color:#fff;line-height:1.1;}
   .page-banner-overlay h1 em{font-style:italic;color:var(--teal);}
 
-  .soon-wrap{max-width:720px;margin:0 auto;padding:5rem 4rem;text-align:center;}
-  .soon-icon{font-size:3rem;margin-bottom:1.5rem;opacity:0.85;}
+  .soon-wrap{max-width:720px;margin:0 auto;padding:2.5rem 3rem;text-align:center;}
+  .soon-icon{font-size:3rem;margin-bottom:0.75rem;opacity:0.85;}
   .soon-wrap .section-label{justify-content:center;display:block;}
-  .soon-wrap h2{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;margin-bottom:1.25rem;color:var(--text);}
+  .soon-wrap h2{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:300;margin-bottom:0.75rem;color:var(--text);}
   .soon-wrap h2 em{font-style:italic;color:var(--teal-dark);}
-  .soon-wrap .divider{margin-left:auto;margin-right:auto;}
-  .soon-wrap p.soon-msg{font-size:0.9rem;color:var(--text-muted);line-height:2;max-width:520px;margin:0 auto;}
-  .soon-actions{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.5rem;}
+  .soon-wrap .divider{margin:0.9rem auto;}
+  .soon-wrap p.soon-msg{font-size:0.9rem;color:var(--text-muted);line-height:1.8;max-width:520px;margin:0 auto;}
+  .soon-actions{display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:1.5rem;}
 
   @media(max-width:900px){
-    .page-banner{height:220px;}
-    .page-banner-overlay{padding:1.5rem;}
-    .soon-wrap{padding:3.5rem 1.5rem;}
+    .page-banner{height:170px;}
+    .page-banner-overlay{padding:1rem 1.5rem;}
+    .soon-wrap{padding:1.75rem 1.5rem;}
   }
 </style>
 </head>
@@ -44,6 +44,9 @@
     <li><a href="visa.html" class="active">Viza</a></li>
     <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
   </ul>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menyu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-banner">
@@ -85,6 +88,24 @@
     document.querySelectorAll('.js-country-name').forEach(function(el){ el.textContent = country; });
     document.querySelectorAll('.js-country-name-crumb').forEach(function(el){ el.textContent = country; });
   }
+})();
+</script>
+
+<script>
+(function(){
+  const btn = document.getElementById('navHamburger');
+  const links = document.querySelector('.nav-links');
+  if(!btn || !links) return;
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('nav')){
+      btn.classList.remove('open');
+      links.classList.remove('open');
+    }
+  });
 })();
 </script>
 

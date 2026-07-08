@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Viza Xidmətləri | Lumivara Travel</title>
 <meta name="description" content="Viza müraciəti üçün addım-addım təlimatlar, sənəd siyahıları və ən son tələblər.">
-<link rel="canonical" href="https://lumivara.pages.dev/visa.html">
+<link rel="canonical" href="https://lumivaratravel.az/vizalar">
 <link rel="icon" href="L_Icon.png" type="image/png">
 <link rel="stylesheet" href="nav.css">
 <style>
@@ -124,7 +124,7 @@
     <li><a href="about.html">Biz kimik</a></li>
     <li><a href="tours.html">Turlar</a></li>
     <li><a href="corporate.html">Korporativ xidmətlər</a></li>
-    <li><a href="visa.html" class="active">Viza</a></li>
+    <li><a href="vizalar.html" class="active">Viza</a></li>
     <li class="nav-cta"><a href="contact.html">Əlaqə</a></li>
   </ul>
   <button class="nav-hamburger" id="navHamburger" aria-label="Menyu">
@@ -217,25 +217,25 @@
 <script>
 (function(){
   var dedicatedPages = {
-    "Almaniya": "almaniya.html",
-    "Yaponiya": "yaponiya.html",
-    "Cənubi Koreya": "koreya.html",
-    "Tailand": "tailand.html",
-    "Hindistan": "hindistan.html",
-    "Monteneqro": "monteneqro.html",
-    "Fransa": "fransa.html",
-    "İspaniya": "ispaniya.html",
-    "Hollandiya": "hollandiya.html",
-    "Portuqaliya": "portuqaliya.html",
-    "Belçika": "belcika.html",
-    "İsveç": "isveç.html",
-    "Macarıstan": "macaristan.html",
-    "Avstriya": "avstriya.html",
-    "İtaliya": "italiya.html",
-    "Malta": "malta.html",
-    "Bolqarıstan": "bolqaristan.html",
-    "Xorvatiya": "xorvatiya.html",
-    "Çexiya": "cexiya.html"
+    "Almaniya": "visa/almaniya.html",
+    "Yaponiya": "visa/yaponiya.html",
+    "Cənubi Koreya": "visa/koreya.html",
+    "Tailand": "visa/tailand.html",
+    "Hindistan": "visa/hindistan.html",
+    "Monteneqro": "visa/monteneqro.html",
+    "Fransa": "visa/fransa.html",
+    "İspaniya": "visa/ispaniya.html",
+    "Hollandiya": "visa/hollandiya.html",
+    "Portuqaliya": "visa/portuqaliya.html",
+    "Belçika": "visa/belcika.html",
+    "İsveç": "visa/isveç.html",
+    "Macarıstan": "visa/macaristan.html",
+    "Avstriya": "visa/avstriya.html",
+    "İtaliya": "visa/italiya.html",
+    "Malta": "visa/malta.html",
+    "Bolqarıstan": "visa/bolqaristan.html",
+    "Xorvatiya": "visa/xorvatiya.html",
+    "Çexiya": "visa/cexiya.html"
   };
 
   var countryNames = [
@@ -277,7 +277,7 @@
   var countries = countryNames.map(function(name){
     return {
       name: name,
-      href: dedicatedPages[name] || ("tezlikle.html#" + encodeURIComponent(name))
+      href: dedicatedPages[name] || ("visa/tezlikle.html#" + encodeURIComponent(name))
     };
   }).sort(function(a,b){ return a.name.localeCompare(b.name,'az'); });
 

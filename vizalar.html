@@ -82,20 +82,6 @@
   .country-combobox-empty.open { display:block; }
   .country-combobox-hint { font-size:0.72rem; color:var(--text-muted); margin-top:0.5rem; opacity:0.8; }
 
-  /* Country cards grid */
-  .country-grid-section { padding:0.5rem 3rem 2.75rem; }
-  .country-cards-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; margin-top:1.5rem; }
-  .country-card {
-    display:flex; flex-direction:column; gap:0.6rem;
-    padding:1.5rem; background:#fff; border:1px solid rgba(0,214,178,0.15);
-    text-decoration:none; color:inherit;
-    transition:box-shadow 0.3s, border-color 0.3s, transform 0.3s;
-  }
-  .country-card:hover { box-shadow:0 8px 28px rgba(0,134,110,0.1); border-color:rgba(0,214,178,0.4); transform:translateY(-2px); }
-  .country-card-flag { font-size:1.8rem; }
-  .country-card-name { font-family:var(--font-display); font-size:1.05rem; font-weight:400; color:var(--text); }
-  .country-card-link { font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal-dark); margin-top:auto; }
-
   /* FAQ (matches almaniya.html pattern) */
   .faq-section { padding:2.75rem 3rem; background:var(--bg-alt); border-top:1px solid rgba(0,214,178,0.15); }
   .faq-wrap { max-width:780px; margin:0 auto; }
@@ -129,24 +115,17 @@
   .cta-strip h2 em { font-style:italic; color:var(--teal-dark); }
   .cta-strip p { font-size:0.78rem; color:var(--text-muted); margin-top:0.25rem; }
 
-  @media(max-width:1100px){
-    .country-cards-grid { grid-template-columns:repeat(2,1fr); }
-  }
   @media(max-width:900px){
     .page-banner { height:190px; }
     .page-banner-overlay { padding:1.25rem 1.5rem; }
     .intro-section { padding:1.75rem 1.5rem 0.25rem; }
     .country-search-wrap { padding:0 1.5rem 2rem; }
-    .country-grid-section { padding:0.25rem 1.5rem 1.75rem; }
     .faq-section { padding:1.75rem 1.5rem; }
     .steps-grid { grid-template-columns:1fr; }
     .step-item { border-right:none; border-bottom:1px solid rgba(0,214,178,0.12); }
     .steps-section { padding:1.75rem 1.5rem; }
     .cta-strip { padding:1.75rem 1.5rem; flex-direction:column; }
     .cta-bar { padding:1.75rem 1.5rem; flex-direction:column; align-items:flex-start; }
-  }
-  @media(max-width:600px){
-    .country-cards-grid { grid-template-columns:1fr; }
   }
   @media(max-width:480px){
     .country-combobox-input { font-size:0.95rem; padding:0.7rem 1rem; }
@@ -213,120 +192,6 @@
   </div>
   <p class="country-combobox-hint">190-dan çox ölkə arasından axtarın — nəticəyə klikləyərək həmin ölkənin viza məlumatlarına keçid alın.</p>
 </div>
-
-<!-- COUNTRY CARDS GRID -->
-<section class="country-grid-section">
-  <p class="section-label">Bələdçilər</p>
-  <h2 class="section-title">Mövcud Viza <em>Bələdçiləri</em></h2>
-  <div class="divider" style="margin:1rem 0;"></div>
-  <div class="country-cards-grid">
-    <a href="visa/almaniya.html" class="country-card">
-      <div class="country-card-flag">🇩🇪</div>
-      <div class="country-card-name">Almaniya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/avstriya.html" class="country-card">
-      <div class="country-card-flag">🇦🇹</div>
-      <div class="country-card-name">Avstriya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/belcika.html" class="country-card">
-      <div class="country-card-flag">🇧🇪</div>
-      <div class="country-card-name">Belçika</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/bolqaristan.html" class="country-card">
-      <div class="country-card-flag">🇧🇬</div>
-      <div class="country-card-name">Bolqarıstan</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/cexiya.html" class="country-card">
-      <div class="country-card-flag">🇨🇿</div>
-      <div class="country-card-name">Çexiya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/cin.html" class="country-card">
-      <div class="country-card-flag">🇨🇳</div>
-      <div class="country-card-name">Çin</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/fransa.html" class="country-card">
-      <div class="country-card-flag">🇫🇷</div>
-      <div class="country-card-name">Fransa</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/hindistan.html" class="country-card">
-      <div class="country-card-flag">🇮🇳</div>
-      <div class="country-card-name">Hindistan</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/hollandiya.html" class="country-card">
-      <div class="country-card-flag">🇳🇱</div>
-      <div class="country-card-name">Hollandiya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/ispaniya.html" class="country-card">
-      <div class="country-card-flag">🇪🇸</div>
-      <div class="country-card-name">İspaniya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/isveç.html" class="country-card">
-      <div class="country-card-flag">🇸🇪</div>
-      <div class="country-card-name">İsveç</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/italiya.html" class="country-card">
-      <div class="country-card-flag">🇮🇹</div>
-      <div class="country-card-name">İtaliya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/koreya.html" class="country-card">
-      <div class="country-card-flag">🇰🇷</div>
-      <div class="country-card-name">Cənubi Koreya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/macaristan.html" class="country-card">
-      <div class="country-card-flag">🇭🇺</div>
-      <div class="country-card-name">Macarıstan</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/malta.html" class="country-card">
-      <div class="country-card-flag">🇲🇹</div>
-      <div class="country-card-name">Malta</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/monteneqro.html" class="country-card">
-      <div class="country-card-flag">🇲🇪</div>
-      <div class="country-card-name">Monteneqro</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/portuqaliya.html" class="country-card">
-      <div class="country-card-flag">🇵🇹</div>
-      <div class="country-card-name">Portuqaliya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/schengen.html" class="country-card">
-      <div class="country-card-flag">🇪🇺</div>
-      <div class="country-card-name">Şengen Zonası</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/tailand.html" class="country-card">
-      <div class="country-card-flag">🇹🇭</div>
-      <div class="country-card-name">Tailand</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/xorvatiya.html" class="country-card">
-      <div class="country-card-flag">🇭🇷</div>
-      <div class="country-card-name">Xorvatiya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-    <a href="visa/yaponiya.html" class="country-card">
-      <div class="country-card-flag">🇯🇵</div>
-      <div class="country-card-name">Yaponiya</div>
-      <div class="country-card-link">Bələdçiyə bax →</div>
-    </a>
-  </div>
-</section>
 
 <!-- FAQ -->
 <section class="faq-section">

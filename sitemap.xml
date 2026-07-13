@@ -140,4 +140,11 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Tour pages -->
+  <url>
+    <loc>https://lumivaratravel.az/turlar/italiyanin-cenub-mehi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
